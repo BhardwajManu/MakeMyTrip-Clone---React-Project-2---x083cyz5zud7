@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #4a4a4a;
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
 }

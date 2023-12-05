@@ -1,0 +1,12 @@
+.fw-mainbtmdiv{
+    /* border: 2px solid green; */
+    background-color: #F2F2F2;
+}
+.fw-adv{
+    height: 88px;
+    width: 968px;
+    border-radius: 16px;
+    margin: 35px 0 35px 0;
+    cursor: pointer;
+}
+

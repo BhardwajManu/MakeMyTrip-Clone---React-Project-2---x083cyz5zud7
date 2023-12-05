@@ -1,0 +1,14 @@
+button{
+    /* border: 1px solid red; */
+    height: 45px;
+    width: 196px;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    background-image: linear-gradient(93deg,#53b2fe,#065af3);
+    font-size: 24px;
+    font-weight: 900;
+    border: 0;
+    cursor: pointer;
+    opacity: 1;
+}
