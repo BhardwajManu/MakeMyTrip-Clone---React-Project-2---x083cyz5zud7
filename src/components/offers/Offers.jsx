@@ -1,12 +1,14 @@
 import React from "react";
 import "./offers.css";
-import { Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import offers1 from "../../assets/images/offers1.png";
 import offers2 from "../../assets/images/offers2.png";
 import offers3 from "../../assets/images/offers3.png";
 import offers4 from "../../assets/images/offers4.png";
 import offers5 from "../../assets/images/offers5.png";
 import offers6 from "../../assets/images/offers6.png";
+import { FaLessThan } from "react-icons/fa";
+import { FaGreaterThan } from "react-icons/fa";
 
 const Offers = () => {
   return (
@@ -14,9 +16,10 @@ const Offers = () => {
       <Container>
         <div className="offers-main">
           <div className="offers-topdiv">
-            <h1>Offers</h1>
+            <h2 className="mr-16 text-3xl font-bold leading-3 cursor-default">
+              Offers
+            </h2>
             <ul className="offers-topdiv-list">
-              <li>ON 1st BOOKING</li>
               <li>All Offers</li>
               <li>Flights</li>
               <li>Hotels</li>
@@ -25,7 +28,16 @@ const Offers = () => {
               <li>Cabs</li>
               <li>Bank Offers</li>
             </ul>
+            <div className="ml-24 great-less flex">
+              <Button className="">
+                <FaLessThan className=" text-blue-500 rounded-s-full  h-6 w-8 " />
+              </Button>
+              <Button className="">
+                <FaGreaterThan className=" text-blue-500 rounded-e-full  h-6 w-8 " />
+              </Button>
+            </div>
           </div>
+
           <div className="offers-bottomdiv">
             <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
@@ -38,13 +50,11 @@ const Offers = () => {
               <div className="griditem1-bottomdiv">
                 <ul>
                   <li>T&C's Apply</li>
-                  <li>code:WELCOMEMMT</li>
-                  <li>VIEW DETAILS</li>
                 </ul>
               </div>
             </div>
 
-            <div className="offers-btmdiv-griditem">
+            {/* <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
                 <img src={offers3} alt="offersimg3" />
                 <div>
@@ -55,13 +65,12 @@ const Offers = () => {
               <div className="griditem1-bottomdiv">
                 <ul>
                   <li>T&C's Apply</li>
-                  <li>code:WELCOMEMMT</li>
-                  <li>VIEW DETAILS</li>
+                  
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div className="offers-btmdiv-griditem">
+            {/* <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
                 <img src={offers5} alt="offersimg5" />
                 <div>
@@ -72,13 +81,12 @@ const Offers = () => {
               <div className="griditem1-bottomdiv">
                 <ul>
                   <li>T&C's Apply</li>
-                  <li>code:WELCOMEMMT</li>
-                  <li>VIEW DETAILS</li>
+                 
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div className="offers-btmdiv-griditem">
+            {/* <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
                 <img src={offers2} alt="offersimg3" />
                 <div>
@@ -93,9 +101,9 @@ const Offers = () => {
                   <li>VIEW DETAILS</li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div className="offers-btmdiv-griditem">
+            {/* <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
                 <img src={offers4} alt="offersimg4" />
                 <div>
@@ -110,9 +118,9 @@ const Offers = () => {
                   <li>VIEW DETAILS</li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div className="offers-btmdiv-griditem">
+            {/* <div className="offers-btmdiv-griditem">
               <div className="griditem1-topdiv">
                 <img src={offers6} alt="offersimg6" />
                 <div>
@@ -129,7 +137,7 @@ const Offers = () => {
                   <li>VIEW DETAILS</li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>

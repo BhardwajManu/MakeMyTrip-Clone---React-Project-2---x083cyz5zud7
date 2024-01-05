@@ -1,10 +1,10 @@
 import React from "react";
-import "./searchbutton.css"
+import "./searchbutton.css";
 
 const Searchbutton = () => {
   return (
     <>
-      <button>SEARCH</button>
+      <button className="searchBtn">SEARCH</button>
     </>
   );
 };

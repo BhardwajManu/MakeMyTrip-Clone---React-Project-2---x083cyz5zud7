@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import logowhite from "../../assets/images/logowhite.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./topnavbar.css";
 import { BsChevronDown } from "react-icons/bs";
-import LoginComponent from "../Login/LoginComponent";
+import TabforLogin from "../Login/TabforLogin";
+import { useAuthContext } from "../../Context/AuthContext";
 
 const TopNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
+  const { user, authenticated, logoutUser } = useAuthContext();
 
   const handleOpenLogin = () => {
     setShowLogin(true);
   };
+
+  // const handleSignout = () => {
+  //   logoutUser();
+  //   navigate("/");
+  // };
 
   return (
     <>
@@ -46,22 +54,24 @@ const TopNavbar = () => {
           </div>
 
           <div className="rightnavdiv">
-            <div className="loginorcreateaccnt">
-              <div className="loginlogo"></div>
-              <div>Login or Create Account</div>
-              <div className="logindownlogo">
-                <BsChevronDown
-                  className="loginicon"
-                  onClick={handleOpenLogin}
-                />
-                {showLogin && (
-                  <LoginComponent
-                    showLogin={showLogin}
-                    setShowLogin={setShowLogin}
-                  />
-                )}
+            {authenticated ? (
+              <div
+                className="afterloginorcreateaccnt"
+                onClick={handleOpenLogin}
+              >
+                <div className="loginlogoafterlogin">
+                  <p>T</p>
+                </div>
+                <div>Hi Traveller</div>
+                <BsChevronDown />
               </div>
-            </div>
+            ) : (
+              <div className="loginorcreateaccnt" onClick={handleOpenLogin}>
+                <BsChevronDown />
+                <div className="loginlogo"></div>
+                <div>Login or Create Account</div>
+              </div>
+            )}
 
             <div className="languageselector">
               <div className="flaglogo"></div>
@@ -73,6 +83,9 @@ const TopNavbar = () => {
           </div>
         </div>
       </div>
+      {showLogin && (
+        <TabforLogin showLogin={showLogin} setShowLogin={setShowLogin} />
+      )}
     </>
   );
 };

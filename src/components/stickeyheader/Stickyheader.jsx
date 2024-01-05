@@ -3,7 +3,8 @@ import "./stickyheader.css";
 import logoblue from "../../assets/images/logoblue.png";
 import headerimages from "../../assets/images/headerimages.png";
 import { BsChevronDown } from "react-icons/bs";
-import LoginComponent from "../Login/LoginComponent";
+import TabforLogin from "../Login/TabforLogin";
+import { Link } from "react-router-dom";
 
 export const Stickyheader = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -15,58 +16,64 @@ export const Stickyheader = () => {
   return (
     <div className="stickyheaderpage">
       <div className="stickyheadermaindiv">
-        <div className="bluelogodiv">
-          <img src={logoblue} alt="mmtbluelogo" />
-        </div>
-        <div className="stickynavlinks">
-          <ul className="navlinkslist">
-            <li>
-              <div className="sh-flightsimg"></div>
-              <div>Flights</div>
-            </li>
-            <li>
-              <div className="sh-hotelimg"></div>
-              <div>Hotels</div>
-            </li>
-            <li>
-              <div className="sh-homestaysimg"></div>
-              <div>Homestays & Villas</div>
-            </li>
-            <li>
-              <div className="sh-holidayimg"></div>
-              <div>Holiday Packages</div>
-            </li>
-            <li>
-              <div className="sh-trainimg"></div>
-              <div>Trains</div>
-            </li>
-            <li>
-              <div className="sh-busesimg"></div>
-              <div>Buses</div>
-            </li>
-            <li>
-              <div className="sh-cabsimg"></div>
-              <div>Cabs</div>
-            </li>
-            <li>
-              <div className="sh-foreximg"></div>
-              <div>Forex Card & Currency</div>
-            </li>
-            <li>
-              <div className="sh-travelinsuranceimg"></div>
-              <div>Travel Insurance</div>
-            </li>
-          </ul>
-        </div>
+        <Link to="/">
+          <div className="bluelogodiv">
+            <img src={logoblue} alt="mmtbluelogo" />
+          </div>
+        </Link>
+        <Link to="/" className="sticky-linktohome">
+          <div className="stickynavlinks">
+            <ul className="navlinkslist">
+              <li>
+                <div className="sh-flightsimg"></div>
+                <div>Flights</div>
+              </li>
+              <li>
+                <div className="sh-hotelimg"></div>
+                <div>Hotels</div>
+              </li>
+              <li>
+                <div className="sh-homestaysimg"></div>
+                <div>Homestays & Villas</div>
+              </li>
+              <li>
+                <div className="sh-holidayimg"></div>
+                <div>Holiday Packages</div>
+              </li>
+              <li>
+                <div className="sh-trainimg"></div>
+                <div>Trains</div>
+              </li>
+              <li>
+                <div className="sh-busesimg"></div>
+                <div>Buses</div>
+              </li>
+              <li>
+                <div className="sh-cabsimg"></div>
+                <div>Cabs</div>
+              </li>
+              <li>
+                <div className="sh-foreximg"></div>
+                <div>Forex Card & Currency</div>
+              </li>
+              <li>
+                <div className="sh-travelinsuranceimg"></div>
+                <div>Travel Insurance</div>
+              </li>
+            </ul>
+          </div>
+        </Link>
 
         <div className="sh-logindropdown" onClick={handleOpenLogin}>
           <div className="sh-loginlogo">
             <div className="sh-loginlogowhite"></div>
           </div>
-          <div className="login-para">Login or Create Account</div>
+          <div className="login-para">
+            Login or <br /> Create Account
+          </div>
         </div>
         {showLogin && (
-          <LoginComponent showLogin={showLogin} setShowLogin={setShowLogin} />
+          <TabforLogin showLogin={showLogin} setShowLogin={setShowLogin} />
         )}
 
         <div className="sh-countryselectmaindiv">

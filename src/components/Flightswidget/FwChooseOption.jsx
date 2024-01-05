@@ -1,7 +1,7 @@
 import React from "react";
 import "./fwchooseoption.css";
-import wheretogo from "../../assets/Images/wheretogo.png";
-import insurance from "../../assets/Images/insurance.png";
+import wheretogo from "../../assets/images/wheretogo.png";
+import insurance from "../../assets/images/insurance.png";
 import exploreif from "../../assets/images/exploreif.png";
 import mice from "../../assets/images/mice.png";
 import giftcard from "../../assets/images/giftcard.png";

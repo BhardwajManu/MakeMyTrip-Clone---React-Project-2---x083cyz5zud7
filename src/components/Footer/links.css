@@ -3,6 +3,7 @@
   padding: 20px;
 }
 .links-main-div {
+  cursor: default;
   display: flex;
   flex-direction: column;
   text-align: left;

@@ -1,20 +1,75 @@
 import { Container } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./flightwidgetmain.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Searchbutton from "../Searchbutton/Searchbutton";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import FwChooseOption from "./FwChooseOption";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
+import FlightDropdown from "./FlightDropdown";
+
+const requestOptions = {
+  method: "GET",
+  headers: new Headers({
+    projectId: "wpcgxnhc6j6i",
+  }),
+};
 
 const FlightsWidgetMain = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedFaretype, setSelectedFaretype] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleChange = (e) => {
-    setSelectedOption(e.target.value);
+  useEffect(() => {
+    fetch(
+      "https://academics.newtonschool.co/api/v1/bookingportals/airport",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setCityData(data.data.airports);
+        console.log(data.data);
+      })
+      .catch((error) => {
+        console.log("error fetching data");
+      });
+  }, []);
+
+  const [showDepartureDate, setShowDepartureDate] = useState(false);
+  const [selectedDepartureDate, setSelectedDepartureDate] = useState(null);
+
+  // const handleChange = (e) => {
+  //   setSelectedOption(e.target.value);
+  // };
+
+  // const handleFaretypeChange = (e) => {
+  //   setSelectedFaretype(e.target.value);
+  // };
+
+  const handleDepartureIconClick = () => {
+    setShowDepartureDate(!showDepartureDate);
   };
-  const handleFaretypeChange = (e) => {
-    setSelectedFaretype(e.target.value);
+
+  const handleDepartureDate = (date) => {
+    setSelectedDepartureDate(date);
+    setShowDepartureDate(false);
+
+    const dday = date.getDate();
+    const dmonth = date.toLocaleString("default", { month: "short" });
+    const dyear = date.getFullYear().toString().slice(-2);
+    const ddayName = date.toLocaleDateString("default", { weekday: "long" });
+
+    document.getElementById("dday").innerText = dday;
+    document.getElementById("dmonth").innerText = dmonth;
+    document.getElementById("dyear").innerText = dyear;
+    document.getElementById("ddayName").innerText = ddayName;
+  };
+
+  const handleCityDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -22,7 +77,7 @@ const FlightsWidgetMain = () => {
       <div className="flightwidgetmaindiv">
         <Container>
           <div className="fw-upperdiv">
-            <div>
+            {/* <div>
               <ul>
                 <li>
                   <input
@@ -52,35 +107,47 @@ const FlightsWidgetMain = () => {
                   <label>Multi City</label>
                 </li>
               </ul>
-            </div>
+            </div> */}
             <p>Book International and Domestic Flights</p>
           </div>
 
           <div className="fw-middlediv">
-            <div className="fw-fromdiv">
+            <div className="fw-fromdiv" onClick={handleCityDropdown}>
               <p>From</p>
               <p>Delhi</p>
               <p>DEL, Delhi Airport India</p>
             </div>
+            {showDropdown && <FlightDropdown showDropdown={showDropdown} />}
             <div className="fw-todiv">
               <p>To</p>
               <p>Bengaluru</p>
               <p>BLR, Bengaluru International Airport</p>
             </div>
+
             <div className="fw-departurediv">
-              <p>Departure</p>
+              <div className="departureheaddiv">
+                <p className="departureheading">Departure</p>
+                <MdKeyboardArrowDown
+                  size={20}
+                  onClick={handleDepartureIconClick}
+                  color="#008cff"
+                />
+              </div>
               <p>
-                <span>5</span> Dec23
+                <span id="dday"></span>
+                <span id="dmonth"></span>
+                <span id="dyear"></span>
               </p>
-              <p>Tuesday</p>
+              <p id="ddayName"></p>
+              {showDepartureDate && (
+                <DatePicker
+                  selected={selectedDepartureDate}
+                  onChange={handleDepartureDate}
+                  inline
+                />
+              )}
             </div>
-            <div className="fw-returndiv">
-              <p>Return</p>
-              <p>
-                <span>14</span> Dec23
-              </p>
-              <p>Thursday</p>
-            </div>
+
             <div className="fw-travellersclassdiv">
               <p>Travellers & class</p>
               <p>
@@ -91,7 +158,7 @@ const FlightsWidgetMain = () => {
           </div>
 
           <div className="fw-bottomdiv">
-            <div className="fw-faretypes">
+            {/* <div className="fw-faretypes">
               <p>Select A Fare Type:</p>
               <div>
                 <input
@@ -147,7 +214,7 @@ const FlightsWidgetMain = () => {
                 />
                 <label>Double Seat Fares</label>
               </div>
-            </div>
+            </div> */}
             <div className="fw-trendingsearches">
               <p>Trending Searches:</p>
               <p>
@@ -162,7 +229,9 @@ const FlightsWidgetMain = () => {
               </p>
             </div>
           </div>
-          <Searchbutton />
+          <Link to="/flights">
+            <Searchbutton />
+          </Link>
           <div className="fw-exploremore">
             <MdKeyboardDoubleArrowDown size={20} />
             <p>Explore More</p>

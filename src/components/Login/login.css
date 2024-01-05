@@ -1,51 +1,45 @@
 .loginmaindiv {
   border: 1px solid grey;
-  height: 485px;
-  width: 450px;
+  height: 590px;
+  width: 32rem;
   display: flex;
   flex-direction: column;
-  padding: 50px 30px 30px 30px;
-  justify-content: space-around;
+  padding: 45px 30px;
+  /* justify-content: space-around; */
   border-radius: 12px;
   z-index: 3;
   background-color: white;
 }
 .logintopdiv {
   /* border: 2px solid blue; */
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.3);
+  height: 45px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 25px;
   display: flex;
-  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  align-items: flex-start;
 }
-.logintopdiv button {
+.logintopdiv .tabBtn {
+  cursor: pointer;
   width: 100%;
-  height: 43px;
-  padding: 7px 14px;
+  height: 30px;
   background-color: white;
-  border-radius: 150px;
+  color: black;
+  border-radius: 30px;
   font-size: 15px;
   font-weight: bolder;
   border: 0;
-  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.logintopdiv button p {
-  background-image: var(
-    --color-btn-primary-bg,
-    linear-gradient(93deg, #53b2fe, #065af3)
-  );
-  color: white;
-  height: 30px;
-  width: 190px;
-  border-radius: 150px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 form {
+  margin-top: 5px;
   /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
@@ -53,16 +47,19 @@ form {
 }
 form label {
   color: #4a4a4a;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bolder;
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 form input {
+  padding-left: 5px;
   height: 38px;
   width: 98%;
+  border-radius: 5px;
+  border: 1px solid black;
 }
-form button {
+.continueBtn {
   width: 100%;
   height: 43px;
   padding: 7px 14px;
@@ -73,28 +70,30 @@ form button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(233, 233, 233);
+  background-color: rgb(6, 110, 255);
   color: white;
   opacity: 0.6;
   margin-top: 25px;
   margin-bottom: 25px;
 }
-form p {
+/* form p {
   text-align: center;
   color: #9b9b9b;
-}
+} */
 .termsandconditions {
+  /* padding-top: 5rem; */
+  /* letter-spacing: -0.7px; */
+  text-wrap: nowrap;
+  color: #4e4f53;
+  display: flex;
+  gap: 4px;
   /* border: 2px solid yellow; */
   margin: 0;
   font-size: 12px;
 }
-.googleicon {
-  border: 0.1px solid #9b9b9b;
-  padding: 10px;
-  border-radius: 50%;
-}
+
 .formbottomdiv {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   width: 98%;
   display: flex;
   flex-direction: column;
@@ -102,7 +101,7 @@ form p {
   justify-content: center;
 }
 .background-blur {
-  z-index: 5;
+  z-index: 50;
   position: fixed;
   top: 0%;
   left: 0%;
@@ -118,44 +117,42 @@ form p {
 .logincloseicon {
   /* border: 2px solid green; */
   position: absolute;
-  top: 15.5vh;
+  top: 8vh;
   left: 69vw;
   background-color: white;
   color: black;
   border-radius: 50%;
   cursor: pointer;
 }
-.popup {
-  position: fixed;
-
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+.login-page {
+  position: relative;
 }
+.tabBtn.active {
+  background-image: linear-gradient(93deg, #53b2fe, #065af3);
 
-.popup-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url("../../assets/Images/sunriseimg.png");
-  padding: 20px;
-  width: 300px;
-  border-radius: 4px;
   color: white;
+  width: 100%;
+  /* border: 2px solid blue; */
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.3);
+  height: 35px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
-
-.popup-content h1,
-.popup-content p {
-  text-align: center;
-}
-
-.popup-content ul {
-  list-style-type: none;
-  padding: 0;
+/* button.not-active {
+  background-color: white;
+  color: black;
+} */
+.loginlogoafterlogin {
+  background-image: linear-gradient(45deg, #219393, #ace143);
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
 }

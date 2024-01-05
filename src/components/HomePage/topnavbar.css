@@ -13,6 +13,7 @@
   width: 104px;
 }
 .middlenavdiv {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -124,7 +125,6 @@
   border: 0;
   border-radius: 4px;
   height: 35px;
-  /* height: 100%; */
   margin-right: 0;
   width: 213px;
   display: flex;
@@ -133,6 +133,27 @@
   font-size: 11px;
   font-weight: 900;
 }
+.afterloginorcreateaccnt {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 900;
+  margin-right: 10px;
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.4);
+}
+/* .afterloginorcreateaccnt {
+  margin-right: 0;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 900;
+} */
 .loginlogo {
   background-image: url("../../assets/Images/alllogo.png");
   background-position: -67px -489px;
@@ -163,4 +184,10 @@
   height: 12px;
   width: 15px;
   background-size: 16px 74px;
+}
+.rightnavdiv {
+  cursor: pointer;
+}
+.home-list {
+  box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.4);
 }

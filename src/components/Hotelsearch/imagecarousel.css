@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 50px; */
+  background-color: rgba(128, 128, 128, 0.295);
+  width: 712px;
+}
+
+.slideshow {
+  /* border: 1px solid blue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  /* border: 2px solid red; */
+  width: 600px;
+  height: 450px;
+  object-fit: fill;
+}
+
+.prev-button,
+.next-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  /* margin: 0 10px; */
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #555;
+}
