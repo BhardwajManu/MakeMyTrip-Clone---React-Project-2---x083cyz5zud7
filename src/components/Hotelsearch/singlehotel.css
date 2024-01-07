@@ -2,16 +2,17 @@ singlehotelpage-maindiv {
   /* border: 1px solid blue; */
 }
 .singlehotel-headerdiv {
+  height: 10vh;
   background: linear-gradient(180deg, #051320, #0c2540);
   position: sticky;
   top: 70;
-  height: 44px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10px 110px 10px 110px;
+  padding: 6px 110px 10px 110px;
 }
 .singlehotel-headerdiv div {
+  height: 6vh;
   background: #ffffff1a;
   border-radius: 4px;
   cursor: pointer;
@@ -20,7 +21,6 @@ singlehotelpage-maindiv {
   margin-right: 5px;
   position: relative;
   align-items: flex-start;
-  width: 200px;
   padding: 0;
 }
 .singlehotel-headerdiv p:first-child {
@@ -37,7 +37,7 @@ singlehotelpage-maindiv {
 .selecteditem {
   /* border: 2px solid red; */
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   padding: 0 9px 4px;
   color: #fff;
   margin: 0;
@@ -59,9 +59,9 @@ singlehotelpage-maindiv {
   cursor: pointer;
   font-weight: 900;
   outline: 0;
-  padding: 9px 20px;
+  padding: 7px 20px;
   text-align: center;
-  height: 46px;
+  /* height: 46px; */
 }
 .hoteldetails-maindiv {
   /* border: 1px solid red; */
@@ -325,7 +325,7 @@ singlehotelpage-maindiv {
   cursor: pointer;
   font-weight: 900;
   outline: 0;
-  padding: 9px 20px;
+  padding: 7px 20px;
   text-align: center;
   text-transform: uppercase;
   height: 40px;

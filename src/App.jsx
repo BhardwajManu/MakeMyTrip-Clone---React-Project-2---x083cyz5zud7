@@ -12,6 +12,7 @@ import TrainsSearchPage from "./components/Trainsearch/TrainSearchPage";
 import FlightSearch from "./components/Flightsearch/Flightsearch";
 import PaymentPageMain from "./components/Paymentpage/PaymentPageMain";
 import SingleHotelPage from "./components/Hotelsearch/SingleHotelPage";
+import Flightcheckoutpage from "./components/checkoutpage/Flightcheckoutpage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -48,6 +49,7 @@ function App() {
         <Route path="/flights" element={<FlightSearch />} />
         <Route path="/payment" element={<PaymentPageMain />} />
         <Route path="/singlehotel" element={<SingleHotelPage />} />
+        <Route path="/flightcheckout" element={<Flightcheckoutpage />} />
       </Routes>
     </>
   );

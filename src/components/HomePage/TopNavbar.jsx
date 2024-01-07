@@ -77,7 +77,7 @@ const TopNavbar = () => {
               <div className="flaglogo"></div>
               <div>IN|ENG|INR</div>
               <div className="languageselectordownarror">
-                <BsChevronDown />
+                {/* <BsChevronDown /> */}
               </div>
             </div>
           </div>

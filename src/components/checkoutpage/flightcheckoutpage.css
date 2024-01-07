@@ -1,0 +1,21 @@
+.flightsContainer {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.pageStickyHder {
+  background: #041422;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+.headerTitle {
+  padding: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: calc(var(--font-scale, 1) * 20px);
+}
+width: 1200px;
+margin: 0 auto;
+position: relative;

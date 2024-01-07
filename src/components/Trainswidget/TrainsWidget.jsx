@@ -6,14 +6,13 @@ import { MdKeyboardArrowDown, MdKeyboardDoubleArrowDown } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const TrainsWidget = () => {
   const [selectTrainOption, setselectTrainOption] = useState("");
   const [showTravelDate, setShowTravelDate] = useState(false);
   const [selectedTravelDate, setSelectedTravelDate] = useState(null);
-  const handleChange = (e) => {
-    setselectTrainOption(e.target.value);
-  };
+
   const handleTravelIconClick = () => {
     setShowTravelDate(!showTravelDate);
   };
@@ -34,37 +33,6 @@ const TrainsWidget = () => {
       <div className="trainswidgetmaindiv">
         <Container>
           <div className="tw-upperdiv">
-            {/* <div>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    value="Book Train Tickets"
-                    checked={selectTrainOption === "Book Train Tickets"}
-                    onChange={handleChange}
-                  />
-                  <label>Book Train Tickets</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    value="Check PNR Status"
-                    checked={selectTrainOption === "Check PNR Status"}
-                    onChange={handleChange}
-                  />
-                  <label>Check PNR Status</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    value="Live Train Status"
-                    checked={selectTrainOption === "Live Train Status"}
-                    onChange={handleChange}
-                  />
-                  <label>Live Train Status</label>
-                </li>
-              </ul>
-            </div> */}
             <p> Train Ticket Booking IRCTC Authorized e-ticketing</p>
           </div>
           <div className="tw-bottomdiv">
@@ -88,11 +56,15 @@ const TrainsWidget = () => {
                 />
               </div>
               {showTravelDate && (
-                <DatePicker
-                  selected={selectedTravelDate}
-                  onChange={handleTravelDate}
-                  inline
-                />
+                <OutsideClickHandler
+                  onOutsideClick={() => setShowTravelDate(false)}
+                >
+                  <DatePicker
+                    selected={selectedTravelDate}
+                    onChange={handleTravelDate}
+                    inline
+                  />
+                </OutsideClickHandler>
               )}
               <p>
                 <span id="tday"></span>

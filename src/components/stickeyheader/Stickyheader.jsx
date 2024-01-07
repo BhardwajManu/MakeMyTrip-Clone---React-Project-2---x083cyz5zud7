@@ -81,16 +81,14 @@ export const Stickyheader = () => {
           <div className="sh-bottomdiv">
             <div className="sh-flag"></div>
             <span className="sh-countryindia">India</span>
-            <span>
-              <BsChevronDown size={10} color="#008cff" />
-            </span>
+            <span>{/* <BsChevronDown size={10} color="#008cff" /> */}</span>
           </div>
         </div>
         <div className="sh-languageselector">
           <div className="sh-language">Language</div>
           <div className="sh-language-btm">
             <span>ENG</span>
-            <BsChevronDown size={10} color="#008cff" />
+            {/* <BsChevronDown size={10} color="#008cff" /> */}
           </div>
         </div>
       </div>

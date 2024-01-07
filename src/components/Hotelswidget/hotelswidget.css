@@ -41,7 +41,7 @@
 }
 .hw-cityname {
   /* border: 2px solid green; */
-  width: 270px;
+  width: 39%;
   padding: 5px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -66,7 +66,7 @@
   padding: 0;
 }
 .hw-addcheckin {
-  width: 110px;
+  width: 20%;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -98,7 +98,7 @@
   padding: 0;
 }
 .hw-addcheckout {
-  width: 110px;
+  width: 20%;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -128,7 +128,7 @@
   padding: 0;
 }
 .hw-roomsandguest {
-  width: 270px;
+  width: 34%;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;

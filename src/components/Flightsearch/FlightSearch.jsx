@@ -4,6 +4,7 @@ import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Slider } from "@mui/material";
 import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const FlightSearch = () => {
   const [selectedFare, setSelectedFare] = useState("");
@@ -317,8 +318,9 @@ const FlightSearch = () => {
                     <p>₹ 6,111</p>
                     <p>per adult</p>
                   </div>
-
-                  <button className="flight-booknow-btn">Book Now</button>
+                  <Link to="/flightcheckout">
+                    <button className="flight-booknow-btn">Book Now</button>
+                  </Link>
                 </div>
                 {/* <div className="offertext">Get Rs 150 off using MMTBONUS*</div> */}
                 <p className="linktoflightdetails">View Flight Details</p>

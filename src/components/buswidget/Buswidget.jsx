@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown, MdKeyboardDoubleArrowDown } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Searchbutton from "../Searchbutton/Searchbutton";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const Buswidget = () => {
   const [showDate, setShowDate] = useState(false);
@@ -62,11 +63,13 @@ const Buswidget = () => {
               </p>
               <p id="tdayName"></p>
               {showDate && (
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={handleTravelDate}
-                  inline
-                />
+                <OutsideClickHandler onOutsideClick={() => setShowDate(false)}>
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={handleTravelDate}
+                    inline
+                  />
+                </OutsideClickHandler>
               )}
             </div>
           </div>

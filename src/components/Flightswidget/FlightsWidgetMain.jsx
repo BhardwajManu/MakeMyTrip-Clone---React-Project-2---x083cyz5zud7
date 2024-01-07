@@ -10,66 +10,55 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import FlightDropdown from "./FlightDropdown";
-
-const requestOptions = {
-  method: "GET",
-  headers: new Headers({
-    projectId: "wpcgxnhc6j6i",
-  }),
-};
+import OutsideClickHandler from "react-outside-click-handler";
+import AirportFromSearch from "./AirportFromSearch";
+import AirportToSearch from "./AirportToSearch";
 
 const FlightsWidgetMain = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedFaretype, setSelectedFaretype] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  useEffect(() => {
-    fetch(
-      "https://academics.newtonschool.co/api/v1/bookingportals/airport",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCityData(data.data.airports);
-        console.log(data.data);
-      })
-      .catch((error) => {
-        console.log("error fetching data");
-      });
-  }, []);
-
+  const [showFromDropdown, setShowFromDropdown] = useState(false);
+  const [showToDropdown, setShowToDropdown] = useState(false);
   const [showDepartureDate, setShowDepartureDate] = useState(false);
   const [selectedDepartureDate, setSelectedDepartureDate] = useState(null);
+  const [fromAirportData, setFromAirportData] = useState({
+    city: "Pune",
+    iata_code: "PNQ",
+    name: "Pune Airport",
+  });
+  const [toAirportData, setToAirportData] = useState({
+    city: "Jaipur",
+    iata_code: "JAI",
+    name: "Jaipur International Airport",
+  });
 
-  // const handleChange = (e) => {
-  //   setSelectedOption(e.target.value);
-  // };
-
-  // const handleFaretypeChange = (e) => {
-  //   setSelectedFaretype(e.target.value);
-  // };
-
-  const handleDepartureIconClick = () => {
-    setShowDepartureDate(!showDepartureDate);
+  const updateSelectedFromAirport = (fromairportdetails) => {
+    setFromAirportData(fromairportdetails);
+  };
+  const updateSelectedToAirport = (toairportdetails) => {
+    setToAirportData(toairportdetails);
   };
 
+  const handleFromCityDropdown = () => {
+    setShowFromDropdown(!showFromDropdown);
+  };
+  const handleToCityDropdown = () => {
+    setShowToDropdown(!showToDropdown);
+  };
+
+  const handleDepartureIconClick = (e) => {
+    setShowDepartureDate(!showDepartureDate);
+    e.stopPropagation();
+  };
   const handleDepartureDate = (date) => {
     setSelectedDepartureDate(date);
     setShowDepartureDate(false);
-
     const dday = date.getDate();
     const dmonth = date.toLocaleString("default", { month: "short" });
     const dyear = date.getFullYear().toString().slice(-2);
     const ddayName = date.toLocaleDateString("default", { weekday: "long" });
-
     document.getElementById("dday").innerText = dday;
     document.getElementById("dmonth").innerText = dmonth;
     document.getElementById("dyear").innerText = dyear;
     document.getElementById("ddayName").innerText = ddayName;
-  };
-
-  const handleCityDropdown = () => {
-    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -77,52 +66,46 @@ const FlightsWidgetMain = () => {
       <div className="flightwidgetmaindiv">
         <Container>
           <div className="fw-upperdiv">
-            {/* <div>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    value="oneway"
-                    checked={selectedOption === "oneway"}
-                    onChange={handleChange}
-                  />
-                  <label>One Way</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    value="roundtrip"
-                    checked={selectedOption === "roundtrip"}
-                    onChange={handleChange}
-                  />
-                  <label>Round Trip</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    value="multicity"
-                    checked={selectedOption === "multicity"}
-                    onChange={handleChange}
-                  />
-                  <label>Multi City</label>
-                </li>
-              </ul>
-            </div> */}
             <p>Book International and Domestic Flights</p>
           </div>
 
           <div className="fw-middlediv">
-            <div className="fw-fromdiv" onClick={handleCityDropdown}>
+            <div className="fw-fromdiv" onClick={handleFromCityDropdown}>
               <p>From</p>
-              <p>Delhi</p>
-              <p>DEL, Delhi Airport India</p>
+              <p>{fromAirportData.city}</p>
+              <p>
+                {fromAirportData.iata_code}, {fromAirportData.name}
+              </p>
             </div>
-            {showDropdown && <FlightDropdown showDropdown={showDropdown} />}
-            <div className="fw-todiv">
+            {showFromDropdown && (
+              <OutsideClickHandler
+                onOutsideClick={() => {
+                  setShowFromDropdown(false);
+                }}
+              >
+                <AirportFromSearch
+                  updateSelectedFromAirport={updateSelectedFromAirport}
+                  setShowFromDropdown={setShowFromDropdown}
+                />
+              </OutsideClickHandler>
+            )}
+            <div className="fw-todiv" onClick={handleToCityDropdown}>
               <p>To</p>
-              <p>Bengaluru</p>
-              <p>BLR, Bengaluru International Airport</p>
+              <p>{toAirportData.city}</p>
+              <p>
+                {toAirportData.iata_code}, {toAirportData.name}
+              </p>
             </div>
+            {showToDropdown && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowToDropdown(false)}
+              >
+                <AirportToSearch
+                  updateSelectedToAirport={updateSelectedToAirport}
+                  setShowToDropdown={setShowToDropdown}
+                />
+              </OutsideClickHandler>
+            )}
 
             <div className="fw-departurediv">
               <div className="departureheaddiv">
@@ -140,11 +123,15 @@ const FlightsWidgetMain = () => {
               </p>
               <p id="ddayName"></p>
               {showDepartureDate && (
-                <DatePicker
-                  selected={selectedDepartureDate}
-                  onChange={handleDepartureDate}
-                  inline
-                />
+                <OutsideClickHandler
+                  onOutsideClick={() => setShowDepartureDate(false)}
+                >
+                  <DatePicker
+                    selected={selectedDepartureDate}
+                    onChange={handleDepartureDate}
+                    inline
+                  />
+                </OutsideClickHandler>
               )}
             </div>
 
@@ -158,63 +145,6 @@ const FlightsWidgetMain = () => {
           </div>
 
           <div className="fw-bottomdiv">
-            {/* <div className="fw-faretypes">
-              <p>Select A Fare Type:</p>
-              <div>
-                <input
-                  type="radio"
-                  value="Regular Fares"
-                  checked={selectedFaretype === "Regular Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Regular Fares</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Armed Forces Fares"
-                  checked={selectedFaretype === "Armed Forces Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Armed Forces Fares</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Student Fares"
-                  checked={selectedFaretype === "Student Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Student Fares</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Senior Citizen Fares"
-                  checked={selectedFaretype === "Senior Citizen Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Senior Citizen Fares</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Doctors & Nurses Fares"
-                  checked={selectedFaretype === "Doctors & Nurses Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Doctors & Nurses Fares</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="Double Seat Fares"
-                  checked={selectedFaretype === "Double Seat Fares"}
-                  onChange={handleFaretypeChange}
-                />
-                <label>Double Seat Fares</label>
-              </div>
-            </div> */}
             <div className="fw-trendingsearches">
               <p>Trending Searches:</p>
               <p>

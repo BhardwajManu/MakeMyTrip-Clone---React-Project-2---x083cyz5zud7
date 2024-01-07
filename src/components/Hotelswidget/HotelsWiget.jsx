@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./hotelswidget.css";
 import { Container } from "@mui/material";
 import Searchbutton from "../Searchbutton/Searchbutton";
 import { MdKeyboardArrowDown, MdKeyboardDoubleArrowDown } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import OutsideClickHandler from "react-outside-click-handler";
 import { Link } from "react-router-dom";
+
 const HotelsWiget = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [showCheckinDate, setShowCheckinDate] = useState(false);
   const [selectedCheckinDate, setSelectedCheckinDate] = useState(null);
   const [showCheckoutDate, setShowCheckoutDate] = useState(false);
   const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(null);
-  const handleChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
+
   const handleCheckinIconClick = () => {
     setShowCheckinDate(!showCheckinDate);
   };
@@ -30,6 +30,7 @@ const HotelsWiget = () => {
     document.getElementById("cinyear").innerText = cinyear;
     document.getElementById("cindayName").innerText = cindayName;
   };
+
   const handleCheckoutIconClick = () => {
     setShowCheckoutDate(!showCheckoutDate);
   };
@@ -50,28 +51,6 @@ const HotelsWiget = () => {
       <div className="hotelwidgetmaindiv">
         <Container>
           <div className="hw-upperdiv">
-            {/* <div>
-              <ul>
-                <li>
-                  <input
-                    type="radio"
-                    value="Upto 4 Rooms"
-                    checked={selectedOption === "Upto 4 Rooms"}
-                    onChange={handleChange}
-                  />
-                  <label>Upto 4 Rooms</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    value="Group Deals"
-                    checked={selectedOption === "Group Deals"}
-                    onChange={handleChange}
-                  />
-                  <label>Group Deals</label>
-                </li>
-              </ul>
-            </div> */}
             <p>
               Book Domestic and International Property Online. To list your
               property...
@@ -93,11 +72,15 @@ const HotelsWiget = () => {
                 />
               </div>
               {showCheckinDate && (
-                <DatePicker
-                  selected={selectedCheckinDate}
-                  onChange={handleCheckinDate}
-                  inline
-                />
+                <OutsideClickHandler
+                  onOutsideClick={() => setShowCheckinDate(false)}
+                >
+                  <DatePicker
+                    selected={selectedCheckinDate}
+                    onChange={handleCheckinDate}
+                    inline
+                  />
+                </OutsideClickHandler>
               )}
               <p>
                 <span id="cinday"></span>
@@ -116,11 +99,15 @@ const HotelsWiget = () => {
                 />
               </div>
               {showCheckoutDate && (
-                <DatePicker
-                  selected={selectedCheckoutDate}
-                  onChange={handleCheckoutDate}
-                  inline
-                />
+                <OutsideClickHandler
+                  onOutsideClick={() => setShowCheckoutDate(false)}
+                >
+                  <DatePicker
+                    selected={selectedCheckoutDate}
+                    onChange={handleCheckoutDate}
+                    inline
+                  />
+                </OutsideClickHandler>
               )}
               <p>
                 <span id="coutday"></span>
@@ -135,10 +122,10 @@ const HotelsWiget = () => {
                 <span>1</span> Room <span> 2</span> Adults
               </p>
             </div>
-            <div className="hw-priceperight">
+            {/* <div className="hw-priceperight">
               <p>Price Per Night</p>
               <p>₹0-₹1500, ₹1500-₹2500,...</p>
-            </div>
+            </div> */}
           </div>
           <div className="hw-bottomdiv">
             <p>Trending Searches:</p>
