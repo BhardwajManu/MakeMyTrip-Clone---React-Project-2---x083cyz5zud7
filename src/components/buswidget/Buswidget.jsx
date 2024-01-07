@@ -47,14 +47,10 @@ const Buswidget = () => {
               <p>Kanpur,Uttar Pradesh</p>
               <p>India</p>
             </div>
-            <div className="bw-traveldate">
+            <div className="bw-traveldate" onClick={handleTravelDateonClick}>
               <div className="bw-traveldateheaddiv">
                 <p>Travel Date</p>
-                <MdKeyboardArrowDown
-                  size={20}
-                  onClick={handleTravelDateonClick}
-                  color="#008cff"
-                />
+                <MdKeyboardArrowDown size={20} color="#008cff" />
               </div>
               <p>
                 <span id="tday"></span>

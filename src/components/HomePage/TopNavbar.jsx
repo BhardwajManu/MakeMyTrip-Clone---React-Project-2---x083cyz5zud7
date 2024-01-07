@@ -5,20 +5,40 @@ import "./topnavbar.css";
 import { BsChevronDown } from "react-icons/bs";
 import TabforLogin from "../Login/TabforLogin";
 import { useAuthContext } from "../../Context/AuthContext";
+import { SlLogout } from "react-icons/sl";
+import { SlHandbag } from "react-icons/sl";
+import { toast } from "react-toastify";
 
 const TopNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-  const { user, authenticated, logoutUser } = useAuthContext();
+  const { authenticated, logoutUser } = useAuthContext();
 
+  const openMyStuffHover = () => {
+    setIsHovered(true);
+  };
+  const closeMyStuffHover = () => {
+    setIsHovered(false);
+  };
   const handleOpenLogin = () => {
     setShowLogin(true);
   };
 
-  // const handleSignout = () => {
-  //   logoutUser();
-  //   navigate("/");
-  // };
+  const handleSignout = () => {
+    logoutUser();
+    navigate("/");
+    toast.success("user Loggedout successfully!", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   return (
     <>
@@ -57,13 +77,29 @@ const TopNavbar = () => {
             {authenticated ? (
               <div
                 className="afterloginorcreateaccnt"
-                onClick={handleOpenLogin}
+                onMouseEnter={openMyStuffHover}
+                onMouseLeave={closeMyStuffHover}
               >
                 <div className="loginlogoafterlogin">
                   <p>T</p>
                 </div>
                 <div>Hi Traveller</div>
                 <BsChevronDown />
+                <div
+                  className="userDropdown"
+                  style={{ display: isHovered ? "block" : "none" }}
+                >
+                  <Link to="/mytrips">
+                    <li className="fadeIndown">
+                      <SlHandbag className="mt-1" />
+                      <h2>My Trips</h2>
+                    </li>
+                  </Link>
+                  <li className="logoutbtn" onClick={handleSignout}>
+                    <SlLogout className="mt-1" />
+                    <h2>Logout</h2>
+                  </li>
+                </div>
               </div>
             ) : (
               <div className="loginorcreateaccnt" onClick={handleOpenLogin}>

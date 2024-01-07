@@ -24,6 +24,7 @@ const AuthContextProvider = ({ children }) => {
       user: userData,
       authenticated: true,
     }));
+    console.log("context", signUser);
     localStorage.setItem("prime_token", token);
     localStorage.setItem("prime_user", JSON.stringify(userData));
   };
@@ -55,7 +56,9 @@ const AuthContextProvider = ({ children }) => {
       ...prev,
       user: data,
     }));
+    console.log("context", "setUser");
   };
+
   return (
     <authContext.Provider
       value={{

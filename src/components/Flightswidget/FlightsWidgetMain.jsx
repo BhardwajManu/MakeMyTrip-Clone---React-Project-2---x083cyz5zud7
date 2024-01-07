@@ -9,12 +9,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
-import FlightDropdown from "./FlightDropdown";
 import OutsideClickHandler from "react-outside-click-handler";
 import AirportFromSearch from "./AirportFromSearch";
 import AirportToSearch from "./AirportToSearch";
+import Flightpopup from "../widgetpopup/Flightpopup";
 
 const FlightsWidgetMain = () => {
+  const [showFightPopup, setShowFlightPopup] = useState(false);
+  const [flightPopupData, setFlightPopupData] = useState();
   const [showFromDropdown, setShowFromDropdown] = useState(false);
   const [showToDropdown, setShowToDropdown] = useState(false);
   const [showDepartureDate, setShowDepartureDate] = useState(false);
@@ -29,6 +31,13 @@ const FlightsWidgetMain = () => {
     iata_code: "JAI",
     name: "Jaipur International Airport",
   });
+
+  const handlePopupClick = () => {
+    setShowFlightPopup(!showFightPopup);
+  };
+  const updateFlightPopupData = () => {
+    setFlightPopupData(flightPopupData);
+  };
 
   const updateSelectedFromAirport = (fromairportdetails) => {
     setFromAirportData(fromairportdetails);
@@ -89,6 +98,9 @@ const FlightsWidgetMain = () => {
                 />
               </OutsideClickHandler>
             )}
+            <span className="fltSwipCircle">
+              <span className="flightsSprite fltSwipIcon"></span>
+            </span>
             <div className="fw-todiv" onClick={handleToCityDropdown}>
               <p>To</p>
               <p>{toAirportData.city}</p>
@@ -107,14 +119,10 @@ const FlightsWidgetMain = () => {
               </OutsideClickHandler>
             )}
 
-            <div className="fw-departurediv">
+            <div className="fw-departurediv" onClick={handleDepartureIconClick}>
               <div className="departureheaddiv">
                 <p className="departureheading">Departure</p>
-                <MdKeyboardArrowDown
-                  size={20}
-                  onClick={handleDepartureIconClick}
-                  color="#008cff"
-                />
+                <MdKeyboardArrowDown size={20} color="#008cff" />
               </div>
               <p>
                 <span id="dday"></span>
@@ -135,13 +143,26 @@ const FlightsWidgetMain = () => {
               )}
             </div>
 
-            <div className="fw-travellersclassdiv">
-              <p>Travellers & class</p>
+            <div className="fw-travellersclassdiv" onClick={handlePopupClick}>
+              <p className="flex">
+                Travellers & class
+                <MdKeyboardArrowDown size={20} color="#008cff" />
+              </p>
               <p>
                 <span>1</span> Traveller
               </p>
               <p>Economy/Premium Economy</p>
             </div>
+            {showFightPopup && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowFlightPopup(false)}
+              >
+                <Flightpopup
+                  updateFlightPopupData={updateFlightPopupData}
+                  setShowFightPopup={setShowFlightPopup}
+                />
+              </OutsideClickHandler>
+            )}
           </div>
 
           <div className="fw-bottomdiv">

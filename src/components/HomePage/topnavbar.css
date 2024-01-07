@@ -140,21 +140,40 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  height: 30px;
+  height: 34px;
   font-size: 12px;
   font-weight: 900;
   margin-right: 10px;
   box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.4);
 }
-/* .afterloginorcreateaccnt {
-  margin-right: 0;
-  width: 120px;
+.userDropdown {
+  width: 150px;
+  height: 8rem;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 6.5vh;
+  right: 20rem;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  max-height: 200px;
+}
+.fadeIndown,
+.logoutbtn {
+  font-size: large;
+  margin-top: 6px;
+  padding: 15px;
+  gap: 8px;
+  color: black;
   display: flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 900;
-} */
-.loginlogo {
+  font-weight: 600;
+}
+:hover.fadeIndown:hover,
+.logoutbtn:hover {
+  background-color: azure;
+}
+
+.loginorcreateaccnt .loginlogo {
   background-image: url("../../assets/Images/alllogo.png");
   background-position: -67px -489px;
   height: 22px;

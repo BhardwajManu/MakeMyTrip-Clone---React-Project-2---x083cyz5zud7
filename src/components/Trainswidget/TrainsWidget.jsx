@@ -7,11 +7,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import OutsideClickHandler from "react-outside-click-handler";
+import Trainpopup from "../widgetpopup/Trainpopup";
 
 const TrainsWidget = () => {
+  const [showTrainPopup, setShowTrainPopup] = useState(false);
+  const [trainPopupData, setTrainPopupData] = useState();
   const [selectTrainOption, setselectTrainOption] = useState("");
   const [showTravelDate, setShowTravelDate] = useState(false);
   const [selectedTravelDate, setSelectedTravelDate] = useState(null);
+
+  const handlePopupClick = () => {
+    setShowTrainPopup(!showTrainPopup);
+  };
+  const updateTrainPopupData = () => {
+    setTrainPopupData(trainPopupData);
+  };
 
   const handleTravelIconClick = () => {
     setShowTravelDate(!showTravelDate);
@@ -46,14 +56,10 @@ const TrainsWidget = () => {
               <p>Kanpur</p>
               <p>CNB, Kanpur Central</p>
             </div>
-            <div className="tw-traveldate">
+            <div className="tw-traveldate" onClick={handleTravelIconClick}>
               <div className="traveldateheaddiv">
                 <p>Travel Date</p>
-                <MdKeyboardArrowDown
-                  size={20}
-                  onClick={handleTravelIconClick}
-                  color="#008CFF"
-                />
+                <MdKeyboardArrowDown size={20} color="#008CFF" />
               </div>
               {showTravelDate && (
                 <OutsideClickHandler
@@ -73,11 +79,24 @@ const TrainsWidget = () => {
               </p>
               <p id="tdayName"></p>
             </div>
-            <div className="tw-class">
-              <p>class</p>
+            <div className="tw-class" onClick={handlePopupClick}>
+              <p className="flex ">
+                Class
+                <MdKeyboardArrowDown size={20} color="#008CFF" />
+              </p>
               <p>ALL</p>
               <p>All class</p>
             </div>
+            {showTrainPopup && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowTrainPopup(false)}
+              >
+                <Trainpopup
+                  updateTrainPopupData={updateTrainPopupData}
+                  setShowTrainPopup={setShowTrainPopup}
+                />
+              </OutsideClickHandler>
+            )}
           </div>
           <Link to="/trains">
             <div className="tw-searchbtndiv">

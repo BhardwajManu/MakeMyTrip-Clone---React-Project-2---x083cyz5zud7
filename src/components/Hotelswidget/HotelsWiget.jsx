@@ -7,14 +7,23 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import OutsideClickHandler from "react-outside-click-handler";
 import { Link } from "react-router-dom";
+import Hotelpopup from "../widgetpopup/Hotelpopup";
 
 const HotelsWiget = () => {
+  const [showHotelPopup, setShowHotelPopup] = useState(false);
+  const [hotelPopupData, setHotelPopupData] = useState();
   const [selectedOption, setSelectedOption] = useState("");
   const [showCheckinDate, setShowCheckinDate] = useState(false);
   const [selectedCheckinDate, setSelectedCheckinDate] = useState(null);
   const [showCheckoutDate, setShowCheckoutDate] = useState(false);
   const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(null);
 
+  const handlePopupClick = () => {
+    setShowHotelPopup(!showHotelPopup);
+  };
+  const updateHotelPopupData = () => {
+    setHotelPopupData(hotelPopupData);
+  };
   const handleCheckinIconClick = () => {
     setShowCheckinDate(!showCheckinDate);
   };
@@ -62,14 +71,10 @@ const HotelsWiget = () => {
               <p>Dubai</p>
               <p>United Arab Emirates</p>
             </div>
-            <div className="hw-addcheckin">
+            <div className="hw-addcheckin" onClick={handleCheckinIconClick}>
               <div className="checkinheaddiv">
                 <p className="checkinheading">Check-In</p>
-                <MdKeyboardArrowDown
-                  size={20}
-                  onClick={handleCheckinIconClick}
-                  color="#008CFF"
-                />
+                <MdKeyboardArrowDown size={20} color="#008CFF" />
               </div>
               {showCheckinDate && (
                 <OutsideClickHandler
@@ -89,14 +94,10 @@ const HotelsWiget = () => {
               </p>
               <p id="cindayName"></p>
             </div>
-            <div className="hw-addcheckout">
+            <div className="hw-addcheckout" onClick={handleCheckoutIconClick}>
               <div className="checkoutheaddiv">
                 <p className="checkoutheading">Check-out</p>
-                <MdKeyboardArrowDown
-                  size={20}
-                  onClick={handleCheckoutIconClick}
-                  color="#008CFF"
-                />
+                <MdKeyboardArrowDown size={20} color="#008CFF" />
               </div>
               {showCheckoutDate && (
                 <OutsideClickHandler
@@ -116,16 +117,25 @@ const HotelsWiget = () => {
               </p>
               <p id="coutdayName"></p>
             </div>
-            <div className="hw-roomsandguest">
-              <p>Rooms & Guests</p>
+            <div className="hw-roomsandguest" onClick={handlePopupClick}>
+              <p className="flex">
+                Rooms & Guests
+                <MdKeyboardArrowDown size={20} color="#008CFF" />
+              </p>
               <p>
                 <span>1</span> Room <span> 2</span> Adults
               </p>
             </div>
-            {/* <div className="hw-priceperight">
-              <p>Price Per Night</p>
-              <p>₹0-₹1500, ₹1500-₹2500,...</p>
-            </div> */}
+            {showHotelPopup && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowHotelPopup(false)}
+              >
+                <Hotelpopup
+                  updateHotelPopupData={updateHotelPopupData}
+                  setShowHotelPopup={setShowHotelPopup}
+                />
+              </OutsideClickHandler>
+            )}
           </div>
           <div className="hw-bottomdiv">
             <p>Trending Searches:</p>

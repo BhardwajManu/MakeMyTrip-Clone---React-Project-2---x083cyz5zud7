@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../Api";
 import { useAuthContext } from "../Context/AuthContext";
 
@@ -13,15 +13,11 @@ const useFetch = (initialData) => {
     try {
       setLoading(true);
       setError(null);
-      const data = await api.get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get(url);
       // console.log(data);
-      setData(data.data);
-      if (data?.data?.data && Array.isArray(data?.data?.data)) {
-        setMoreData((prev) => [...prev, ...data.data.data]);
+      setData(response.data);
+      if (data?.data?.data && Array.isArray(response?.data?.data)) {
+        setMoreData((prev) => [...prev, ...response.data.data]);
       }
     } catch (error) {
       setError(error.response.data);
@@ -35,12 +31,9 @@ const useFetch = (initialData) => {
     try {
       setLoading(true);
       setError(null);
-      const data = await api.post(url, requestData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setData(data);
+      const response = await api.post(url, requestData);
+
+      setData(response);
     } catch (error) {
       setError(error);
       console.log("Error fetching data:", error);
@@ -48,6 +41,9 @@ const useFetch = (initialData) => {
       setLoading(false);
     }
   }
+  useEffect(() => {}, [data]);
+  console.log("useFetch", data);
+
   return { data, error, loading, get, post, moreData };
 };
 export default useFetch;

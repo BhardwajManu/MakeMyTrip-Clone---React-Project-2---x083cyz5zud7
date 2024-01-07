@@ -3,6 +3,7 @@ import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context/AuthContext";
 import useFetch from "../../Hooks/useFetch";
+import { toast } from "react-toastify";
 
 const initialData = {
   email: "",
@@ -67,17 +68,28 @@ const LoginPage = ({ setShowLogin }) => {
       ...formData,
       appType: "bookingportals",
     });
-    setShowLogin(false);
   };
 
   useEffect(() => {
     if (data?.data) {
       signUser(data?.data);
+      toast.success(data.data.status, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
+    console.log("login", data);
   }, [data]);
 
   useEffect(() => {
     if (authenticated) {
+      setShowLogin(false);
       navigate("/");
     }
   }, [authenticated]);
@@ -129,7 +141,9 @@ const LoginPage = ({ setShowLogin }) => {
           Privacy Policy, User Agreement
         </Link>
         <p>and</p>
-        <Link style={{ textDecoration: "None", color: "rgb(32, 166, 249)" }}>T&Cs</Link>
+        <Link style={{ textDecoration: "None", color: "rgb(32, 166, 249)" }}>
+          T&Cs
+        </Link>
       </div>
     </>
   );
