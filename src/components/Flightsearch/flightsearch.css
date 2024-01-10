@@ -514,9 +514,7 @@
 }
 .flightdetails-maindiv {
   /* border: 2px solid green; */
-  /* margin: 40px 0 5px 0; */
-  /* padding: 10px 14px; */
-  margin-bottom: 10px;
+  padding: 10px 14px;
   border-top: 8px solid white;
   background: #fff;
   border-radius: 2px;

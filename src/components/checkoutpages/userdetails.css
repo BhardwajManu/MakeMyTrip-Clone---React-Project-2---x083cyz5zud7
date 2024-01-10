@@ -1,0 +1,9 @@
+.componentContainer {
+  width: 880px;
+  box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 2px;
+}
+.travellerWrapper {
+  padding: 0 20px 10px;
+}

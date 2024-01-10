@@ -11,9 +11,12 @@ import FlightSearch from "./components/Flightsearch/Flightsearch";
 import PaymentPageMain from "./components/Paymentpage/PaymentPageMain";
 import SingleHotelPage from "./components/Hotelsearch/SingleHotelPage";
 import { useAuthContext } from "./Context/AuthContext";
-import Flightcheckoutpage from "./components/flightcheckoutpage/Flightcheckoutpage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Traincheckoutpage from "./components/checkoutpages/Traincheckoutpage";
+import Flightcheckoutpage from "./components/checkoutpages/Flightcheckoutpage";
+import Hotelcheckoutpage from "./components/checkoutpages/Hotelcheckoutpage";
+// import Buscheckoutpage from "./components/checkoutpages/Buscheckoutpage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -53,6 +56,8 @@ function App() {
         <Route path="/payment" element={<PaymentPageMain />} />
         <Route path="/singlehotel" element={<SingleHotelPage />} />
         <Route path="/flightcheckout" element={<Flightcheckoutpage />} />
+        <Route path="/hotelcheckoutpage" element={<Hotelcheckoutpage />} />
+        <Route path="/traincheckoutpage" element={<Traincheckoutpage />} />
       </Routes>
     </>
   );

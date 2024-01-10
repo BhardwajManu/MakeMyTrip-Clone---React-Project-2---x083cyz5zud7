@@ -93,7 +93,7 @@ export const Stickyheader = () => {
         </Link>
         {authenticated ? (
           <div
-            className="afterloginorcreateaccnt"
+            className="afterloginorcreateaccntsticky"
             onMouseEnter={openMyStuffHover}
             onMouseLeave={closeMyStuffHover}
           >
@@ -103,7 +103,7 @@ export const Stickyheader = () => {
             <div>Hi Traveller</div>
             <BsChevronDown />
             <div
-              className="userDropdown"
+              className="stickyuserDropdown"
               style={{ display: isHovered ? "block" : "none" }}
             >
               <Link to="/mytrips">

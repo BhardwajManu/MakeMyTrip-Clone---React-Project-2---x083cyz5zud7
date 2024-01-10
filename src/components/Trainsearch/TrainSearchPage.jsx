@@ -2,6 +2,7 @@ import React from "react";
 import "./trainsearchpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { IoIosArrowUp } from "react-icons/io";
+import { Link } from "react-router-dom";
 // import CarouselDate from "./CarouselDate";
 
 const TrainsSearchPage = () => {
@@ -30,7 +31,6 @@ const TrainsSearchPage = () => {
             </div>
             <button className="trains-searchbtn">SEARCH</button>
           </div>
-
           <div className="sortedby-div">
             <p>Sorted By :</p>
             <p>
@@ -193,16 +193,18 @@ const TrainsSearchPage = () => {
                 </div>
               </div>
 
-              <div className="showtrains-btmdiv">
-                <div className="sl-card">
-                  <div>
-                    <p>SL</p>
-                    <p>₹ 300</p>
+              <Link to="/traincheckoutpage">
+                <div className="showtrains-btmdiv">
+                  <div className="sl-card">
+                    <div>
+                      <p>SL</p>
+                      <p>₹ 300</p>
+                    </div>
+                    <p className="rac-nmbr">RAC 28</p>
+                    <p className="cancellation">Free Cancellation</p>
                   </div>
-                  <p className="rac-nmbr">RAC 28</p>
-                  <p className="cancellation">Free Cancellation</p>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

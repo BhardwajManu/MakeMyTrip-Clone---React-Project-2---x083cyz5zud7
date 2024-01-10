@@ -194,3 +194,42 @@
 .sticky-linktohome {
   text-decoration: none;
 }
+.afterloginorcreateaccntsticky {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  font-size: 12px;
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+.stickyuserDropdown {
+  cursor: pointer;
+  width: 150px;
+  height: 8rem;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 7.5vh;
+  right: 17.5rem;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  max-height: 200px;
+}
+.fadeIndown,
+.logoutbtn {
+  font-size: large;
+  margin-top: 6px;
+  padding: 15px;
+  gap: 8px;
+  color: black;
+  display: flex;
+  font-weight: 600;
+}
+:hover.fadeIndown:hover,
+.logoutbtn:hover {
+  background-color: azure;
+}

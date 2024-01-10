@@ -32,6 +32,22 @@ const FlightsWidgetMain = () => {
     name: "Jaipur International Airport",
   });
 
+  const [locations, setLocations] = useState({
+    from: "Pune",
+    to: "Jaipur",
+    airportB: "Pune Airport",
+    airportA: "Jaipur International Airport",
+  });
+
+  const handleSwap = () => {
+    setLocations({
+      from: locations.to,
+      to: locations.from,
+      airportA: locations.airportB,
+      airportB: locations.airportA,
+    });
+  };
+
   const handlePopupClick = () => {
     setShowFlightPopup(!showFightPopup);
   };
@@ -81,9 +97,9 @@ const FlightsWidgetMain = () => {
           <div className="fw-middlediv">
             <div className="fw-fromdiv" onClick={handleFromCityDropdown}>
               <p>From</p>
-              <p>{fromAirportData.city}</p>
+              <p>{locations.from}</p>
               <p>
-                {fromAirportData.iata_code}, {fromAirportData.name}
+                {locations.from}, {locations.airportB}
               </p>
             </div>
             {showFromDropdown && (
@@ -98,14 +114,14 @@ const FlightsWidgetMain = () => {
                 />
               </OutsideClickHandler>
             )}
-            <span className="fltSwipCircle">
-              <span className="flightsSprite fltSwipIcon"></span>
+            <span className="fltSwipCircle" onClick={handleSwap}>
+              <span className="flightsSprite"></span>
             </span>
             <div className="fw-todiv" onClick={handleToCityDropdown}>
               <p>To</p>
-              <p>{toAirportData.city}</p>
+              <p>{locations.to}</p>
               <p>
-                {toAirportData.iata_code}, {toAirportData.name}
+                {locations.to}, {locations.airportA}
               </p>
             </div>
             {showToDropdown && (

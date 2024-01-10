@@ -1,15 +1,16 @@
-singlehotelpage-maindiv {
+.singlehotelpage-maindiv {
+  background-color: #ffffff;
   /* border: 1px solid blue; */
 }
 .singlehotel-headerdiv {
-  height: 10vh;
   background: linear-gradient(180deg, #051320, #0c2540);
   position: sticky;
   top: 70;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 6px 110px 10px 110px;
+  padding: 5px 110px 5px 140px;
+  height: 64px;
 }
 .singlehotel-headerdiv div {
   height: 6vh;
@@ -65,33 +66,27 @@ singlehotelpage-maindiv {
 }
 .hoteldetails-maindiv {
   /* border: 1px solid red; */
-  padding: 0px 110px 0px 110px;
+  /* padding: 0px 145px 0px 145px; */
+  /* margin: 25px auto; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 25px auto;
   height: auto;
 }
-.hotel-image-div {
-  /* border: 1px solid green; */
-  margin: 0;
-  padding: 0;
-  /* width: 850px; */
-  width: 763px;
-  /* height: 360px; */
-  height: auto;
+.topcontainer-crou {
+  padding: 0px 145px 0px 145px;
+  margin: 25px auto;
 }
 .hotel-name-div {
   margin: 22px 0 30px;
 }
 .hotel-name-div h1 {
-  margin: 0 0 10px 0;
   padding: 0;
   color: #000;
   font-weight: 900;
   font-size: 26px;
 }
-.hotel-name-div p {
+.hotel-name-div p:first-child {
   margin: 0;
   padding: 0;
   font-weight: 700;
@@ -135,13 +130,12 @@ singlehotelpage-maindiv {
 }
 .rooms-maindiv {
   /* border: 2px solid red; */
-  width: 100%;
-  height: auto;
+  width: 1229px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 .rooms-heading {
+  color: #4a4a4a;
   font-size: 20px;
   font-weight: 900;
   margin-bottom: 25px;
@@ -158,7 +152,6 @@ singlehotelpage-maindiv {
   border-top-right-radius: 4px;
   height: 49px;
   /* width: 100%; */
-  width: 1203px;
 }
 .roomtype-dropdown {
   width: 410px;
@@ -176,7 +169,6 @@ singlehotelpage-maindiv {
   align-items: center;
   border-right: 1px solid #bababa;
   padding: 16px;
-  color: #a4a4a4;
   font-size: 14px;
   font-weight: 700;
 }
@@ -184,24 +176,23 @@ singlehotelpage-maindiv {
   display: flex;
   align-items: center;
   padding: 16px;
-  color: #a4a4a4;
   font-size: 14px;
   font-weight: 700;
   width: 300px;
 }
 .suiteroom-details-maindiv {
   /* border: 1px solid blue; */
-  width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
+  border-bottom: 8px solid #e1e0e0;
 }
 .suite-aboutroom {
   width: 410px;
   border-right: 1px solid #bababa;
   border-left: 1px solid #bababa;
   border-bottom: 1px solid #bababa;
-  padding: 16px;
+  padding: 10px 16px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -257,7 +248,7 @@ singlehotelpage-maindiv {
   font-size: 16px;
   font-weight: 900;
   margin: 0 0 20px 0;
-  color: #a4a4a4;
+  color: rgb(36, 129, 87);
 }
 .cancellation-criteria-div {
   display: flex;
@@ -293,9 +284,8 @@ singlehotelpage-maindiv {
   padding: 16px;
   margin: 0;
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  width: 300px;
+  width: 423px;
 }
 .suite-pricediv p:first-child {
   color: #9b9b9b;
@@ -330,5 +320,68 @@ singlehotelpage-maindiv {
   text-transform: uppercase;
   height: 40px;
   width: 160px;
-  margin: 20px 0 0 120px;
+  margin: 20px 0 0 110px;
+}
+.bus-rating-div {
+  background-color: rgb(26, 121, 113);
+  margin-top: 4.5px;
+  width: 40px;
+  height: 22px;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.ratingstar-img {
+  background: url("../../assets/Images/busListingSprite.png");
+  background-size: 350px 500px;
+  background-position: -132px -56px;
+  width: 9px;
+  height: 9px;
+  margin-right: 4px;
+}
+.prmDtl__bottom {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-bottom: 0.7px solid #bababa;
+  box-shadow: 0 8px 8px 0 #8a6b7614;
+  left: 0;
+  position: sticky;
+  top: 66px;
+  z-index: 9;
+}
+
+.prmDtl__bottom ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.prmDtl__bottom li .navLink {
+  color: #4a4a4a;
+  display: flex;
+  font-weight: 800;
+  justify-content: center;
+  padding: 16px 0 14px;
+  text-transform: uppercase;
+  width: 160px;
+  cursor: pointer;
+}
+.high-borderline {
+  border-bottom: 1px solid #bababa80;
+  margin: 10px;
+}
+.greyDot {
+  background-color: #4a4a4a;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 6px;
+  width: 6px;
+  margin: 10px 10px 0;
 }

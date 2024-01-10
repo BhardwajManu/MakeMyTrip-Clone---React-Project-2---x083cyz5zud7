@@ -15,6 +15,21 @@ const TrainsWidget = () => {
   const [selectTrainOption, setselectTrainOption] = useState("");
   const [showTravelDate, setShowTravelDate] = useState(false);
   const [selectedTravelDate, setSelectedTravelDate] = useState(null);
+  const [locations, setLocations] = useState({
+    from: "New Delhi",
+    to: "Kanpur",
+    trainStationB: "NDLS, New Delhi Railway Station",
+    trainStationA: "CNB, Kanpur Central",
+  });
+
+  const handleSwap = () => {
+    setLocations({
+      from: locations.to,
+      to: locations.from,
+      trainStationA: locations.trainStationB,
+      trainStationB: locations.trainStationA,
+    });
+  };
 
   const handlePopupClick = () => {
     setShowTrainPopup(!showTrainPopup);
@@ -48,13 +63,17 @@ const TrainsWidget = () => {
           <div className="tw-bottomdiv">
             <div className="tw-from">
               <p>From</p>
-              <p>New Delhi</p>
-              <p>NDLS, New Delhi Railway Station</p>
+              <p>{locations.from}</p>
+              <p>{locations.trainStationB}</p>
             </div>
+            <span className="fltSwipCircle" onClick={handleSwap}>
+              <span className="flightsSprite"></span>
+            </span>
+
             <div className="tw-to">
               <p>To</p>
-              <p>Kanpur</p>
-              <p>CNB, Kanpur Central</p>
+              <p>{locations.to}</p>
+              <p>{locations.trainStationA}</p>
             </div>
             <div className="tw-traveldate" onClick={handleTravelIconClick}>
               <div className="traveldateheaddiv">

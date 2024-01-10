@@ -10,6 +10,21 @@ import OutsideClickHandler from "react-outside-click-handler";
 const Buswidget = () => {
   const [showDate, setShowDate] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [locations, setLocations] = useState({
+    from: "Delhi,Delhi",
+    to: "Kanpur,Uttar Pradesh",
+    BusStandB: "India",
+    BusStandA: "India",
+  });
+
+  const handleSwap = () => {
+    setLocations({
+      from: locations.to,
+      to: locations.from,
+      BusStandA: locations.BusStandB,
+      BusStandB: locations.BusStandA,
+    });
+  };
 
   const handleTravelDateonClick = () => {
     setShowDate(!showDate);
@@ -39,13 +54,17 @@ const Buswidget = () => {
           <div className="bw-detailsdiv">
             <div className="bw-from">
               <p>From</p>
-              <p>Delhi,Delhi</p>
-              <p>India</p>
+              <p>{locations.from}</p>
+              <p>{locations.BusStandB}</p>
             </div>
+            <span className="fltSwipCircle" onClick={handleSwap}>
+              <span className="flightsSprite"></span>
+            </span>
+
             <div className="bw-to">
               <p>To</p>
-              <p>Kanpur,Uttar Pradesh</p>
-              <p>India</p>
+              <p>{locations.to}</p>
+              <p>{locations.BusStandA}</p>
             </div>
             <div className="bw-traveldate" onClick={handleTravelDateonClick}>
               <div className="bw-traveldateheaddiv">

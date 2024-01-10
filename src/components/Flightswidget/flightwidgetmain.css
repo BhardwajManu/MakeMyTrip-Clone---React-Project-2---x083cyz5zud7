@@ -97,7 +97,6 @@
 
 .fw-todiv p:nth-child(1) {
   /* border: 2px solid red; */
-  margin-bottom: 10px;
   margin-top: 0;
 }
 .fw-todiv p:nth-child(2) {
@@ -284,7 +283,7 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  margin-left: -22px;
+  margin-left: -20px;
   border-radius: 100%;
   background: #fff;
   display: flex;
@@ -304,7 +303,7 @@
   flex-shrink: 0;
   width: 15px;
   height: 11px;
-  background-position: -149px -111px;
+  background-position: -149px -103px;
 }
 /* .fltSwipIcon {
   width: 15px;

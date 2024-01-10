@@ -5,12 +5,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { Slider } from "@mui/material";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
+import Flightdetails from "./Flightdetails";
 
 const FlightSearch = () => {
-  const [selectedFare, setSelectedFare] = useState("");
+  const [isElementVisible, setElementVisibility] = useState(false);
 
-  const handleFareChange = (e) => {
-    setSelectedFare(e.target.value);
+  const toggleVisibility = () => {
+    setElementVisibility(!isElementVisible);
   };
   return (
     <>
@@ -20,12 +21,6 @@ const FlightSearch = () => {
         <div className="flightsearch-maindiv">
           <div className="flightsearch-topdiv">
             <div className="tripdetails-div">
-              {/* <div>
-              <p>
-                TRIP TYPE <MdKeyboardArrowDown size={20} />
-              </p>
-              <p className="fd-selecteditem">One Way</p>
-            </div> */}
               <div>
                 <p>
                   FROM <MdKeyboardArrowDown size={20} />
@@ -57,66 +52,6 @@ const FlightSearch = () => {
                 <p className="fd-selecteditem">1 Adult,Economy</p>
               </div>
             </div>
-            {/* </div>
-          <div className="faretypes-div">
-            <span>Fare Type:</span>
-            <ul>
-              <li>
-                <input
-                  type="radio"
-                  value="Regular"
-                  checked={selectedFare === "Regular"}
-                  onChange={handleFareChange}
-                />
-                <label>Regular</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  value="Armed Forces"
-                  checked={selectedFare === "Armed Forces"}
-                  onChange={handleFareChange}
-                />
-                <label>Armed Forces</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  value="Student"
-                  checked={selectedFare === "Student"}
-                  onChange={handleFareChange}
-                />
-                <label>Student</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  value="Senior Citizen"
-                  checked={selectedFare === "Senior Citizen"}
-                  onChange={handleFareChange}
-                />
-                <label>Senior Citizen</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  value="Doctors & Nurses"
-                  checked={selectedFare === "Doctors & Nurses"}
-                  onChange={handleFareChange}
-                />
-                <label>Double Seat</label>
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  value="Double Seat"
-                  checked={selectedFare === "Double Seat"}
-                  onChange={handleFareChange}
-                />
-                <label>Double Seat</label>
-              </li>
-            </ul>
-          </div> */}
           </div>
           <div className="partitiondiv"></div>
 
@@ -323,8 +258,17 @@ const FlightSearch = () => {
                   </Link>
                 </div>
                 {/* <div className="offertext">Get Rs 150 off using MMTBONUS*</div> */}
-                <p className="linktoflightdetails">View Flight Details</p>
+                <p className="linktoflightdetails" onClick={toggleVisibility}>
+                  {isElementVisible
+                    ? "Hide Flight Details"
+                    : "View Flight Details"}
+                </p>
               </div>
+              {isElementVisible && (
+                <div>
+                  <Flightdetails />
+                </div>
+              )}
             </div>
           </div>
         </div>
