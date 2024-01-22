@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Flightcheckoutpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import Userdetails from "./Userdetails";
+import useFetch from "../../Hooks/useFetch";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Flightcheckoutpage = () => {
+  const { data, get } = useFetch([]);
+  const [params] = useSearchParams();
+  const date = decodeURI(params.get("date"));
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    get(`/bookingportals/flight/${id}`);
+  }, [id]);
+
   return (
     <>
       <Stickyheader />
@@ -28,12 +40,14 @@ const Flightcheckoutpage = () => {
                   <div className="flDetailHdr">
                     <div>
                       <h2 className="blackFont">
-                        <b>Mumbai → New Delhi</b>
+                        <b>
+                          {data?.data?.source} → {data?.data?.destination}
+                        </b>
                       </h2>
                       <p className="appendTop10 makeFlex">
                         <span className="scheduleDay">Wednesday, Jan 10</span>
                         <span className="fontSize14 ml-3">
-                          Non Stop · 2h 5m
+                          {data?.data?.stops} Stop · {data?.data?.duration}h
                         </span>
                       </p>
                     </div>
@@ -44,7 +58,7 @@ const Flightcheckoutpage = () => {
                         </font>
                       </p>
                       <p className="fontSize14 linkText appendTop10 textRight">
-                        <span>View Fare Rules</span>
+                        <span>View Fare Rules </span>
                       </p>
                     </div>
                   </div>
@@ -54,7 +68,9 @@ const Flightcheckoutpage = () => {
                         <span className="bgPropertiess icon24"></span>
                         <p className="makeFlex hrtlCenter gap-x-10">
                           <span className="fontSize14 boldFont">IndiGo</span>
-                          <span className="fontSize14">6E 2224</span>
+                          <span className="fontSize14">
+                            {data?.data?.flightID}
+                          </span>
                           <span className="aircraftType">Airbus A321</span>
                         </p>
                       </div>
@@ -66,38 +82,40 @@ const Flightcheckoutpage = () => {
                             <div className=" makeFlex gap-x-10">
                               <div className="makeFlex time-info-ui">
                                 <span className="fontSize14 blackFont">
-                                  23:15
+                                  {data?.data?.departureTime}
                                 </span>
                                 <span className="layoverCircle"></span>
                               </div>
                               <div>
                                 <span className="fontSize14 blackFont">
-                                  Mumbai
+                                  {data?.data?.source}
                                 </span>
-                                <span className="fontSize14">
+                                {/* <span className="fontSize14">
                                   . Chhatrapati Shivaji International
                                   Airport,Terminal 2
-                                </span>
+                                </span> */}
                               </div>
                             </div>
                             <div className="layover-time">
-                              <span className="fontSize14">2h 5m</span>
+                              <span className="fontSize14">
+                                {data?.data?.duration}h
+                              </span>
                             </div>
                             <div className="makeFlex gap-x-10 overideBg">
                               <div className="makeFlex time-info-ui">
                                 <span className="fontSize14 blackFont">
-                                  01:20
+                                  {data?.data?.arrivalTime}
                                 </span>
                                 <span className="layoverCircle"></span>
                               </div>
                               <div>
                                 <span className="fontSize14 blackFont">
-                                  New Delhi
+                                  {data?.data?.destination}
                                 </span>
-                                <span className="fontSize14">
+                                {/* <span className="fontSize14">
                                   . Indira Gandhi International Airport,
                                   Terminal 2
-                                </span>
+                                </span> */}
                               </div>
                             </div>
                           </div>
@@ -124,7 +142,9 @@ const Flightcheckoutpage = () => {
                             </span>
                             <span className="fareHeader">Base Fare</span>
                           </div>
-                          <span className="fontSize14 darkText">₹ 4,630</span>
+                          <span className="fontSize14 darkText">
+                            ₹ {data?.data?.ticketPrice}
+                          </span>
                         </div>
                       </div>
                       <div className="fareTypeWrap">
@@ -137,7 +157,7 @@ const Flightcheckoutpage = () => {
                               Taxes and Surcharges
                             </span>
                           </div>
-                          <span className="fontSize14 darkText">₹ 691</span>
+                          <span className="fontSize14 darkText">₹ 0</span>
                         </div>
                       </div>
                     </div>
@@ -146,7 +166,9 @@ const Flightcheckoutpage = () => {
                         <span className="fontSize16 blackFont">
                           Total Amount
                         </span>
-                        <span className="fontSize16 blackFont">₹ 5,321</span>
+                        <span className="fontSize16 blackFont">
+                          ₹ {data?.data?.ticketPrice}
+                        </span>
                       </p>
                     </div>
                   </section>

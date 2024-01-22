@@ -6,9 +6,9 @@ import fwad from "../../assets/images/fwad.png";
 const TrainWidgetBottom = () => {
   return (
     <div>
-      <div className="fw-mainbtmdiv">
+      {/* <div className="fw-mainbtmdiv">
         <img className="fw-adv" src={fwad} alt="ad" />
-      </div>
+      </div> */}
       <Offers />
       <ForexWidget />
     </div>

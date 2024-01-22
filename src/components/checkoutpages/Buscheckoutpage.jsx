@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./buscheckoutpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
+import Userdetails from "./Userdetails";
+import { useParams, useSearchParams } from "react-router-dom";
+import useFetch from "../../Hooks/useFetch";
 
 const Buscheckoutpage = () => {
+  const { data, get } = useFetch([]);
+  const [params] = useSearchParams();
+  const date = decodeURI(params.get("date"));
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    get(`/bookingportals/bus/${id}`);
+  }, [id]);
+
   return (
     <>
       <Stickyheader />
@@ -19,9 +32,7 @@ const Buscheckoutpage = () => {
             <div className="travellerBusInfoDetails makeFlex column card">
               <div className="cardPadding">
                 <div className="makeFlex spaceBetween appendBottom6 blackText">
-                  <p className="latoBlack font18">
-                    Raj Kalpana Travels Pvt.Ltd
-                  </p>
+                  <p className="latoBlack font18">{data?.data?.name}</p>
                   <span className="latoBold font14">
                     Seat No:
                     <span>
@@ -31,7 +42,7 @@ const Buscheckoutpage = () => {
                 </div>
                 <div className="makeFlex spaceBetween appendBottom10 font14">
                   <span className="defaultGreyText font14">
-                    VE A/C Sleeper (2+1)
+                    {data?.data?.type} Seater
                   </span>
                 </div>
               </div>
@@ -44,20 +55,15 @@ const Buscheckoutpage = () => {
               <div className="makeFlex row blackText reviewBusInfoWrapper cardPadding spaceBetween">
                 <div>
                   <span className="makeRelative font18 latoBold">
-                    23:30
+                    {data?.data?.departureTime}
+
                     <span className="font16 latoRegular darkGreyText ml-2">
                       10 Jan' 24, Wed
                     </span>
                   </span>
                   <div className="makeFlex column maxWidth200 maxHeight200 appendTop8">
                     <span className="font16 latoRegular appendBottom8 lineHeight18 blackText">
-                      Delhi
-                    </span>
-                    <span className="lineHeight20 colorGrey">
-                      <div className="latoRegular">Isbt kashmiri gate</div>
-                      <span className="latoRegular">
-                        Shop No 7 Kashmiri Gate Near Mandir Wali Parking{" "}
-                      </span>
+                      {data?.data?.source}
                     </span>
                   </div>
                 </div>
@@ -67,20 +73,15 @@ const Buscheckoutpage = () => {
                 </div>
                 <div>
                   <span className="makeRelative font18 latoBold">
-                    23:30
+                    {data?.data?.arrivalTime}
+
                     <span className="font16 latoRegular darkGreyText ml-2">
                       10 Jan' 24, Wed
                     </span>
                   </span>
                   <div className="makeFlex column maxWidth200 maxHeight200 appendTop8">
                     <span className="font16 latoRegular appendBottom8 lineHeight18 blackText">
-                      Delhi
-                    </span>
-                    <span className="lineHeight20 colorGrey">
-                      <div className="latoRegular">Isbt kashmiri gate</div>
-                      <span className="latoRegular">
-                        Shop No 7 Kashmiri Gate Near Mandir Wali Parking{" "}
-                      </span>
+                      {data?.data?.destination}
                     </span>
                   </div>
                 </div>
@@ -114,14 +115,18 @@ const Buscheckoutpage = () => {
                           </span>
                           <span className="fareHeader">Amount</span>
                         </div>
-                        <span className="fontSize14 darkText">₹ 699</span>
+                        <span className="fontSize14 darkText">
+                          ₹ {data?.data?.fare}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="fareFooter">
                     <p className="totalprice">
                       <span className="fontSize16 blackFont">Total Amount</span>
-                      <span className="fontSize16 blackFont">₹ 699</span>
+                      <span className="fontSize16 blackFont">
+                        ₹ {data?.data?.fare}
+                      </span>
                     </p>
                   </div>
                 </section>
@@ -129,6 +134,7 @@ const Buscheckoutpage = () => {
             </div>
           </div>
         </div>
+        <Userdetails />
       </div>
     </>
   );

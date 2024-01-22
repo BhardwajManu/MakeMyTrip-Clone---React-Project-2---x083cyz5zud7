@@ -117,9 +117,7 @@
   /* border: 1px solid yellow; */
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
   width: 295px;
-  height: 900px;
-  /* height: auto; */
-  /* z-index: 20; */
+  height: 850px;
   background-color: white;
 }
 
@@ -495,12 +493,12 @@
 }
 .flightsearch-btmrightdiv {
   /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
   width: 880px;
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
   width: 880px;
   height: 1120px;
-  /* height: auto; */
-  /* z-index: 20; */
   background-color: #ebf0f5;
   margin: 0 0 0 30px;
 }
@@ -514,11 +512,10 @@
 }
 .flightdetails-maindiv {
   /* border: 2px solid green; */
-  padding: 10px 14px;
+  margin-bottom: 10px;
   border-top: 8px solid white;
   background: #fff;
   border-radius: 2px;
-  height: 158px;
   width: auto;
 }
 .available-flightdetails {
@@ -538,13 +535,13 @@
   gap: 10px;
 }
 .airlinelogo {
-  background-image: url("../../assets/Images/airindiaexpresslogo.png");
   width: 32px;
   height: 32px;
   background-position: 50%;
   background-size: contain;
 }
 .airline-nameandno-div {
+  color: #000;
   margin: 0;
   width: 100px;
   height: 37.5px;
@@ -557,12 +554,13 @@
   padding: 0;
   width: 100px;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
   font-size: 14px;
   font-weight: 700;
 }
 .airline-nameandno-div p:nth-child(2) {
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   color: #878787;
@@ -585,8 +583,6 @@
   font-weight: 900;
 }
 .departure-details-div p:nth-child(2) {
-  padding: 0;
-  margin: 0;
   font-size: 12px;
 }
 .flyingtime-div {
@@ -633,8 +629,6 @@
   font-weight: 900;
 }
 .arrival-details-div p:nth-child(2) {
-  padding: 0;
-  margin: 0;
   font-size: 12px;
 }
 .price-details-div {
@@ -676,9 +670,14 @@
   font-weight: 900;
 }
 .offertext {
+  color: #141823;
+  font-size: calc(var(--font-scale, 1) * 12px);
+  text-align: center;
+  padding: 3px 15px;
   background-color: rgb(255, 237, 209);
-  height: 22px;
-  margin: 10px 0 10px 0;
+  min-height: 22px;
+  margin: 15px;
+  font-weight: 500;
 }
 .linktoflightdetails {
   color: #0091ff;
@@ -687,4 +686,20 @@
   margin: 23px;
   padding: 0;
   text-align: right;
+}
+.flight-search-btn {
+  font-size: 18px;
+  margin-left: 30px;
+  width: 176px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  background-image: linear-gradient(96deg, #53b2fe, #065af3);
+  border: 0;
+  border-radius: 34px;
+  box-shadow: 0 1px 7px 0 #0003;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  text-align: center;
 }

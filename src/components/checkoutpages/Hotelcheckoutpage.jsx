@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./hotelcheckoutpage.css";
 import Hotelcheckout from "../../assets/Images/hotelcheckout.png";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
+import Userdetails from "./Userdetails";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import useFetch from "../../Hooks/useFetch";
+import HotelpropertyRules from "../Hotelsearch/HotelpropertyRules";
 
 const Hotelcheckoutpage = () => {
+  const { data, get } = useFetch([]);
+  const [params] = useSearchParams();
+  const { id } = useParams();
+
+  useEffect(() => {
+    get(`/bookingportals/hotel/${id}`);
+  }, [id]);
+  console.log(data);
+
+  const baseCost = data?.data?.rooms[0].costDetails.baseCost || 0;
+  const taxesAndFees = data?.data?.rooms[0].costDetails.taxesAndFees || 0;
+  const totalCost = baseCost + taxesAndFees;
+
   return (
     <>
       <Stickyheader />
@@ -20,12 +37,12 @@ const Hotelcheckoutpage = () => {
                 <div className="rvHtlInfo">
                   <div className="rvHtlInfoLft">
                     <h3 className="font22 latoBlack blackText">
-                      Ginger Goa, Panjim
+                      {data?.data?.name}
                     </h3>
                     <div className="makeFlex  appendTop8">
                       <div className="bus-rating-div">
                         <span className="ratingstar-img"></span>
-                        <p>4.9</p>
+                        <p>{data?.data?.rating}</p>
                       </div>
                       <span className=" htlInfo__tag">
                         <div>
@@ -36,13 +53,12 @@ const Hotelcheckoutpage = () => {
                       </span>
                     </div>
                     <p className="font14 grayText lineHight20 appendTop8 appendBottom8">
-                      Plot No. 37, 38,Near Passport Office,SGO Complex, EDC,
-                      Pato, Goa, India
+                      {data?.data?.location}
                     </p>
                   </div>
                   <div className="rvHtlInfoRht">
                     <div className="rvHtlInfoImg">
-                      <img src={Hotelcheckout} alt="hotel" />
+                      <img src={data?.data?.images[0]} alt="hotel" />
                     </div>
                   </div>
                 </div>
@@ -55,9 +71,7 @@ const Hotelcheckoutpage = () => {
                         <span className="text-[1.4rem] font-bold">9 Jan</span>
                         2024
                       </p>
-                      <p className="blackText appendTop3">2 PM</p>
                     </div>
-                    <div className="prptChk__nights"> 1 Night</div>
                     <div className="prptChk__col last">
                       <p className="font12 grey2 appendBottom3">CHECK OUT</p>
                       <p className="prptChk__date">
@@ -65,7 +79,6 @@ const Hotelcheckoutpage = () => {
                         <span className="text-[1.4rem] font-bold">10 Jan</span>
                         2024
                       </p>
-                      <p className="blackText appendTop3">12 PM</p>
                     </div>
                   </div>
                   <div className="prptChkCont__col undefined">
@@ -83,7 +96,8 @@ const Hotelcheckoutpage = () => {
                   <div className="makeFlex spaceBetween">
                     <div className="flexOne">
                       <h4 className="font18 latoBlack blackText">
-                        Luxe Twin Room
+                        {" "}
+                        {data?.data?.rooms[0].roomType} Room
                       </h4>
                       <p className="font14 grayText appendTop5">2 Adults</p>
                       <ul className="incList appendTop15 appendBottom10">
@@ -126,56 +140,24 @@ const Hotelcheckoutpage = () => {
                             <span className="latoBold greenText">
                               On Cancellation, You will not get any refund
                             </span>
-                            <a className="latoBlack font12 pointer appendLeft10 cancelPolicy">
+                            <Link
+                              to="/comingsoon"
+                              className="latoBlack font12 pointer appendLeft10 cancelPolicy"
+                            >
                               Cancellation policy details
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="imptInfo">
                   <div className="makeFlex hrtlCenter">
                     <h4 className="imptInfoHdng">Important information</h4>
                   </div>
-                  <div className=" appendTop10">
-                    <ul className="imptInfo__list">
-                      <li>
-                        <span className="imptInfo__listIcon">
-                          <span className="appendLeft3 blackDot"></span>
-                        </span>
-                        <span className="font12 ruleText">
-                          Passport, Aadhar, Driving License and Govt. ID are
-                          accepted as ID proof(s)
-                        </span>
-                      </li>
-                      <li>
-                        <span className="imptInfo__listIcon">
-                          <span className="appendLeft3 blackDot"></span>
-                        </span>
-                        <span className="font12 ruleText">
-                          Pets are not allowed.
-                        </span>
-                      </li>
-                      <li>
-                        <span className="imptInfo__listIcon">
-                          <span className="appendLeft3 blackDot"></span>
-                        </span>
-                        <span className="font12 ruleText">
-                          Smoking within the premises is not allowed
-                        </span>
-                      </li>
-                      <li>
-                        <span className="imptInfo__listIcon">
-                          <span className="appendLeft3 blackDot"></span>
-                        </span>
-                        <span className="font12 ruleText">
-                          Unmarried couples allowed
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
+                  <HotelpropertyRules />
                 </div>
               </div>
             </div>
@@ -196,7 +178,9 @@ const Hotelcheckoutpage = () => {
                           </span>
                           <span className="fareHeader">1 Room x 1 Night</span>
                         </div>
-                        <span className="fontSize14 darkText">₹ 4,630</span>
+                        <span className="fontSize14 darkText">
+                          ₹ {data?.data?.rooms[0].costDetails.baseCost}
+                        </span>
                       </div>
                     </div>
                     <div className="fareTypeWrap">
@@ -207,16 +191,20 @@ const Hotelcheckoutpage = () => {
                           </span>
                           <span className="fareHeader">Hotel Taxes</span>
                         </div>
-                        <span className="fontSize14 darkText">₹ 691</span>
+                        <span className="fontSize14 darkText">
+                          ₹ {data?.data?.rooms[0].costDetails.taxesAndFees}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="hotelfareFooter">
                     <p className="fareRow">
                       <span className="fontSize16 blackFont">
-                        Total Amount to be paid
+                        Total Payment
                       </span>
-                      <span className="fontSize16 blackFont">₹ 5,321</span>
+                      <span className="fontSize16 blackFont">
+                        ₹ {totalCost}
+                      </span>
                     </p>
                   </div>
                 </section>
@@ -225,6 +213,7 @@ const Hotelcheckoutpage = () => {
           </div>
         </div>
       </div>
+      <Userdetails />
     </>
   );
 };

@@ -178,7 +178,7 @@
   align-items: center;
 }
 .searchicon-hotels {
-  background: url("../images/hotelsprite.png");
+  /* background: url("../images/hotelsprite.png"); */
   background-position: -8px -238px;
   background-size: 450px 1050px;
   content: "";
@@ -249,7 +249,7 @@
   z-index: 1;
 }
 .map-icon {
-  background: url("../images//hotelsprite.png");
+  /* background: url("../images//hotelsprite.png"); */
   background-position: -166px -981px;
   height: 13px;
   width: 10px;
@@ -312,13 +312,14 @@
   text-align: left;
 }
 .showhoteldiv {
+  margin-bottom: 20px;
   border: 1px solid #e1e1e1;
   height: 269px;
   width: 940px;
   border-radius: 4px;
 }
 .showhoteldiv:hover {
-  border: 1px solid blue;
+  border: 1px solid #008cff;
   cursor: pointer;
 }
 .hotelsdetailsdiv {
@@ -397,15 +398,13 @@
   font-weight: 700;
 }
 .couplefriendly {
-  border: 1px solid grey;
+  opacity: 0.7;
   border-radius: 4px;
-  color: grey;
+  color: rgb(173, 172, 172);
   font-size: 12px;
   line-height: 14px;
-  margin-right: 6px;
-  padding: 5px 6px;
+  padding-top: 6px;
   font-weight: 700;
-  width: 84px;
 }
 
 .hoteldetails-rightdiv {

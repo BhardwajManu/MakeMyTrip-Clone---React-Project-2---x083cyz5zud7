@@ -1,50 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./flightdropdown.css";
 import { IoSearch } from "react-icons/io5";
 import flightsearch from "../../assets/images/flightsearch.png";
 import useFetch from "../../Hooks/useFetch";
 
-const FlightDropdown = ({
-  setShowFromDropdown,
-  setShowToDropdown,
-  updateSelectedToAirport,
-  updateSelectedFromAirport,
-}) => {
+const FlightDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
   const { data, get } = useFetch([]);
+  const [filterData, setFilterData] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     get("/bookingportals/airport");
   }, []);
   // console.log(data);
 
-  const handleAirportSelect = (e) => {
-    const airport = e.target.closest("li").dataset;
-    if (updateSelectedFromAirport) updateSelectedFromAirport(airport);
-    if (updateSelectedToAirport) updateSelectedToAirport(airport);
-    if (setShowFromDropdown) setShowFromDropdown(false);
-    if (setShowToDropdown) setShowToDropdown(false);
-    // setShowFromDropdown(false);
-    // setShowToDropdown(false);
+  const handleAirportSelect = (airport) => {
+    updateSelectedAirport(airport);
+    setShowDropdown(false);
   };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log(data?.data?.airports);
+      const filteredData = !data?.data?.airports
+        ? []
+        : data?.data?.airports?.filter((airport) =>
+            airport.city.toLowerCase().includes(searchValue.toLowerCase())
+          );
+      setFilterData(filteredData);
+    }, 200);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchValue, data]);
 
   return (
     <div className="flightdropdown-maindiv">
       <div className="search-from-div">
         <IoSearch className="dd-from-search-icon" />
-        <input type="text" placeholder="" className="dd-search-input" />
+        <input
+          type="text"
+          placeholder=""
+          className="dd-search-input"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          autoFocus
+        />
       </div>
 
       <div className="list-for-place-search-div">
         <ul className="from-search-list">
-          {data?.data?.airports.map((airport, index) => (
-            <li
-              key={index}
-              data-city={airport.city}
-              data-country={airport.country}
-              data-name={airport.name}
-              data-iata_code={airport.iata_code}
-              onClick={handleAirportSelect}
-            >
+          {filterData.map((airport, index) => (
+            <li key={index} onClick={() => handleAirportSelect(airport)}>
               <img src={flightsearch} alt="flight" />
               <div className="airport-name-div">
                 <h3>

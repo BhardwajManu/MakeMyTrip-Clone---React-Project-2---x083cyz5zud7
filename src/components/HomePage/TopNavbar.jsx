@@ -49,29 +49,33 @@ const TopNavbar = () => {
           </Link>
         </div>
         <div className="middlenavdiv">
-          <div className="superoffers">
-            <div className="superofferlogo">%</div>
-            <div className="superofferdescription">
-              <h3>super offers</h3>
-              <p>Explore great deals & offers</p>
+          <Link to="/comingsoon">
+            <div className="superoffers">
+              <div className="superofferlogo">%</div>
+              <div className="superofferdescription">
+                <h3>super offers</h3>
+                <p>Explore great deals & offers</p>
+              </div>
             </div>
-          </div>
-
-          <div className="mybiz">
-            <div className="mybizlogo"></div>
-            <div className="mybizdescription">
-              <h3>Introducing myBiz</h3>
-              <p>Business Travel Solution</p>
+          </Link>
+          <Link to="/comingsoon">
+            <div className="mybiz">
+              <div className="mybizlogo"></div>
+              <div className="mybizdescription">
+                <h3>Introducing myBiz</h3>
+                <p>Business Travel Solution</p>
+              </div>
             </div>
-          </div>
-
-          <div className="mytrips">
-            <div className="mytripslogo"></div>
-            <div className="mytripsdescription">
-              <h3>My Trips</h3>
-              <p>Manage your bookings</p>
+          </Link>
+          <Link to="/comingsoon">
+            <div className="mytrips">
+              <div className="mytripslogo"></div>
+              <div className="mytripsdescription">
+                <h3>My Trips</h3>
+                <p>Manage your bookings</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div className="rightnavdiv">
             {authenticated ? (

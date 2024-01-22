@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./traincheckoutpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
+import Userdetails from "./Userdetails";
+import { useParams, useSearchParams } from "react-router-dom";
+import useFetch from "../../Hooks/useFetch";
 
 const Traincheckoutpage = () => {
+  const { data, get } = useFetch([]);
+  const [params] = useSearchParams();
+  const date = decodeURI(params.get("date"));
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    get(`/bookingportals/train/${id}`);
+  }, [id]);
   return (
     <>
       <Stickyheader />
@@ -19,21 +31,24 @@ const Traincheckoutpage = () => {
                     <div className="makeFlex appendBottom5 spaceBetween">
                       <div className="column appendRight50">
                         <h3 className="font22 latoBlack appendBottom5">
-                          Malwa Express
+                          {data?.data?.trainName}
                         </h3>
                         <p>
-                          <span className="font12 lightGreyText">#12919</span>
+                          <span className="font12 lightGreyText">
+                            #{data?.data?.trainNumber}
+                          </span>
                         </p>
                       </div>
                       <div className="makeFlex hrtlCenter ">
                         <div className="makeFlex column appendRight20 ml-5">
                           <p className="appendBottom10">
-                            <span className="latoBlack">5:42 AM</span>
+                            <span className="latoBlack">
+                              {data?.data?.departureTime}
+                            </span>
                             <span className="latoBlack">, </span>
-                            <span className="lightGreyText">30 Jan</span>
                           </p>
                           <p className="font12 darkGreyText">
-                            Panipat Jn (PNP)
+                            {data?.data?.source}
                           </p>
                         </div>
                         <span className="bdrTop"></span>
@@ -48,12 +63,12 @@ const Traincheckoutpage = () => {
                         <span className="bdrTop"></span>
                         <div className="makeFlex column appendBottom10 appendTop15">
                           <p className="appendBottom10">
-                            <span className="latoBlack">4:30 PM</span>
+                            <span className="latoBlack"></span>
+                            {data?.data?.arrivalTime}
                             <span className="latoBlack">, </span>
-                            <span className="lightGreyText">30 Jan</span>
                           </p>
                           <p className="font12 darkGreyText">
-                            Shmata Vd Katra (SVDK)
+                            {data?.data?.destination}
                           </p>
                         </div>
                       </div>
@@ -87,7 +102,7 @@ const Traincheckoutpage = () => {
                         </p>
                         <p className="selectedQuota cursorPointer latoBold font12 makeFlex">
                           <span className="latoRegular font14 darkGreyText">
-                            PANIPAT JN (PNP) - 5:42 AM (30 Jan)
+                            {data?.data?.source}- {data?.data?.departureTime}
                           </span>
                         </p>
                       </div>
@@ -114,7 +129,9 @@ const Traincheckoutpage = () => {
                             </span>
                             <span className="fareHeader">Base Fare</span>
                           </div>
-                          <span className="fontSize14 darkText">₹ 330</span>
+                          <span className="fontSize14 darkText">
+                            ₹ {data?.data?.fare}
+                          </span>
                         </div>
                       </div>
                       <div className="fareTypeWrap">
@@ -125,7 +142,7 @@ const Traincheckoutpage = () => {
                             </span>
                             <span className="fareHeader">Extra Charges</span>
                           </div>
-                          <span className="fontSize14 darkText">30</span>
+                          <span className="fontSize14 darkText">₹ 0</span>
                         </div>
                       </div>
                     </div>
@@ -134,7 +151,9 @@ const Traincheckoutpage = () => {
                         <span className="fontSize16 blackFont">
                           Total Price
                         </span>
-                        <span className="fontSize16 blackFont">₹ 360</span>
+                        <span className="fontSize16 blackFont">
+                          ₹ {data?.data?.fare}
+                        </span>
                       </p>
                     </div>
                   </section>
@@ -143,6 +162,9 @@ const Traincheckoutpage = () => {
             </section>
           </div>
         </div>
+      </div>
+      <div className="bg-[#fff]">
+        <Userdetails />
       </div>
     </>
   );

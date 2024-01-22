@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./upiwidget.css";
 import upiqrcode from "../../assets/images/upiqrcode.png";
 
 const UpiWidget = () => {
+  const [upiID, setUpiID] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  const [upiIDError, setUpiIDError] = useState("");
+
+  const handleChange = (field, event) => {
+    setUpiID(event.target.value);
+    const upiRegex = /^(\w{1,5})?\d{10}@\w+$/;
+    if (!upiRegex.test(event.target.value)) {
+      setUpiIDError("Enter Invalid UPI ID format*");
+    } else {
+      setUpiIDError(""); // Clear the error if the format is valid
+    }
+    setIsValid(!upiIDError);
+  };
+
   return (
     <>
       <div className="upiwidget-maindiv">
@@ -16,8 +32,7 @@ const UpiWidget = () => {
             <div className="upi-qrcode-div">
               <p>Scan and pay</p>
               <div className="qrcode">
-                <img src={upiqrcode} />
-                <button>VIEW</button>
+                <img src={upiqrcode} alt="upi qr code" />
               </div>
               <p>Scan and pay using any banking app</p>
             </div>
@@ -31,8 +46,19 @@ const UpiWidget = () => {
                 type="text"
                 placeholder="mobileNumber@upi"
                 className="upiid-inputfield"
+                onChange={(event) => handleChange("upiID", event)}
               />
-              <button className="upi-verifyandpay-btn">VERIFY & PAY</button>
+              {upiIDError && <div className="error-message">{upiIDError}</div>}
+
+              <button
+                className={`upi-verifyandpay-btn ${
+                  isValid ? "enabled" : "disabled"
+                }`}
+                disabled={!isValid}
+              >
+                VERIFY & PAY
+              </button>
+
               <ul className="stepsforupipay">
                 <li>Enter your registered VPA</li>
                 <li>Receive payment request on bank app</li>

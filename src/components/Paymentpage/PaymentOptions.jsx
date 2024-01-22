@@ -11,63 +11,37 @@ import UpiWidget from "./UpiWidget";
 const PaymentOptions = () => {
   const [showUpiWidget, setShowUpiWidget] = useState(true);
   const [showCardWidget, setShowCardWidget] = useState(false);
-  const [showPaylaterWidget, setShowPaylaterWidget] = useState(false);
   const [showNetBankingWidget, setShowNetBankingWidget] = useState(false);
-  const [showGiftCardWidget, setShowGiftCardWidget] = useState(false);
   const [showGpayWidget, setShowGpayWidget] = useState(false);
   const [activeWidget, SetActiveWidget] = useState("upi");
 
   const handleShowCardWidget = () => {
     setShowCardWidget(true);
     setShowUpiWidget(false);
-    setShowPaylaterWidget(false);
     setShowNetBankingWidget(false);
-    setShowGiftCardWidget(false);
     setShowGpayWidget(false);
     SetActiveWidget("cards");
   };
   const handleShowUpiWidget = () => {
     setShowCardWidget(false);
     setShowUpiWidget(true);
-    setShowPaylaterWidget(false);
     setShowNetBankingWidget(false);
-    setShowGiftCardWidget(false);
     setShowGpayWidget(false);
     SetActiveWidget("upi");
   };
-  const handleShowPaylaterWidget = () => {
-    setShowCardWidget(false);
-    setShowUpiWidget(false);
-    setShowPaylaterWidget(true);
-    setShowNetBankingWidget(false);
-    setShowGiftCardWidget(false);
-    setShowGpayWidget(false);
-    SetActiveWidget("paylater");
-  };
+
   const handleShowNetbanking = () => {
     setShowCardWidget(false);
     setShowUpiWidget(false);
-    setShowPaylaterWidget(false);
     setShowNetBankingWidget(true);
-    setShowGiftCardWidget(false);
     setShowGpayWidget(false);
     SetActiveWidget("netbanking");
   };
-  const handleShowGiftCards = () => {
-    setShowCardWidget(false);
-    setShowUpiWidget(false);
-    setShowPaylaterWidget(false);
-    setShowNetBankingWidget(false);
-    setShowGiftCardWidget(true);
-    setShowGpayWidget(false);
-    SetActiveWidget("giftcards");
-  };
+
   const handleShowGpay = () => {
     setShowCardWidget(false);
     setShowUpiWidget(false);
-    setShowPaylaterWidget(false);
     setShowNetBankingWidget(false);
-    setShowGiftCardWidget(false);
     setShowGpayWidget(true);
     SetActiveWidget("gpay");
   };
@@ -100,12 +74,9 @@ const PaymentOptions = () => {
               </div>
             </li>
 
-            <li
-              onClick={handleShowPaylaterWidget}
-              className={activeWidget === "paylater" ? "activewidget" : ""}
-            >
-              <div className="paylater-img"></div>
-              <div className="options-text">
+            <li>
+              <div className="paylater-img cursor-not-allowed"></div>
+              <div className="options-text cursor-not-allowed">
                 <p>Book Now Pay Later</p>
                 <p>Tripmoney, Lazypay, Simpl, ZestMoney, ICICI, HDFC</p>
               </div>
@@ -122,12 +93,9 @@ const PaymentOptions = () => {
               </div>
             </li>
 
-            <li
-              onClick={handleShowGiftCards}
-              className={activeWidget === "giftcards" ? "activewidget" : ""}
-            >
-              <div className="giftcards-img"></div>
-              <div className="options-text">
+            <li>
+              <div className="giftcards-img cursor-not-allowed"></div>
+              <div className="options-text cursor-not-allowed">
                 <p>Gift Cards, Wallets & More</p>
                 <p>Gift cards, AmazonPay</p>
               </div>
@@ -149,9 +117,7 @@ const PaymentOptions = () => {
         <div className="paymentoptions-paywindow">
           {showUpiWidget && <UpiWidget />}
           {showCardWidget && <CardWidget />}
-          {showPaylaterWidget && <BookNowPaylaterWidget />}
           {showNetBankingWidget && <EmiWidget />}
-          {showGiftCardWidget && <GiftCardWidget />}
           {showGpayWidget && <GpayWidget />}
         </div>
       </div>

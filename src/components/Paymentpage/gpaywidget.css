@@ -50,8 +50,10 @@
   background: transparent;
   font-weight: 700;
 }
-.gpay-input-btn button {
+.enabled {
   background-image: linear-gradient(96deg, #53b2fe, #065af3);
+}
+.gpay-input-btn button {
   border: none;
   border-radius: 36px;
   display: flex;

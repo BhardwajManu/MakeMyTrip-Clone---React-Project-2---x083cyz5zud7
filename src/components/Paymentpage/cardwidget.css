@@ -20,7 +20,7 @@
   color: #000;
   background: transparent;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   width: 100%;
 }
 .expirydate-div {
@@ -76,6 +76,7 @@
 }
 .cvv-div {
   /* border: 1px solid green; */
+  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

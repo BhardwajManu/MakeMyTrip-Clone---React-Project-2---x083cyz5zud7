@@ -1,8 +1,9 @@
 .offers-main {
   /* border: 2px solid red; */
+  position: relative;
+  top: -20px;
   height: 485px;
-  padding: 20px 40px 15px 40px;
-  /* margin-bottom: 20px; */
+  padding: 20px 40px 0px 40px;
   border-radius: 10px;
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -24,6 +25,7 @@
   margin: 0;
 }
 .offers-topdiv-list {
+  gap: 25px;
   cursor: pointer;
   border-bottom: 1.5px solid #d8d8d8;
   display: flex;
@@ -32,17 +34,17 @@
   margin: 0;
   padding: 0 0 10px 0;
   align-items: center;
-  margin-top: 5px;
-  justify-content: space-around;
-  width: 700px;
+  margin-top: 10px;
 }
 .offers-bottomdiv {
   /* border: 2px solid black; */
   height: 85%;
   margin-top: 15px;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   overflow-x: auto;
+  align-items: center;
+  justify-content: center;
 }
 .offers-bottomdiv::-webkit-scrollbar {
   display: none;
@@ -54,7 +56,6 @@
   border-radius: 6px;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
   /* width: 470px; */
-  height: 170px;
   width: 450px;
 }
 
@@ -66,6 +67,7 @@
   gap: 30px;
 }
 .griditem1-topdiv img {
+  object-fit: cover;
   height: 134px;
   width: 134px;
   border-radius: 6px;
@@ -108,5 +110,9 @@
 .griditem1-bottomdiv ul li:nth-child(3) {
   font-size: 14px;
   color: #008cff;
+  font-weight: 700;
+}
+.activeoffer {
+  color: #008cff !important;
   font-weight: 700;
 }

@@ -3,6 +3,7 @@ import "./forexwidget.css";
 import { Container } from "@mui/material";
 import travelLoan from "../../assets/images/travelLoan.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const ForexWidget = () => {
   return (
@@ -18,7 +19,9 @@ const ForexWidget = () => {
             </p>
           </div>
           <div className="ordernowdiv">
-            <p>ORDER NOW</p>
+            <Link to="/comingsoon">
+              <p>ORDER NOW</p>
+            </Link>
             <FaArrowRightLong className="arrowicon" size={25} color="#53b2fe" />
           </div>
         </div>

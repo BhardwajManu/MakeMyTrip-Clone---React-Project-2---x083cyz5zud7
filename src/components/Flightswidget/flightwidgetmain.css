@@ -11,10 +11,10 @@
   top: -50px;
   font-size: 14px;
 }
-.fw-travellersclassdiv {
+/* .fw-travellersclassdiv {
   margin-left: 25px;
   margin-top: 10px;
-}
+} */
 .fw-upperdiv {
   /* border: 2px solid red; */
   cursor: pointer;
@@ -45,7 +45,9 @@
 
 .fw-fromdiv {
   /* border: 2px solid green; */
-  width: 300px;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  width: 313px;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -66,6 +68,7 @@
   font-weight: 900;
 }
 .fw-fromdiv p:nth-child(3) {
+  font-size: small;
   margin: 0;
   padding: 0;
 }
@@ -87,7 +90,7 @@
 
 .fw-todiv {
   /* border: 2px solid green; */
-  width: 300px;
+  width: 313px;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -113,7 +116,8 @@
 }
 
 .fw-departurediv {
-  width: 120px;
+  height: auto;
+  width: 220px;
   padding: 10px 19px;
   border-right: solid 1px #e7e7e7;
   display: flex;
@@ -160,8 +164,10 @@
   flex-direction: column;
   align-items: flex-start;
 }
-/ .fw-travellersclassdiv {
+.fw-travellersclassdiv {
   /* border: 1px solid red; */
+  width: 217px;
+  border-radius: 0 10px 10px 0;
   padding: 10px 19px;
   display: flex;
   flex-direction: column;
@@ -310,3 +316,22 @@
   height: 11px;
   background-position: -149px -111px;
 } */
+.fw-departurediv:hover {
+  background-color: #eaf5ff;
+}
+.fw-fromdiv:hover {
+  background-color: #eaf5ff;
+}
+.fw-travellersclassdiv:hover {
+  background-color: #eaf5ff;
+}
+
+.new-div {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+}
+.fw-todiv:hover,
+.new-div:hover {
+  background-color: #eaf5ff;
+}

@@ -1,46 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./trainsearchpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
-import { IoIosArrowUp } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import Traintopsection from "./Traintopsection";
+import useFetch from "../../Hooks/useFetch";
+import TrainCard from "./TrainCard";
 // import CarouselDate from "./CarouselDate";
 
 const TrainsSearchPage = () => {
+  const [params, setParams] = useSearchParams();
+  const source = params.get("source");
+  const destination = params.get("destination");
+  const day = params.get("day");
+  const stops = params.get("stops");
+  const sort = params.get("sort");
+  const departureTime = params.get("departureTime");
+  const { get, data } = useFetch([]);
+
+  // const handleCheckboxChange = (key, value) => {
+  //   // setSelectedOption(value === selectedOption ? null : value);
+  //   if (value === "") {
+  //     params.delete(key);
+  //     setParams(params);
+  //     return;
+  //   }
+
+  //   const newSearchParams = { ...Object.fromEntries(params), [key]: value };
+  //   setParams(newSearchParams);
+  // };
+  useEffect(() => {
+    get(
+      `/bookingportals/train?search={"source":"${source}","destination":"${destination}"}&day=${day}${
+        stops ? `&filter={"stops":"${stops}"}` : ""
+      }${sort ? `&sort={"ticketPrice":${sort}}` : ""}${
+        departureTime
+          ? `&filter={"departureTime":{"$lte":"15:00","$gte":"06:00"}}`
+          : ""
+      }`
+    );
+  }, [params]);
+
   return (
     <>
       <Stickyheader />
-
       <div className="trainspagemaindiv">
-        <div className="trainspage-topdiv">
-          <div className="trains-searchdetails-div">
-            <div className="fromcity-div">
-              <p>FROM CITY</p>
-              <p>NDLS,New Delhi</p>
-            </div>
-            <div className="tocity-div">
-              <p>TO CITY</p>
-              <p>CNB,Kanpur</p>
-            </div>
-            <div className="traveldate-div">
-              <p>TRAVEL DATE</p>
-              <p>Sun,17 Dec 23</p>
-            </div>
-            <div className="class-div">
-              <p>CLASS</p>
-              <p>All Classes</p>
-            </div>
-            <button className="trains-searchbtn">SEARCH</button>
-          </div>
-          <div className="sortedby-div">
-            <p>Sorted By :</p>
-            <p>
-              <span>Availability(Default)</span>
-              <IoIosArrowUp size={16} color="#008cff" />
-            </p>
-            <p>| Showing 48 out of 48 trains.</p>
-          </div>
-        </div>
-
+        <Traintopsection />
         <div className="trainspage-bottomdiv">
           <div className="filters-div">
             <div className="flitercategory">
@@ -153,60 +157,7 @@ const TrainsSearchPage = () => {
             </div>
           </div>
 
-          <div className="searchresults-div">
-            {/* <div className="datecarousal">
-              <CarouselDate />
-            </div> */}
-
-            <div className="showtrains">
-              <div className="showtrains-topdiv">
-                <div className="trainname-and-details">
-                  <p className="trainname">Shram Shkti Exp</p>
-                  <div className="traindetails-div">
-                    <p className="train-number">#12452</p>
-                    <p>
-                      <span className="departure-dates">Departs on :</span>
-                      <span>S</span>
-                      <span>S</span>
-                      <span>M</span>
-                      <span>T</span>
-                      <span>W</span>
-                      <span>T</span>
-                      <span>F</span>
-                      <span>S</span>
-                    </p>
-                  </div>
-                </div>
-                <div className="departuredetails-div">
-                  <p>11:55 PM, Sun</p>
-                  <p>New Delhi Railway Station (NDLS)</p>
-                </div>
-                <div className="traveltime-div">
-                  <div>
-                    <p>6 hrs 20 mins</p>
-                  </div>
-                  {/* <p className="linktoviewroute">View route</p> */}
-                </div>
-                <div className="arrivaldetails-div">
-                  <p>6:15 AM, Mon</p>
-                  <p>Kanpur Central Railway Station (CNB)</p>
-                </div>
-              </div>
-
-              <Link to="/traincheckoutpage">
-                <div className="showtrains-btmdiv">
-                  <div className="sl-card">
-                    <div>
-                      <p>SL</p>
-                      <p>₹ 300</p>
-                    </div>
-                    <p className="rac-nmbr">RAC 28</p>
-                    <p className="cancellation">Free Cancellation</p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
+          <TrainCard data={data} />
         </div>
       </div>
     </>

@@ -7,9 +7,9 @@ import fwad from "../../assets/images/fwad.png";
 const HotelWidgetBottom = () => {
   return (
     <div>
-      <div className="fw-mainbtmdiv">
+      {/* <div className="fw-mainbtmdiv">
         <img className="fw-adv" src={fwad} alt="ad" />
-      </div>
+      </div> */}
       <Offers />
       <DownloadApp />
       <ForexWidget />

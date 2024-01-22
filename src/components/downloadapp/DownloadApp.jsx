@@ -3,6 +3,7 @@ import "./downloadapp.css";
 import { Container } from "@mui/material";
 import indianflag from "../../assets/images/indianflag.png";
 import qrcode from "../../assets/images/qrcode.png";
+import { Link } from "react-router-dom";
 
 const DownloadApp = () => {
   return (
@@ -27,7 +28,9 @@ const DownloadApp = () => {
                 <p>+91 - </p>
                 <input placeholder="Enter Mobile number" />
               </div>
-              <div className="getapplink">GET APP LINK</div>
+              <Link to="/comingsoon">
+                <div className="getapplink">GET APP LINK</div>
+              </Link>
             </div>
           </div>
           <div className="dwnldapprightcontainer">

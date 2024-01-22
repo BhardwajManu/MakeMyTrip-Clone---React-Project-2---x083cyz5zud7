@@ -41,8 +41,8 @@ const useFetch = (initialData) => {
       setLoading(false);
     }
   }
-  useEffect(() => {}, [data]);
-  console.log("useFetch", data);
+  // useEffect(() => {}, [data]);
+  // console.log("useFetch", data);
 
   return { data, error, loading, get, post, moreData };
 };

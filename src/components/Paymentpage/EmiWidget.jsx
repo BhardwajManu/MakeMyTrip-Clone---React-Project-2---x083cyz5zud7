@@ -16,16 +16,6 @@ const EmiWidget = () => {
   return (
     <>
       <div className="emi-main-div">
-        <div className="searchfield-div">
-          <span className="emi-search-icon">
-            <CiSearch size={25} />
-          </span>
-          <input
-            type="text"
-            className="emi-searchinputfield"
-            placeholder="Search your bank"
-          />
-        </div>
         <div className="emi-title-div">
           <p className="allbanks-head">All Banks</p>
           <p className="creditcard-title">Credit Card</p>

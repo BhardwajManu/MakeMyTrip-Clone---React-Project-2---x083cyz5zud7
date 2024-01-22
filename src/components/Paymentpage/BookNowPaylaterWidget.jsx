@@ -40,7 +40,7 @@ const BookNowPaylaterWidget = () => {
 
         <div className="paylater-eligibility-div">
           <div className="bnpl-text-btn-div">
-            <p>Check eligibility of mobile no. 918547084645</p>
+            <p>Check eligibility of mobile no. </p>
             <button>proceed</button>
           </div>
           <ul className="bnpl-options-list">

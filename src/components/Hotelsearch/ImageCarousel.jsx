@@ -1,9 +1,5 @@
 import "./imagecarousel.css";
 import Flickity from "react-flickity-component";
-import hoteloneimg from "../../assets/Images/hoteloneimg.jpeg";
-import hoteltwoimg from "../../assets/Images/hoteltwoimg.jpeg";
-import hotelthirdimg from "../../assets/Images/hotelthirdimg.jpeg";
-import hotelfourthimg from "../../assets/Images/hotelfourthimg.jpeg";
 import { MdPolicy } from "react-icons/md";
 import { IoIosCheckmark } from "react-icons/io";
 import { IoMdPricetag } from "react-icons/io";
@@ -18,7 +14,7 @@ const flickityOptions = {
   lazyLoad: true,
 };
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ data }) => {
   return (
     <>
       <div className="topcarousel-div">
@@ -31,10 +27,10 @@ const ImageCarousel = () => {
             reloadOnUpdate // default false
             static // default false
           >
-            <img className="imageshow" src={hoteloneimg} alt="" />
-            <img className="imageshow" src={hoteltwoimg} alt="" />
-            <img className="imageshow" src={hotelthirdimg} alt="" />
-            <img className="imageshow" src={hotelfourthimg} alt="" />
+            <img className="imageshow" src={data?.data?.images[0]} alt="" />
+            <img className="imageshow" src={data?.data?.images[1]} alt="" />
+            <img className="imageshow" src={data?.data?.images[2]} alt="" />
+            <img className="imageshow" src={data?.data?.images[3]} alt="" />
           </Flickity>
         </div>
         <div className="baseRight">
@@ -54,12 +50,16 @@ const ImageCarousel = () => {
                 Extra Bed Charge
               </div>
               <div>
-                <span>₹ 550</span>
+                <span>
+                  ₹ {data?.data?.childAndExtraBedPolicy.extraBedCharge}
+                </span>
               </div>
             </div>
-            <h6 className="text-[12px] ml-2">Additional charges may apply</h6>
+            <h6 className="text-[12px] ml-2">
+              {data?.data?.childAndExtraBedPolicy.additionalInfo}
+            </h6>
           </div>
-          <Link to="/hotelcheckoutpage">
+          <Link to={`/hotelcheckoutpage/${data?.data?._id}`}>
             <button className="primaryBtn">Book Now</button>
           </Link>
         </div>
