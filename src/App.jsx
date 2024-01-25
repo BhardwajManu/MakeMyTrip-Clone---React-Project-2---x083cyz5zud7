@@ -3,7 +3,6 @@ import "./App.css";
 import Main from "./components/HomePage/Main";
 import { useEffect, useState } from "react";
 import { Stickyheader } from "./components/stickeyheader/Stickyheader";
-import MytripsPage from "./components/profilePages/MyTripspage";
 import ProfileDetails from "./components/profilePages/ProfileDetails";
 import HotelSearchPage from "./components/Hotelsearch/HotelSearchPage";
 import TrainsSearchPage from "./components/Trainsearch/TrainSearchPage";
@@ -21,6 +20,7 @@ import Buscheckoutpage from "./components/checkoutpages/Buscheckoutpage";
 import ComingSoonPage from "./components/Comingsoonpage/ComingSoonPage";
 import TabforLogin from "./components/Login/TabforLogin";
 import { LoginStateProvider } from "./Context/LoginContext";
+import MytripsPage from "./components/profilePages/MytripsPage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);

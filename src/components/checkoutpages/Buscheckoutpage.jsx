@@ -7,9 +7,6 @@ import useFetch from "../../Hooks/useFetch";
 
 const Buscheckoutpage = () => {
   const { data, get } = useFetch([]);
-  const [params] = useSearchParams();
-  const date = decodeURI(params.get("date"));
-
   const { id } = useParams();
 
   useEffect(() => {

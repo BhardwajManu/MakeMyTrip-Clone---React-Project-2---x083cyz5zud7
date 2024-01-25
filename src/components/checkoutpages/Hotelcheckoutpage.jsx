@@ -9,7 +9,7 @@ import HotelpropertyRules from "../Hotelsearch/HotelpropertyRules";
 
 const Hotelcheckoutpage = () => {
   const { data, get } = useFetch([]);
-  const [params] = useSearchParams();
+
   const { id } = useParams();
 
   useEffect(() => {
