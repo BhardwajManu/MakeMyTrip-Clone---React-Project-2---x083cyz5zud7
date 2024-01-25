@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./emiwidget.css";
 import { CiSearch } from "react-icons/ci";
-import hdfc from "../../assets/images/Hdfc.png";
-import icici from "../../assets/images/Icici.png";
-import citibank from "../../assets/images/Citibank.png";
-import axisbank from "../../assets/images/Axisbank.png";
-import sbi from "../../assets/images/Sbi.png";
+// import hdfc from "../../assets/images/Hdfc.png";
+// import icici from "../../assets/images/Icici.png";
+// import citibank from "../../assets/images/Citibank.png";
+// import axisbank from "../../assets/images/Axisbank.png";
+// import sbi from "../../assets/images/Sbi.png";
 import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 
 const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
