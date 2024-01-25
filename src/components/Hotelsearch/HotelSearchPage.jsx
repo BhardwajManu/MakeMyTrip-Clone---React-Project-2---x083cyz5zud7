@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./hotelsearch.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
-import hotelspagemap from "../../assets/images/Hotelspagemap.png";
+// import hotelspagemap from "../../assets/images/Hotelspagemap.png";
 
 import { Link, useSearchParams } from "react-router-dom";
 import HotelTopSection from "./HotelTopSection";
