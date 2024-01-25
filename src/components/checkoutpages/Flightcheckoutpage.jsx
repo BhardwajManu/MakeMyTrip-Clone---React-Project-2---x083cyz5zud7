@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Flightcheckoutpage.css";
+import "./flightcheckoutpage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import Userdetails from "./Userdetails";
 import useFetch from "../../Hooks/useFetch";
