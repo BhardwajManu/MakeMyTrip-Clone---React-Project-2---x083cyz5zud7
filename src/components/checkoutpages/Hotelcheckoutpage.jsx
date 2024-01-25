@@ -11,7 +11,6 @@ const Hotelcheckoutpage = () => {
   const { data, get } = useFetch([]);
 
   const { id } = useParams();
-
   useEffect(() => {
     get(`/bookingportals/hotel/${id}`);
   }, [id]);
@@ -96,7 +95,6 @@ const Hotelcheckoutpage = () => {
                   <div className="makeFlex spaceBetween">
                     <div className="flexOne">
                       <h4 className="font18 latoBlack blackText">
-                        {" "}
                         {data?.data?.rooms[0].roomType} Room
                       </h4>
                       <p className="font14 grayText appendTop5">2 Adults</p>

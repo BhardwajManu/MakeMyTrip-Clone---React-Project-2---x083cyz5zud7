@@ -6,7 +6,7 @@ import useFetch from "../../Hooks/useFetch";
 import Flightcard from "./Flightcard";
 import Flighttopsection from "./Flighttopsection";
 
-const FlightSearch = () => {
+const FlightSearchpage = () => {
   const [fromAirportData, setFromAirportData] = useState({
     city: "Pune",
     iata_code: "PNQ",
@@ -295,4 +295,4 @@ const FlightSearch = () => {
   );
 };
 
-export default FlightSearch;
+export default FlightSearchpage;

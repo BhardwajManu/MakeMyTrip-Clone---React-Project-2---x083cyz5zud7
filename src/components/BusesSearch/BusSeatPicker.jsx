@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./busseatpicker.css";
-import { TbArmchair } from "react-icons/tb";
 import { Link, useSearchParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 

@@ -31,8 +31,8 @@ const BusTopSection = () => {
       (bus) => bus.location === destination
     );
 
-    setFromBusData(fromData || { location: "Delhi,Delhi" });
-    setToBustData(toData || { location: "Kanpur,Uttar Pradesh" });
+    setFromBusData(fromData || { location: "Mumbai, Maharashtra" });
+    setToBustData(toData || { location: "Jabalpur, Madhya Pradesh" });
   }, [dropDownData]);
 
   return (

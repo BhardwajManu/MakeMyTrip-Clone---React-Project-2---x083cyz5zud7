@@ -6,17 +6,12 @@ import { toast } from "react-toastify";
 import useFetch from "../../Hooks/useFetch";
 import { useParams } from "react-router-dom";
 
-const UpiWidget = ({
-  setShowConfirmation,
-  showConfirmation,
-  bookingType,
-  bookingId,
-}) => {
+const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [upiID, setUpiID] = useState("");
   const [isValid, setIsValid] = useState(false);
   const { post, data, get } = useFetch([]);
   const [upiIDError, setUpiIDError] = useState("");
-  const { id, keyforTrips } = useParams();
+  const { id } = useParams();
 
   const handleChange = (field, event) => {
     setUpiID(event.target.value);
@@ -48,9 +43,6 @@ const UpiWidget = ({
   const endDate = year + "-" + 0 + month + "-" + nextDay + "T" + arrivalTime;
   const startDateHotel = year + "-" + 0 + month + "-" + day;
   const endDateHotel = year + "-" + 0 + month + "-" + day;
-
-  // console.log(startDate);
-  // console.log(endDate);
 
   const handlePayNowClick = async () => {
     let flightBookingDetails;

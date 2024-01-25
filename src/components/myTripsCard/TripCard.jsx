@@ -1,6 +1,5 @@
 import React from "react";
 import "./mytrip.css";
-import { MdOutlineFlight } from "react-icons/md";
 import { RiBookmarkFill } from "react-icons/ri";
 
 const TripCard = () => {

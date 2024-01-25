@@ -100,7 +100,7 @@ const SingleHotelPage = () => {
                 About The {data?.data?.name}
               </h1>
               <span className="text-[#505B61] pt-1 pb-7 text-[14px]">
-                Standing in the bustling city of {data?.data?.location}, The{" "}
+                Standing in the bustling city of {data?.data?.location}, The
                 {data?.data?.name} is an affordable stay choice featuring
                 guest-friendly amenities and vicinity to famous landmarks.Bask
                 in the comfort of rooms, furnished with elegant decor with an

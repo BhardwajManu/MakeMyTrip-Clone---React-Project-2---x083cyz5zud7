@@ -101,7 +101,9 @@ const Buscheckoutpage = () => {
                           </span>
                           <span className="fareHeader">Base Fare</span>
                         </div>
-                        <span className="fontSize14 darkText">₹ 699</span>
+                        <span className="fontSize14 darkText">
+                          ₹ {data?.data?.fare}
+                        </span>
                       </div>
                     </div>
                     <div className="fareTypeWrap">

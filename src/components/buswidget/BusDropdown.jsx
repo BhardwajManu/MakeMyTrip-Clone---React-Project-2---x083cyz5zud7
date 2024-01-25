@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoLocationOutline, IoSearch } from "react-icons/io5";
 import useFetch from "../../Hooks/useFetch";
-import flightsearch from "../../assets/images/flightsearch.png";
 import "../Flightswidget/flightdropdown.css";
 
 const BusDropdown = ({ setShowDropdown, updateSelectedBusStand }) => {

@@ -3,10 +3,8 @@ import "./App.css";
 import Main from "./components/HomePage/Main";
 import { useEffect, useState } from "react";
 import { Stickyheader } from "./components/stickeyheader/Stickyheader";
-import ProfileDetails from "./components/profilePages/ProfileDetails";
 import HotelSearchPage from "./components/Hotelsearch/HotelSearchPage";
 import TrainsSearchPage from "./components/Trainsearch/TrainSearchPage";
-import FlightSearch from "./components/Flightsearch/Flightsearch";
 import PaymentPageMain from "./components/Paymentpage/PaymentPageMain";
 import SingleHotelPage from "./components/Hotelsearch/SingleHotelPage";
 import { useAuthContext } from "./Context/AuthContext";
@@ -21,6 +19,7 @@ import ComingSoonPage from "./components/Comingsoonpage/ComingSoonPage";
 import TabforLogin from "./components/Login/TabforLogin";
 import { LoginStateProvider } from "./Context/LoginContext";
 import MytripsPage from "./components/profilePages/MytripsPage";
+import FlightSearchpage from "./components/Flightsearch/FlightSearchpage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -54,11 +53,10 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Main />} />
           <Route path="/mytrips" element={<MytripsPage />} />
-          <Route path="/myprofile" element={<ProfileDetails />} />
           <Route path="/hotels" element={<HotelSearchPage />} />
           <Route path="/trains" element={<TrainsSearchPage />} />
           <Route path="/buses" element={<BusesSearch />} />
-          <Route path="/flights" element={<FlightSearch />} />
+          <Route path="/flights" element={<FlightSearchpage />} />
           <Route path="/payment/:id" element={<PaymentPageMain />} />
           <Route path="/comingsoon" element={<ComingSoonPage />} />
           <Route path="/singlehotel/:id" element={<SingleHotelPage />} />

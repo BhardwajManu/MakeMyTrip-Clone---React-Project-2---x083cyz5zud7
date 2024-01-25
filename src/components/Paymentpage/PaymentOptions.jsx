@@ -107,8 +107,6 @@ const PaymentOptions = () => {
             <UpiWidget
               setShowConfirmation={setShowConfirmation}
               showConfirmation={showConfirmation}
-              bookingType="hotel"
-              bookingId="1234"
             />
           )}
           {showCardWidget && (
