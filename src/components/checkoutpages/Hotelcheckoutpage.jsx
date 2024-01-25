@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./hotelcheckoutpage.css";
-import Hotelcheckout from "../../assets/Images/hotelcheckout.png";
+// import Hotelcheckout from "../../assets/Images/hotelcheckout.png";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import Userdetails from "./Userdetails";
 import { Link, useParams, useSearchParams } from "react-router-dom";
