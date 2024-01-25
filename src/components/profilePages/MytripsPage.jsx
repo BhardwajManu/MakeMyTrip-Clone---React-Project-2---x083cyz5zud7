@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./mytripspage.css";
+import "./mytripsPage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { Container } from "@mui/material";
 import { IoIosArrowForward } from "react-icons/io";
