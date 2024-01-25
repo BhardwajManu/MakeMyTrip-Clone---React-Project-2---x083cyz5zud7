@@ -1,5 +1,5 @@
 import React from "react";
-import "./Offers.css";
+import "./offers.css";
 
 const Offercards = ({ item }) => {
   return (
