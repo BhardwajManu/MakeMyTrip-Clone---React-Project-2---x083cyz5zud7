@@ -48,7 +48,7 @@ const TrainCard = ({ data }) => {
                     <div key={coachIndex} className="sl-card">
                       <div>
                         <p>{coach.coachType}</p>
-                        <p>₹ {coach.numberOfSeats * 10}</p>{" "}
+                        <p>₹ {coach.numberOfSeats * 10}</p>
                         {/* You can replace this calculation with your actual logic */}
                       </div>
                       <p className="rac-nmbr">RAC {coachIndex + 1}</p>

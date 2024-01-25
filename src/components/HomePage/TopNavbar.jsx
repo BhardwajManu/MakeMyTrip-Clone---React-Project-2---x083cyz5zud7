@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logowhite from "../../assets/images/logowhite.png";
 import { Link, useNavigate } from "react-router-dom";
 import "./topnavbar.css";
@@ -8,12 +8,13 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { SlLogout } from "react-icons/sl";
 import { SlHandbag } from "react-icons/sl";
 import { toast } from "react-toastify";
+import LoginContext from "../../Context/LoginContext";
 
 const TopNavbar = () => {
-  const [showLogin, setShowLogin] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { authenticated, logoutUser } = useAuthContext();
+  const { showLogin, setShowLogin } = useContext(LoginContext);
 
   const openMyStuffHover = () => {
     setIsHovered(true);
@@ -67,7 +68,16 @@ const TopNavbar = () => {
               </div>
             </div>
           </Link>
-          <Link to="/comingsoon">
+          <Link
+            to={authenticated ? "/mytrips" : ""}
+            onClick={(e) => {
+              if (!authenticated) {
+                e.preventDefault();
+                setShowLogin(true);
+              }
+            }}
+            className="linktodeadclick"
+          >
             <div className="mytrips">
               <div className="mytripslogo"></div>
               <div className="mytripsdescription">

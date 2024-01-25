@@ -7,9 +7,6 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 const Flightcheckoutpage = () => {
   const { data, get } = useFetch([]);
-  const [params] = useSearchParams();
-  const date = decodeURI(params.get("date"));
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -178,7 +175,7 @@ const Flightcheckoutpage = () => {
           </div>
         </div>
       </div>
-      <Userdetails />
+      <Userdetails data={data} keyforTrips={"flight"} />
     </>
   );
 };

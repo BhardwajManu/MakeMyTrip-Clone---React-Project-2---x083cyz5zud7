@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./cardwidget.css";
 import Select from "react-select";
+import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 
-const CardWidget = () => {
+const CardWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [name, setName] = useState("");
   const [cvvCode, setCvvCode] = useState("");
@@ -13,6 +14,12 @@ const CardWidget = () => {
 
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
+
+  // const handleConfirmClick = () => {
+  //   validateCardNumber();
+  //   validateName();
+  //   validateCvvCode();
+  // };
 
   const monthOptions = [
     { value: "01", label: "January (01)" },
@@ -94,6 +101,7 @@ const CardWidget = () => {
   };
 
   const handlePayNowClick = () => {
+    setShowConfirmation(true);
     validateCardNumber();
     validateName();
     validateCvvCode();
@@ -156,6 +164,9 @@ const CardWidget = () => {
       <button className="card-paynow-btn" onClick={handlePayNowClick}>
         PAY NOW
       </button>
+      {showConfirmation && (
+        <ConfirmationPopup setShowConfirmation={setShowConfirmation} />
+      )}
 
       <p className="card-termsandconditions">
         By continuing to pay, I understand and agree with the{" "}

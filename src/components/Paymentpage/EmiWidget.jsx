@@ -6,13 +6,18 @@ import icici from "../../assets/images/icici.png";
 import citibank from "../../assets/images/citibank.png";
 import axisbank from "../../assets/images/axisbank.png";
 import sbi from "../../assets/images/sbi.png";
+import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 
-const EmiWidget = () => {
+const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [selectedBank, setSelectedBank] = useState("");
 
   const handlebankselect = (e) => {
     setSelectedBank(e.target.value);
   };
+  const handlePayNowClick = () => {
+    setShowConfirmation(true);
+  };
+
   return (
     <>
       <div className="emi-main-div">
@@ -94,7 +99,12 @@ const EmiWidget = () => {
         </ul>
         <div className="emi-amnt-paybtn-div">
           <p className="emi-payamnt">₹ 5050</p>
-          <button className="emi-payniw-btn">Pay now</button>
+          <button className="emi-payniw-btn" onClick={handlePayNowClick}>
+            Pay now
+          </button>
+          {showConfirmation && (
+            <ConfirmationPopup setShowConfirmation={setShowConfirmation} />
+          )}
         </div>
         <p className="emi-terms-conditions">
           By continuing to pay, I understand and agree with the{" "}

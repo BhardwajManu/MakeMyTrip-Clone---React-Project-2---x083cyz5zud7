@@ -171,10 +171,7 @@ const HotelSearchPage = () => {
             </div>
           </div>
 
-          <div className="mainsearchresultspage">
-            <h3>Popular in Bangalore</h3>
-            <HotelCard data={data} />
-          </div>
+          <HotelCard data={data} />
         </div>
         {/* </Container> */}
       </div>

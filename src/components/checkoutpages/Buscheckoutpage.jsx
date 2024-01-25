@@ -134,7 +134,7 @@ const Buscheckoutpage = () => {
             </div>
           </div>
         </div>
-        <Userdetails />
+        <Userdetails data={data} keyforTrips={"bus"} />
       </div>
     </>
   );

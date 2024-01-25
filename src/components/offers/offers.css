@@ -41,10 +41,12 @@
   height: 85%;
   margin-top: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  overflow-x: auto;
+  grid-template-columns: repeat(25, auto);
+  grid-template-rows: repeat(2, auto);
+  overflow-x: hidden;
+  overflow-y: hidden;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 .offers-bottomdiv::-webkit-scrollbar {
   display: none;

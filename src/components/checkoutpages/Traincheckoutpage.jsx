@@ -164,7 +164,7 @@ const Traincheckoutpage = () => {
         </div>
       </div>
       <div className="bg-[#fff]">
-        <Userdetails />
+        <Userdetails data={data} keyforTrips={"train"} />
       </div>
     </>
   );

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PaymentOptions from "./PaymentOptions";
 import "./paymentpagemain.css";
-import logowhite from "../../assets/images/logowhite.png";
+import useFetch from "../../Hooks/useFetch";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const PaymentPageMain = () => {
   return (

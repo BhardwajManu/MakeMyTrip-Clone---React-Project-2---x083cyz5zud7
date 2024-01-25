@@ -213,7 +213,7 @@ const Hotelcheckoutpage = () => {
           </div>
         </div>
       </div>
-      <Userdetails />
+      <Userdetails data={data} keyforTrips={"hotel"} />
     </>
   );
 };

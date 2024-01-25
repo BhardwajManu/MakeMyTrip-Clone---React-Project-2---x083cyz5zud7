@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./userdetails.css";
 import { Link } from "react-router-dom";
 
-const Userdetails = () => {
+const Userdetails = ({ data, keyforTrips }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -14,12 +14,17 @@ const Userdetails = () => {
   const [isValid, setIsValid] = useState(false);
 
   // Error state variables
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
   const [mobileNumberError, setMobileNumberError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [pincodeError, setPincodeError] = useState("");
   const [stateError, setStateError] = useState("");
   const [addressError, setAddressError] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("keyforpayment", keyforTrips);
+  }, []);
   const handleChange = (fieldName, event) => {
     let errorMessage = "";
     switch (fieldName) {
@@ -134,7 +139,7 @@ const Userdetails = () => {
                 onClick={() => {
                   setGender("MALE");
                   document.getElementById("maleOption").style.backgroundColor =
-                    "rgb(184, 223, 255)";
+                    "#eaf5ff";
                   document.getElementById(
                     "femaleOption"
                   ).style.backgroundColor = "";
@@ -148,7 +153,8 @@ const Userdetails = () => {
                   setGender("FEMALE");
                   document.getElementById(
                     "femaleOption"
-                  ).style.backgroundColor = "rgb(184, 223, 255)";
+                  ).style.backgroundColor = "#eaf5ff";
+
                   document.getElementById("maleOption").style.backgroundColor =
                     "";
                 }}
@@ -233,12 +239,12 @@ const Userdetails = () => {
           </div>
         </div>
 
-        <Link to="/payment">
+        <Link to={`/payment/${data?.data?._id}`}>
           <button
             className={`ud-continue-btn ${isValid ? "enabled" : "disabled"}`}
             disabled={!isValid}
           >
-            pay now
+            Continue
           </button>
         </Link>
       </div>

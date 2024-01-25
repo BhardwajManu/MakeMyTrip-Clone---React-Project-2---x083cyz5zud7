@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./upiwidget.css";
 import upiqrcode from "../../assets/images/upiqrcode.png";
+import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
+import { toast } from "react-toastify";
+import useFetch from "../../Hooks/useFetch";
+import { useParams } from "react-router-dom";
 
-const UpiWidget = () => {
+const UpiWidget = ({
+  setShowConfirmation,
+  showConfirmation,
+  bookingType,
+  bookingId,
+}) => {
   const [upiID, setUpiID] = useState("");
   const [isValid, setIsValid] = useState(false);
-
+  const { post, data, get } = useFetch([]);
   const [upiIDError, setUpiIDError] = useState("");
+  const { id, keyforTrips } = useParams();
 
   const handleChange = (field, event) => {
     setUpiID(event.target.value);
@@ -18,7 +28,82 @@ const UpiWidget = () => {
     }
     setIsValid(!upiIDError);
   };
+  useEffect(() => {
+    const value = localStorage.getItem("keyforpayment");
+    if (value !== undefined && value !== null) {
+      get(`/bookingportals/${value}/${id}`);
+    }
+  }, [id]);
 
+  // console.log("data", data);
+  const flightId = data?.data?._id;
+  const departureTime = data?.data?.departureTime;
+  const arrivalTime = data?.data?.arrivalTime;
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const nextDay = date.getDate() + 1;
+  const startDate = year + "-" + 0 + month + "-" + day + "T" + departureTime;
+  const endDate = year + "-" + 0 + month + "-" + nextDay + "T" + arrivalTime;
+  const startDateHotel = year + "-" + 0 + month + "-" + day;
+  const endDateHotel = year + "-" + 0 + month + "-" + day;
+
+  // console.log(startDate);
+  // console.log(endDate);
+
+  const handlePayNowClick = async () => {
+    let flightBookingDetails;
+    const value = localStorage.getItem("keyforpayment");
+    if (value === "flight") {
+      flightBookingDetails = {
+        bookingType: "flight",
+        bookingDetails: {
+          flightId: flightId,
+          startDate: startDate,
+          endDate: endDate,
+        },
+      };
+    }
+    if (value === "train") {
+      flightBookingDetails = {
+        bookingType: "train",
+        bookingDetails: {
+          trainId: flightId,
+          startDate: startDate,
+          endDate: endDate,
+        },
+      };
+    }
+    if (value === "hotel") {
+      flightBookingDetails = {
+        bookingType: "hotel",
+        bookingDetails: {
+          hotelId: flightId,
+          startDate: startDateHotel,
+          endDate: endDateHotel,
+        },
+      };
+    }
+    if (value === "bus") {
+      flightBookingDetails = {
+        bookingType: "bus",
+        bookingDetails: {
+          busId: flightId,
+          startDate: startDate,
+          endDate: endDate,
+        },
+      };
+    }
+
+    // console.log(flightBookingDetails);
+    await post("/bookingportals/booking", flightBookingDetails);
+    // console.log(response);
+    setShowConfirmation(true);
+  };
+  if (data?.data?.message == "Booking successful") {
+    localStorage.setItem("paymentStatus", JSON.stringify(data?.data));
+  }
   return (
     <>
       <div className="upiwidget-maindiv">
@@ -55,10 +140,13 @@ const UpiWidget = () => {
                   isValid ? "enabled" : "disabled"
                 }`}
                 disabled={!isValid}
+                onClick={handlePayNowClick}
               >
                 VERIFY & PAY
               </button>
-
+              {showConfirmation && (
+                <ConfirmationPopup setShowConfirmation={setShowConfirmation} />
+              )}
               <ul className="stepsforupipay">
                 <li>Enter your registered VPA</li>
                 <li>Receive payment request on bank app</li>
@@ -76,8 +164,6 @@ const UpiWidget = () => {
             <li className="upi-paytm-icon"></li>
           </ul>
         </div>
-
-        <p className="upi-payamnt">₹ 8,399</p>
 
         <p className="upi-termsandcondition">
           By continuing to pay, I understand and agree with the{" "}

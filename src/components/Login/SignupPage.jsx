@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Context/AuthContext";
 import useFetch from "../../Hooks/useFetch";
+import LoginContext from "../../Context/LoginContext";
 
 const initialData = {
   name: "",
@@ -15,7 +16,8 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-const SignupPage = ({ setShowLogin }) => {
+const SignupPage = () => {
+  const { showLogin, setShowLogin } = useContext(LoginContext);
   const [errors, setErrors] = useState(initialData);
   const [formData, setFormData] = useState(initialData);
   const { data, post, loading } = useFetch({});

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./flightsearch.css";
 import "./flightdetails.css";
 import { Link, useSearchParams } from "react-router-dom";
@@ -10,6 +10,8 @@ import akasaimg from "../../assets/Images/akasaimg.png";
 import airindiaexpressimg from "../../assets/Images/airindiaexpressimg.png";
 import Flightdetails from "./Flightdetails";
 import { useAuthContext } from "../../Context/AuthContext";
+import LoginContext from "../../Context/LoginContext";
+import TabforLogin from "../Login/TabforLogin";
 
 const images = [
   { airline: indigoimg, flightname: "IndiGo" },
@@ -23,6 +25,7 @@ const images = [
 const Flightcard = ({ data }) => {
   const [isElementVisible, setElementVisibility] = useState({});
   const { authenticated } = useAuthContext();
+  const { showLogin, setShowLogin } = useContext(LoginContext);
 
   const toggleVisibility = (index) => {
     setElementVisibility((prevState) => ({
@@ -74,16 +77,23 @@ const Flightcard = ({ data }) => {
                 <p className="text-red-500 text-sm px-5 py-1">
                   {flight.availableSeats} seats left
                 </p>
-                {/* {authenticated ? ( */}
-                <Link to={`/flightcheckout/${flight._id}`}>
-                  <button className="flight-booknow-btn">Book Now</button>
-                </Link>
+                {authenticated ? (
+                  <Link to={`/flightcheckout/${flight._id}`}>
+                    <button className="flight-booknow-btn">Book Now</button>
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={(e) => {
+                      if (!authenticated) {
+                        e.preventDefault();
+                        setShowLogin(true);
+                      }
+                    }}
+                  >
+                    <button className="flight-booknow-btn">Book Now</button>
+                  </Link>
+                )}
               </div>
-              {/* ) : ( */}
-              {/* <Link to="/login">
-                  <button className="flight-booknow-btn">Book Now</button>
-                </Link>
-              )} */}
             </div>
             <div className="offertext">Get Rs 150 off using MMTBONUS*</div>
             <p
@@ -106,6 +116,7 @@ const Flightcard = ({ data }) => {
           </div>
         ))}
       </div>
+      {showLogin && <TabforLogin />}
     </>
   );
 };

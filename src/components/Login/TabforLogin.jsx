@@ -1,12 +1,14 @@
 // import React from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SignupPage from "../../components/Login/SignupPage";
 import LoginPage from "../../components/Login/LoginPage";
 import "./login.css";
 import { IoMdClose } from "react-icons/io";
+import LoginContext from "../../Context/LoginContext";
 ``;
-const TabforLogin = ({ showLogin, setShowLogin }) => {
+const TabforLogin = () => {
   const [activeTab, setActiveTab] = useState(false);
+  const { showLogin, setShowLogin } = useContext(LoginContext);
 
   const handleCloseLogin = (e) => {
     e.stopPropagation();
@@ -45,11 +47,7 @@ const TabforLogin = ({ showLogin, setShowLogin }) => {
               Signup
             </button>
           </div>
-          {activeTab ? (
-            <SignupPage setShowLogin={setShowLogin} />
-          ) : (
-            <LoginPage setShowLogin={setShowLogin} />
-          )}
+          {activeTab ? <SignupPage /> : <LoginPage />}
 
           <div>
             <IoMdClose

@@ -249,6 +249,9 @@
   margin-bottom: 20px;
   height: 244px;
 }
+.showtrains-btmdiv::-webkit-scrollbar {
+  display: none;
+}
 .showtrains-topdiv {
   /* border: 1px solid red; */
   margin-bottom: 20px;
@@ -382,7 +385,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow-x: auto;
   overflow-y: hidden;
   height: 129px;
 }

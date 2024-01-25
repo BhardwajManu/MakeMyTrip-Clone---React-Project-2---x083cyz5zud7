@@ -3,12 +3,11 @@ import "./paymentoptions.css";
 import gpaylogo from "../../assets/images/gpaylogo.png";
 import CardWidget from "./CardWidget";
 import GpayWidget from "./GpayWidget";
-import GiftCardWidget from "./GiftCardWidget";
-import BookNowPaylaterWidget from "./BookNowPaylaterWidget";
 import EmiWidget from "./EmiWidget";
 import UpiWidget from "./UpiWidget";
 
 const PaymentOptions = () => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [showUpiWidget, setShowUpiWidget] = useState(true);
   const [showCardWidget, setShowCardWidget] = useState(false);
   const [showNetBankingWidget, setShowNetBankingWidget] = useState(false);
@@ -28,14 +27,6 @@ const PaymentOptions = () => {
     setShowNetBankingWidget(false);
     setShowGpayWidget(false);
     SetActiveWidget("upi");
-  };
-
-  const handleShowNetbanking = () => {
-    setShowCardWidget(false);
-    setShowUpiWidget(false);
-    setShowNetBankingWidget(true);
-    setShowGpayWidget(false);
-    SetActiveWidget("netbanking");
   };
 
   const handleShowGpay = () => {
@@ -82,12 +73,9 @@ const PaymentOptions = () => {
               </div>
             </li>
 
-            <li
-              onClick={handleShowNetbanking}
-              className={activeWidget === "netbanking" ? "activewidget" : ""}
-            >
-              <div className="netbanking-img"></div>
-              <div className="options-text">
+            <li className={activeWidget === "netbanking" ? "activewidget" : ""}>
+              <div className="netbanking-img cursor-not-allowed"></div>
+              <div className="options-text cursor-not-allowed">
                 <p>Net Banking</p>
                 <p>All Major Banks Available</p>
               </div>
@@ -115,10 +103,32 @@ const PaymentOptions = () => {
         </div>
 
         <div className="paymentoptions-paywindow">
-          {showUpiWidget && <UpiWidget />}
-          {showCardWidget && <CardWidget />}
-          {showNetBankingWidget && <EmiWidget />}
-          {showGpayWidget && <GpayWidget />}
+          {showUpiWidget && (
+            <UpiWidget
+              setShowConfirmation={setShowConfirmation}
+              showConfirmation={showConfirmation}
+              bookingType="hotel"
+              bookingId="1234"
+            />
+          )}
+          {showCardWidget && (
+            <CardWidget
+              setShowConfirmation={setShowConfirmation}
+              showConfirmation={showConfirmation}
+            />
+          )}
+          {showNetBankingWidget && (
+            <EmiWidget
+              setShowConfirmation={setShowConfirmation}
+              showConfirmation={showConfirmation}
+            />
+          )}
+          {showGpayWidget && (
+            <GpayWidget
+              setShowConfirmation={setShowConfirmation}
+              showConfirmation={showConfirmation}
+            />
+          )}
         </div>
       </div>
     </>

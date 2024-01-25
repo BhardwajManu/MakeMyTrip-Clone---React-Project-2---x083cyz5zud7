@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./mytripspage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { Container } from "@mui/material";
 import { IoIosArrowForward } from "react-icons/io";
-import { IoSearchOutline } from "react-icons/io5";
 import mytriplistimage from "../../assets/Images/mytriplistimage.png";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
+import TripCard from "../myTripsCard/TripCard";
+
 const MytripsPage = () => {
+  const [activeSection, setActiveSection] = useState("completed");
+
+  const handleSectionClick = (section) => {
+    setActiveSection(section);
+  };
+
+  const renderContent = () => {
+    if (activeSection === "upcoming") {
+      return (
+        <div className="mytriplistcontainer-upcoming">
+          <img src={mytriplistimage} alt="mytrip" />
+          <div>
+            <h3>Looks empty, you've no upcoming bookings.</h3>
+            <p>When you book a trip, you will see your itinerary here.</p>
+            <Link to="/">
+              <button>PLAN A TRIP</button>
+            </Link>
+          </div>
+        </div>
+      );
+    } else if (activeSection === "completed") {
+      return (
+        <div className="mytriplistcontainer">
+          <TripCard />
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <Stickyheader />
-      <div className="mytripsbanner">
+      <div
+        className={`mytripsbanner ${
+          activeSection === "completed" ? "grey-bg" : ""
+        }`}
+      >
         <ul>
           <li>My Account</li>
           <li>
@@ -26,35 +60,29 @@ const MytripsPage = () => {
         <div className="mytripsstatus">
           <div className="mytripststusinnerul">
             <ul>
-              <li>
+              <li
+                className={
+                  activeSection === "upcoming" ? "active" : "notActive"
+                }
+                onClick={() => handleSectionClick("upcoming")}
+              >
                 <div className="upcomingtripimg"></div>
                 <p>UPCOMING</p>
               </li>
-              <li>
-                <div className="cancelledtripimg"></div>
-                <p>CANCELLED</p>
-              </li>
-              <li>
+              <li
+                className={
+                  activeSection === "completed" ? "active" : "notActive"
+                }
+                onClick={() => handleSectionClick("completed")}
+              >
                 <div className="completedtripimg"></div>
                 <p>COMPLETED</p>
               </li>
             </ul>
           </div>
-          <div className="mytripselectdiv">
-            <input type="text" placeholder="Search for a booking" />
-            <IoSearchOutline className="mytripssearchbtn" />
-          </div>
         </div>
-        <div className="mytriplistcontainer">
-          <img src={mytriplistimage} alt="mytrip" />
-          <div>
-            <h3>Looks empty, you've no upcoming bookings.</h3>
-            <p>When you book a trip, you will see your itinerary here.</p>
-            <Link to="/">
-              <button>PLAN A TRIP</button>
-            </Link>
-          </div>
-        </div>
+        {renderContent()}
+
         <div className="scrollupbtn">
           <MdKeyboardDoubleArrowUp className="scrollupicon" size={40} />
           Back To Top
@@ -63,4 +91,5 @@ const MytripsPage = () => {
     </>
   );
 };
+
 export default MytripsPage;

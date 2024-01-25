@@ -46,12 +46,22 @@ const FlightSearch = () => {
     );
   }, [params]);
 
+  const handleSearchButtonClick = (searchData) => {
+    // Update the search parameters using the searchData from Flighttopsection
+    setParams({
+      source: searchData.source,
+      destination: searchData.destination,
+      day: searchData.day,
+      date: searchData.date, // Assuming date is part of searchData
+    });
+  };
+
   return (
     <>
       <Stickyheader />
       <div className="flightsearch">
         <div className="flightsearch-maindiv">
-          <Flighttopsection />
+          <Flighttopsection updateSearchParams={handleSearchButtonClick} />
           <div className="partitiondiv"></div>
           <div className="flightsearch-btmdiv">
             {/* <span className="bgcolor-span"></span> */}

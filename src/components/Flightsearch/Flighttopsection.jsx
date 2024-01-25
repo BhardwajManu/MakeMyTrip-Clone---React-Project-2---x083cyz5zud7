@@ -2,8 +2,19 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
-
-const Flighttopsection = () => {
+import OutsideClickHandler from "react-outside-click-handler";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import FlightTopAirportSearch from "./FlightTopAirportSearch";
+const Flighttopsection = ({ updateSearchParams }) => {
+  const [searchData, setSearchData] = useState({
+    source: "PNQ",
+    destination: "JAI",
+    day: "Mon",
+    date: new Date().toLocaleDateString(),
+  });
+  const [showDate, setShowDate] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [fromAirportData, setFromAirportData] = useState({
     city: "Pune",
     iata_code: "PNQ",
@@ -19,11 +30,9 @@ const Flighttopsection = () => {
   const date = decodeURI(params.get("date"));
   const source = params.get("source");
   const destination = params.get("destination");
-
   useEffect(() => {
     getDropdownData("/bookingportals/airport?limit=30");
   }, []);
-
   useEffect(() => {
     if (!dropDownData) return;
     const fromData = dropDownData?.data?.airports.find(
@@ -36,45 +45,68 @@ const Flighttopsection = () => {
     setToAirportData(toData);
   }, [dropDownData]);
 
+  const handleDepartureDateClick = () => {
+    setShowDate(!showDate);
+  };
+  const handleDepartureDate = (date) => {
+    setSelectedDate(date);
+    setShowDate(false);
+    document.getElementById("fs-datepicker").innerText = new Date(date)
+      .toString()
+      .split(" ")
+      .slice(0, 4)
+      .join(" ");
+  };
+  const handleSearchData = (key, value) => {
+    setSearchData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+  const handleSearchButtonClick = () => {
+    // Call the updateSearchParams function with the selected data
+    updateSearchParams(searchData);
+  };
   return (
     <>
-      <div className="flightsearch-topdiv">
-        <div className="tripdetails-div">
-          <div>
-            <p>
-              FROM <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="fd-selecteditem">
-              {fromAirportData?.city}, {fromAirportData?.country}
-            </p>
-          </div>
-          <div>
-            <p>
-              TO <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="fd-selecteditem">
-              {toAirportData?.city}, {toAirportData?.country}
-            </p>
-          </div>
-          <div>
-            <p>
-              DEPART <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="fd-selecteditem">
-              {new Date(date).toString().split(" ").slice(0, 4).join(" ")}
-            </p>
-          </div>
-          <div>
-            <p>
-              PASSENGERS & CLASS <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="fd-selecteditem">1 Adult,Economy</p>
-          </div>
-          <button className="flight-search-btn">SEARCH</button>
+      <div className="tripdetails-div">
+        <FlightTopAirportSearch
+          handleSearchData={handleSearchData}
+          field={"From"}
+          airportData={fromAirportData}
+          setAirportData={setFromAirportData}
+        />
+        <FlightTopAirportSearch
+          handleSearchData={handleSearchData}
+          field={"To"}
+          airportData={toAirportData}
+          setAirportData={setToAirportData}
+        />
+        <div className="fs-depart" onClick={handleDepartureDateClick}>
+          <p>
+            DEPART <MdKeyboardArrowDown size={20} />
+          </p>
+          <p className="fd-selecteditem" id="fs-datepicker">
+            {new Date(date).toString().split(" ").slice(0, 4).join(" ")}
+          </p>
         </div>
+        <button className="flight-search-btn" onClick={handleSearchButtonClick}>
+          SEARCH
+        </button>
       </div>
+      {showDate && (
+        <OutsideClickHandler onOutsideClick={() => setShowDate(false)}>
+          <div className="datepicker">
+            <ReactDatePicker
+              selected={selectedDate}
+              onChange={handleDepartureDate}
+              inline
+              minDate={new Date()}
+            />
+          </div>
+        </OutsideClickHandler>
+      )}
     </>
   );
 };
-
 export default Flighttopsection;

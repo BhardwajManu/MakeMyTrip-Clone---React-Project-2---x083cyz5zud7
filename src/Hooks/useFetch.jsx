@@ -7,7 +7,6 @@ const useFetch = (initialData) => {
   const [moreData, setMoreData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { token } = useAuthContext();
 
   async function get(url) {
     try {

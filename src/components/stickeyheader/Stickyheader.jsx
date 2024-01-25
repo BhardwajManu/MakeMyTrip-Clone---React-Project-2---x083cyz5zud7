@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./stickyheader.css";
 import logoblue from "../../assets/images/logoblue.png";
 import headerimages from "../../assets/images/headerimages.png";
@@ -9,9 +9,10 @@ import { useAuthContext } from "../../Context/AuthContext";
 import { SlLogout } from "react-icons/sl";
 import { SlHandbag } from "react-icons/sl";
 import { toast } from "react-toastify";
+import LoginContext from "../../Context/LoginContext";
 
 export const Stickyheader = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  const { showLogin, setShowLogin } = useContext(LoginContext);
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const { authenticated, logoutUser } = useAuthContext();
@@ -128,9 +129,6 @@ export const Stickyheader = () => {
             </div>
           </div>
         )}
-        {showLogin && (
-          <TabforLogin showLogin={showLogin} setShowLogin={setShowLogin} />
-        )}
 
         <div className="sh-countryselectmaindiv">
           <div className="country">Country</div>
@@ -148,6 +146,7 @@ export const Stickyheader = () => {
           </div>
         </div>
       </div>
+      {showLogin && <TabforLogin />}
     </div>
   );
 };

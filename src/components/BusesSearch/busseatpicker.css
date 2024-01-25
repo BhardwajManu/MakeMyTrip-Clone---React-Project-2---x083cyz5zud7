@@ -120,6 +120,15 @@
   height: 26px;
   margin-bottom: 4px;
 }
+.seat-icon-bus-selected {
+  background: url("../../assets/Images/busListingSprite.png");
+  background-size: 350px 500px;
+  background-position: -127px -381px;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
 
 .seatconfirm-and-continuebtn {
   /* border: 1px solid red; */

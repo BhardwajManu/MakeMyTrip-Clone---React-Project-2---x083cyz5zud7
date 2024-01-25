@@ -20,6 +20,7 @@ import BusesSearch from "./components/BusesSearch/BusesSearch";
 import Buscheckoutpage from "./components/checkoutpages/Buscheckoutpage";
 import ComingSoonPage from "./components/Comingsoonpage/ComingSoonPage";
 import TabforLogin from "./components/Login/TabforLogin";
+import { LoginStateProvider } from "./Context/LoginContext";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -47,25 +48,33 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
-      {showStickyHeader && <Stickyheader />}
-      <Routes>
-        <Route path="/" exact element={<Main />} />
-        <Route path="/mytrips" element={<MytripsPage />} />
-        <Route path="/myprofile" element={<ProfileDetails />} />
-        <Route path="/hotels" element={<HotelSearchPage />} />
-        <Route path="/trains" element={<TrainsSearchPage />} />
-        <Route path="/buses" element={<BusesSearch />} />
-        <Route path="/flights" element={<FlightSearch />} />
-        <Route path="/payment" element={<PaymentPageMain />} />
-        <Route path="/comingsoon" element={<ComingSoonPage />} />
-        <Route path="/singlehotel/:id" element={<SingleHotelPage />} />
-        <Route path="/flightcheckout/:id" element={<Flightcheckoutpage />} />
-        <Route path="/hotelcheckoutpage/:id" element={<Hotelcheckoutpage />} />
-        <Route path="/traincheckoutpage/:id" element={<Traincheckoutpage />} />
-        <Route path="/buscheckoutpage/:id" element={<Buscheckoutpage />} />
-        <Route path="/login" element={<TabforLogin />} />
-      </Routes>
+      <LoginStateProvider>
+        <ToastContainer />
+        {showStickyHeader && <Stickyheader />}
+        <Routes>
+          <Route path="/" exact element={<Main />} />
+          <Route path="/mytrips" element={<MytripsPage />} />
+          <Route path="/myprofile" element={<ProfileDetails />} />
+          <Route path="/hotels" element={<HotelSearchPage />} />
+          <Route path="/trains" element={<TrainsSearchPage />} />
+          <Route path="/buses" element={<BusesSearch />} />
+          <Route path="/flights" element={<FlightSearch />} />
+          <Route path="/payment/:id" element={<PaymentPageMain />} />
+          <Route path="/comingsoon" element={<ComingSoonPage />} />
+          <Route path="/singlehotel/:id" element={<SingleHotelPage />} />
+          <Route path="/flightcheckout/:id" element={<Flightcheckoutpage />} />
+          <Route
+            path="/hotelcheckoutpage/:id"
+            element={<Hotelcheckoutpage />}
+          />
+          <Route
+            path="/traincheckoutpage/:id"
+            element={<Traincheckoutpage />}
+          />
+          <Route path="/buscheckoutpage/:id" element={<Buscheckoutpage />} />
+          <Route path="/login" element={<TabforLogin />} />
+        </Routes>
+      </LoginStateProvider>
     </>
   );
 }

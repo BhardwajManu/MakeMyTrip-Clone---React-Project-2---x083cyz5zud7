@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./gpaywidget.css";
+import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 
-const GpayWidget = () => {
+const GpayWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [upiID, setUpiID] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [upiIDError, setUpiIDError] = useState("");
@@ -15,6 +16,10 @@ const GpayWidget = () => {
       setUpiIDError(""); // Clear the error if the format is valid
     }
     setIsValid(!upiIDError);
+  };
+
+  const handlePayNowClick = () => {
+    setShowConfirmation(true);
   };
 
   return (
@@ -34,14 +39,17 @@ const GpayWidget = () => {
               {upiIDError && <div className="error-message">{upiIDError}</div>}
             </div>
             <button
+              onClick={handlePayNowClick}
               className={isValid ? "enabled" : "disabled"}
               disabled={!isValid}
             >
               VERIFY & PAY
             </button>
+            {showConfirmation && (
+              <ConfirmationPopup setShowConfirmation={setShowConfirmation} />
+            )}
           </div>
         </div>
-        <p className="amounttopay">₹ 5,655</p>
         <p className="gpay-termsandconditions">
           By continuing to pay, I understand and agree with the{" "}
           <span>privacy policy</span>, the <span>user agreement</span> and{" "}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./offers.css";
 import { Button, Container } from "@mui/material";
 import { FaLessThan } from "react-icons/fa";
@@ -32,6 +32,18 @@ const Offers = () => {
     );
   };
 
+  const boxRef = useRef();
+
+  const handlePrevious = () => {
+    let width = boxRef.current.clientWidth * 0.8;
+    boxRef.current.scrollLeft -= width;
+  };
+
+  const handleNext = () => {
+    let width = boxRef.current.clientWidth * 0.8;
+    boxRef.current.scrollLeft += width;
+  };
+
   return (
     <>
       <Container>
@@ -52,15 +64,15 @@ const Offers = () => {
               ))}
             </ul>
             <div className="ml-[28rem] mt-1 great-less flex">
-              <Button className="">
+              <Button onClick={handlePrevious} className="">
                 <FaLessThan className=" text-blue-500 rounded-s-full  h-6 w-8 " />
               </Button>
-              <Button className="">
+              <Button onClick={handleNext} className="">
                 <FaGreaterThan className=" text-blue-500 rounded-e-full  h-6 w-8 " />
               </Button>
             </div>
           </div>
-          <div className="offers-bottomdiv">
+          <div className="offers-bottomdiv" ref={boxRef}>
             {/* Render content based on the selected offer type */}
             {offerActive === "ALL" &&
               data?.data?.offers.map((item, index) => (

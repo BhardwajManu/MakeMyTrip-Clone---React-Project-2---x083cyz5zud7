@@ -26,13 +26,7 @@ const HotelTopSection = ({ data }) => {
           </p>
           <p className="selecteditem">Tuesday,12 Dec 2023</p>
         </div>
-        <div>
-          <p>
-            ROOMS & GUESTS
-            <MdKeyboardArrowDown size={20} />
-          </p>
-          <p className="selecteditem">1 Room,2 Adults</p>
-        </div>
+
         <button>SEARCH</button>
       </div>
 
