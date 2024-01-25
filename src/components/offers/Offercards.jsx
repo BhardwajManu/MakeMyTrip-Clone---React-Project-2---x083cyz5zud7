@@ -1,6 +1,5 @@
 import React from "react";
 import "./Offers.css";
-import useFetch from "../../Hooks/useFetch";
 
 const Offercards = ({ item }) => {
   return (
