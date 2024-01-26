@@ -3,8 +3,8 @@ import "./singlehotel.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import ImageCarousel from "./ImageCarousel";
-import hotelroomsize from "../../assets/images/hotelroomsize.png";
-import hotelroombed from "../../assets/images/hotelroombed.png";
+// import hotelroomsize from "../../assets/images/hotelroomsize.png";
+// import hotelroombed from "../../assets/images/hotelroombed.png";
 import { TbMathGreater } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
@@ -119,14 +119,14 @@ const SingleHotelPage = () => {
                       <h2>{room.roomType} Room</h2>
                       <div className="roomsize-div">
                         <img
-                          src={hotelroomsize}
+                          // src={hotelroomsize}
                           alt="room"
                           className="roomsizeimg"
                         />
                         <p>{room.roomSize} sq.ft</p>
                       </div>
                       <div className="roombed-div">
-                        <img src={hotelroombed} alt="bed" className="bedimg" />
+                        {/* <img src={hotelroombed} alt="bed" className="bedimg" /> */}
                         <p>{room.bedDetail}</p>
                       </div>
                     </div>
