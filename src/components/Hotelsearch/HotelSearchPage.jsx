@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./hotelsearch.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
-import hotelspagemap from "../../assets/images/Hotelspagemap.png";
+// import hotelspagemap from "../../assets/images/Hotelspagemap.png";
 
 import { Link, useSearchParams } from "react-router-dom";
 import HotelTopSection from "./HotelTopSection";
@@ -69,7 +69,7 @@ const HotelSearchPage = () => {
                 EXPLORE ON MAP
                 <span className="map-icon"></span>
               </button>
-              <img className="map-image" src={hotelspagemap} alt="map" />
+              {/* <img className="map-image" src={hotelspagemap} alt="map" /> */}
             </div>
             <div className="selectfiltersdiv">
               <p className="selectfilters-heading">Select Filters</p>
