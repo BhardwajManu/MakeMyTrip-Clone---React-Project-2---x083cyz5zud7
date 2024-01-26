@@ -1,11 +1,11 @@
 import React from "react";
 import "./fwchooseoption.css";
-import wheretogo from "../../assets/images/wheretogo.png";
-import insurance from "../../assets/images/insurance.png";
-import exploreif from "../../assets/images/exploreif.png";
-import mice from "../../assets/images/mice.png";
-import giftcard from "../../assets/images/giftcard.png";
-import fwad from "../../assets/images/fwad.png";
+// import wheretogo from "../../assets/images/wheretogo.png";
+// import insurance from "../../assets/images/insurance.png";
+// import exploreif from "../../assets/images/exploreif.png";
+// import mice from "../../assets/images/mice.png";
+// import giftcard from "../../assets/images/giftcard.png";
+// import fwad from "../../assets/images/fwad.png";
 import { Link } from "react-router-dom";
 
 const FwChooseOption = () => {
@@ -14,12 +14,12 @@ const FwChooseOption = () => {
       <Link to="/comingsoon">
         <div className="fwchoose-maindiv">
           <div className="fwchoosewtg">
-            <img src={wheretogo} alt="wtgimg" />
+            {/* <img src={wheretogo} alt="wtgimg" /> */}
             <p>Where2Go</p>
           </div>
 
           <div className="fwchooseinsurance">
-            <img src={insurance} alt="insuranceimg" />
+            {/* <img src={insurance} alt="insuranceimg" /> */}
             <div>
               <p>Insurance</p>
               <p>For International Trips</p>
@@ -27,7 +27,7 @@ const FwChooseOption = () => {
           </div>
 
           <div className="fwchooseexploreif">
-            <img src={exploreif} alt="exploreifimg" />
+            {/* <img src={exploreif} alt="exploreifimg" /> */}
             <div>
               <p>Explore International Flights</p>
               <p>Cheapest Flights to Paris, Bali, Tokyo & more</p>
@@ -35,7 +35,7 @@ const FwChooseOption = () => {
           </div>
 
           <div className="fwchoosemice">
-            <img src={mice} alt="miceimg" />
+            {/* <img src={mice} alt="miceimg" /> */}
             <div>
               <p>MICE</p>
               <p>Offsites, Events & Meetings</p>
@@ -43,7 +43,7 @@ const FwChooseOption = () => {
           </div>
 
           <div className="fwchoosegiftcard">
-            <img src={giftcard} alt="giftcardimg" />
+            {/* <img src={giftcard} alt="giftcardimg" /> */}
             <p>Gift Cards</p>
           </div>
         </div>

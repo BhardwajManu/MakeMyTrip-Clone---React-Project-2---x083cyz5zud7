@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./paymentoptions.css";
-import gpaylogo from "../../assets/images/Gpaylogo.png";
+// import gpaylogo from "../../assets/images/Gpaylogo.png";
 import CardWidget from "./CardWidget";
 import GpayWidget from "./GpayWidget";
 import EmiWidget from "./EmiWidget";
@@ -93,7 +93,7 @@ const PaymentOptions = () => {
               onClick={handleShowGpay}
               className={activeWidget === "gpay" ? "activewidget" : ""}
             >
-              <img className="gpay-img" src={gpaylogo} alt="gpay" />
+              {/* <img className="gpay-img" src={gpaylogo} alt="gpay" /> */}
               <div className="options-text">
                 <p>GooglePay</p>
                 <p>Pay with Google Pay</p>

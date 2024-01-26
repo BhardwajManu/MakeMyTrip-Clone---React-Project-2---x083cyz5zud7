@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import logowhite from "../../assets/images/logowhite.png";
+// import logowhite from "../../assets/images/logowhite.png";
 import { Link, useNavigate } from "react-router-dom";
 import "./topnavbar.css";
 import { BsChevronDown } from "react-icons/bs";
@@ -46,7 +46,7 @@ const TopNavbar = () => {
       <div className="topnavbarmaindiv">
         <div className="mmtwhitelogo">
           <Link to="/">
-            <img className="whitelogoimage" src={logowhite} alt="logo" />
+            {/* <img className="whitelogoimage" src={logowhite} alt="logo" /> */}
           </Link>
         </div>
         <div className="middlenavdiv">

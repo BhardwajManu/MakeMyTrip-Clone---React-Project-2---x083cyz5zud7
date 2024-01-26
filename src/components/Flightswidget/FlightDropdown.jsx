@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./flightdropdown.css";
 import { IoSearch } from "react-icons/io5";
-import flightsearch from "../../assets/images/flightsearch.png";
+// import flightsearch from "../../assets/images/flightsearch.png";
 import useFetch from "../../Hooks/useFetch";
 
 const FlightDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
@@ -52,7 +52,7 @@ const FlightDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
         <ul className="from-search-list">
           {filterData.map((airport, index) => (
             <li key={index} onClick={() => handleAirportSelect(airport)}>
-              <img src={flightsearch} alt="flight" />
+              {/* <img src={flightsearch} alt="flight" /> */}
               <div className="airport-name-div">
                 <h3>
                   {airport.city},{airport.country}

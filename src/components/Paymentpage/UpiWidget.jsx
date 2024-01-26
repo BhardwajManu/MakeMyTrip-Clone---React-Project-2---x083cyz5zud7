@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./upiwidget.css";
-import upiqrcode from "../../assets/images/Upiqrcode.png";
+// import upiqrcode from "../../assets/images/Upiqrcode.png";
 import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 import { toast } from "react-toastify";
 import useFetch from "../../Hooks/useFetch";
@@ -109,7 +109,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
             <div className="upi-qrcode-div">
               <p>Scan and pay</p>
               <div className="qrcode">
-                <img src={upiqrcode} alt="upi qr code" />
+                {/* <img src={upiqrcode} alt="upi qr code" /> */}
               </div>
               <p>Scan and pay using any banking app</p>
             </div>

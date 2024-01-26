@@ -1,7 +1,6 @@
 import React from "react";
 import Offers from "../../components/offers/Offers";
 import ForexWidget from "../../components/forexwidget/ForexWidget";
-import fwad from "../../assets/images/fwad.png";
 
 const TrainWidgetBottom = () => {
   return (

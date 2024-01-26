@@ -1,13 +1,13 @@
 import React from "react";
 import "./booknowpaylater.css";
-import zerointerest from "../../assets/images/Zerointerest.png";
-import nodocumentbnpl from "../../assets/images/Nodocumentbnpl.png";
-import creditperiod from "../../assets/images/Creditperiod.png";
-import lazypay from "../../assets/images/Lazypay.png";
-import simpl from "../../assets/images/Simpl.png";
-import icicipaylater from "../../assets/images/Icicipaylater.png";
-import olamoney from "../../assets/images/Olamoney.png";
-import hdfc from "../../assets/images/Hdfc.png";
+// import zerointerest from "../../assets/images/Zerointerest.png";
+// import nodocumentbnpl from "../../assets/images/Nodocumentbnpl.png";
+// import creditperiod from "../../assets/images/Creditperiod.png";
+// import lazypay from "../../assets/images/Lazypay.png";
+// import simpl from "../../assets/images/Simpl.png";
+// import icicipaylater from "../../assets/images/Icicipaylater.png";
+// import olamoney from "../../assets/images/Olamoney.png";
+// import hdfc from "../../assets/images/Hdfc.png";
 
 const BookNowPaylaterWidget = () => {
   return (
@@ -16,21 +16,21 @@ const BookNowPaylaterWidget = () => {
         <p className="bnpl-text">Benefits of pay later</p>
         <ul className="bnpl-benefits">
           <li>
-            <img src={zerointerest} className="zero-percent-img" />
+            {/* <img src={zerointerest} className="zero-percent-img" /> */}
             <div className="bnpl-description-div">
               <p>Starts at 0% Interest</p>
               <p>Starts at 0% Interest</p>
             </div>
           </li>
           <li>
-            <img src={creditperiod} className="calender-img" />
+            {/* <img src={creditperiod} className="calender-img" /> */}
             <div className="bnpl-description-div">
               <p>15 days-18 Months</p>
               <p>Pay in 15 days - 18 months</p>
             </div>
           </li>
           <li>
-            <img src={nodocumentbnpl} className="nopaperwork-img" />
+            {/* <img src={nodocumentbnpl} className="nopaperwork-img" /> */}
             <div className="bnpl-description-div">
               <p>No Paperwork</p>
               <p>No Paperwork</p>
@@ -44,21 +44,11 @@ const BookNowPaylaterWidget = () => {
             <button>proceed</button>
           </div>
           <ul className="bnpl-options-list">
-            <li>
-              <img src={lazypay} />
-            </li>
-            <li>
-              <img src={simpl} />
-            </li>
-            <li>
-              <img src={icicipaylater} />
-            </li>
-            <li>
-              <img src={olamoney} />
-            </li>
-            <li>
-              <img src={hdfc} />
-            </li>
+            <li>{/* <img src={lazypay} /> */}</li>
+            <li>{/* <img src={simpl} /> */}</li>
+            <li>{/* <img src={icicipaylater} /> */}</li>
+            <li>{/* <img src={olamoney} /> */}</li>
+            <li>{/* <img src={hdfc} /> */}</li>
           </ul>
         </div>
       </div>
