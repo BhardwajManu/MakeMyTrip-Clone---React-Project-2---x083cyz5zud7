@@ -46,7 +46,7 @@ export const Stickyheader = () => {
       <div className="stickyheadermaindiv">
         <Link to="/">
           <div className="bluelogodiv">
-            <img src={logoblue} alt="mmtbluelogo" />
+            {/* <img src={logoblue} alt="mmtbluelogo" /> */}
           </div>
         </Link>
         <Link to="/" className="sticky-linktohome">
