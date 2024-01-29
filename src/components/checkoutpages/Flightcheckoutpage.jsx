@@ -9,6 +9,14 @@ const Flightcheckoutpage = () => {
   const { data, get } = useFetch([]);
   const { id } = useParams();
 
+  const date = new Date();
+  const options = {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  };
+  const formattedDate = date.toLocaleString("en-US", options);
+
   useEffect(() => {
     get(`/bookingportals/flight/${id}`);
   }, [id]);
@@ -42,7 +50,7 @@ const Flightcheckoutpage = () => {
                         </b>
                       </h2>
                       <p className="appendTop10 makeFlex">
-                        <span className="scheduleDay">Wednesday, Jan 10</span>
+                        <span className="scheduleDay">{formattedDate}</span>
                         <span className="fontSize14 ml-3">
                           {data?.data?.stops} Stop · {data?.data?.duration}h
                         </span>

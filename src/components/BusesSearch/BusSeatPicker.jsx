@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./busseatpicker.css";
 import { Link, useSearchParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
+import LoginContext from "../../Context/LoginContext";
+import { useAuthContext } from "../../Context/AuthContext";
+import TabforLogin from "../Login/TabforLogin";
 
 const BusSeatPicker = ({ id }) => {
   const [params] = useSearchParams();
   const date = decodeURI(params.get("date"));
   const { data, get } = useFetch([]);
   const [selectedSeats, setSelectedSeats] = useState(0);
+  const { authenticated } = useAuthContext();
+  const { showLogin, setShowLogin } = useContext(LoginContext);
 
   const [seats, setSeats] = useState(() =>
     Array(13)
       .fill()
-      .map(() => Array(2).fill(false))
+      .map(() => Array().fill(false))
   );
 
   const selectSeat = (row, col) => {
@@ -74,7 +79,6 @@ const BusSeatPicker = ({ id }) => {
   useEffect(() => {
     get(`/bookingportals/bus/${id}`);
   }, [id]);
-  console.log("data", data);
 
   return (
     <div className="bus-seatPicker-container">
@@ -126,11 +130,26 @@ const BusSeatPicker = ({ id }) => {
               ₹ {data?.data?.fare * selectedSeats}
             </p>
           </div>
-          <Link to={`/buscheckoutpage/${data?.data?._id}`}>
-            <button className="seat-pick-btn">CONTINUE</button>
-          </Link>
+
+          {authenticated ? (
+            <Link to={`/buscheckoutpage/${data?.data?._id}`}>
+              <button className="seat-pick-btn">CONTINUE</button>
+            </Link>
+          ) : (
+            <Link
+              onClick={(e) => {
+                if (!authenticated) {
+                  e.preventDefault();
+                  setShowLogin(true);
+                }
+              }}
+            >
+              <button className="seat-pick-btn">CONTINUE</button>
+            </Link>
+          )}
         </div>
       </div>
+      {showLogin && <TabforLogin />}
     </div>
   );
 };

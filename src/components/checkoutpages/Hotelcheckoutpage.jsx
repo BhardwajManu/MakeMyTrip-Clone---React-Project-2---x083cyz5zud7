@@ -13,11 +13,36 @@ const Hotelcheckoutpage = () => {
   useEffect(() => {
     get(`/bookingportals/hotel/${id}`);
   }, [id]);
-  console.log(data);
 
   const baseCost = data?.data?.rooms[0].costDetails.baseCost || 0;
   const taxesAndFees = data?.data?.rooms[0].costDetails.taxesAndFees || 0;
   const totalCost = baseCost + taxesAndFees;
+
+  const date = new Date();
+  const dateofmmonth = date.getDate();
+  const dateofmmonthNext = date.getDate() + 1;
+  const year = date.getFullYear();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const nextDay = new Date();
+  nextDay.setDate(date.getDate() + 1);
+
+  const nextDayOfWeek = days[nextDay.getDay()];
+  const day = days[date.getDay()];
+  const month = months[date.getMonth()];
 
   return (
     <>
@@ -65,17 +90,21 @@ const Hotelcheckoutpage = () => {
                     <div className="prptChk__col">
                       <p className="font12 grey2 appendBottom3">CHECK IN</p>
                       <p className="prptChk__date">
-                        Tue
-                        <span className="text-[1.4rem] font-bold">9 Jan</span>
-                        2024
+                        {day}
+                        <span className="text-[1.4rem] font-bold">
+                          {dateofmmonth} {month}
+                        </span>
+                        {year}
                       </p>
                     </div>
                     <div className="prptChk__col last">
                       <p className="font12 grey2 appendBottom3">CHECK OUT</p>
                       <p className="prptChk__date">
-                        Wed
-                        <span className="text-[1.4rem] font-bold">10 Jan</span>
-                        2024
+                        {nextDayOfWeek}
+                        <span className="text-[1.4rem] font-bold">
+                          {dateofmmonthNext} {month}
+                        </span>
+                        {year}
                       </p>
                     </div>
                   </div>

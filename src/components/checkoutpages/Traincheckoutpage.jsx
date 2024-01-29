@@ -63,8 +63,10 @@ const Traincheckoutpage = () => {
                         <span className="bdrTop"></span>
                         <div className="makeFlex column appendBottom10 appendTop15">
                           <p className="appendBottom10">
-                            <span className="latoBlack"></span>
-                            {data?.data?.arrivalTime}
+                            <span className="latoBlack">
+                              {data?.data?.arrivalTime}
+                            </span>
+
                             <span className="latoBlack">, </span>
                           </p>
                           <p className="font12 darkGreyText">

@@ -1,18 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./singlehotel.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import ImageCarousel from "./ImageCarousel";
-// import hotelroomsize from "../../assets/images/hotelroomsize.png";
-// import hotelroombed from "../../assets/images/hotelroombed.png";
+import hotelroomsize from "../../assets/images/hotelroomsize.png";
+import hotelroombed from "../../assets/images/hotelroombed.png";
 import { TbMathGreater } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import HotelpropertyRules from "./HotelpropertyRules";
+import TabforLogin from "../Login/TabforLogin";
+import { useAuthContext } from "../../Context/AuthContext";
+import LoginContext from "../../Context/LoginContext";
 
 const SingleHotelPage = () => {
   const { data, get } = useFetch([]);
   const { id } = useParams();
+  const { authenticated } = useAuthContext();
+  const { showLogin, setShowLogin } = useContext(LoginContext);
 
   useEffect(() => {
     get(`/bookingportals/hotel/${id}`);
@@ -21,7 +26,6 @@ const SingleHotelPage = () => {
   return (
     <>
       <Stickyheader />
-
       <div className="singlehotelpage-maindiv">
         <div className="singlehotel-headerdiv">
           <div>
@@ -119,14 +123,14 @@ const SingleHotelPage = () => {
                       <h2>{room.roomType} Room</h2>
                       <div className="roomsize-div">
                         <img
-                          // src={hotelroomsize}
+                          src={hotelroomsize}
                           alt="room"
                           className="roomsizeimg"
                         />
                         <p>{room.roomSize} sq.ft</p>
                       </div>
                       <div className="roombed-div">
-                        {/* <img src={hotelroombed} alt="bed" className="bedimg" /> */}
+                        <img src={hotelroombed} alt="bed" className="bedimg" />
                         <p>{room.bedDetail}</p>
                       </div>
                     </div>
@@ -151,11 +155,26 @@ const SingleHotelPage = () => {
                         <p>+₹ {room.costDetails.taxesAndFees} taxes & fees</p>
                       </div>
                       <div>
-                        <Link to={`/hotelcheckoutpage/${data?.data?._id}`}>
-                          <button className="selectroom-btn">
-                            SELECT ROOM
-                          </button>
-                        </Link>
+                        {authenticated ? (
+                          <Link to={`/hotelcheckoutpage/${data?.data?._id}`}>
+                            <button className="selectroom-btn">
+                              SELECT ROOM
+                            </button>
+                          </Link>
+                        ) : (
+                          <Link
+                            onClick={(e) => {
+                              if (!authenticated) {
+                                e.preventDefault();
+                                setShowLogin(true);
+                              }
+                            }}
+                          >
+                            <button className="selectroom-btn">
+                              SELECT ROOM
+                            </button>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -182,6 +201,7 @@ const SingleHotelPage = () => {
           </div>
         </div>
       </div>
+      {showLogin && <TabforLogin />}
     </>
   );
 };

@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./trainsearchpage.css";
+import TabforLogin from "../Login/TabforLogin";
+import { useAuthContext } from "../../Context/AuthContext";
+import LoginContext from "../../Context/LoginContext";
 
 const TrainCard = ({ data }) => {
+  const { authenticated } = useAuthContext();
+  const { showLogin, setShowLogin } = useContext(LoginContext);
+
   return (
     <>
       <div className="searchresults-div">
@@ -42,21 +48,47 @@ const TrainCard = ({ data }) => {
                   <p>{train?.destination} </p>
                 </div>
               </div>
-              <Link to={`/traincheckoutpage/${train._id}`}>
-                <div className="showtrains-btmdiv">
-                  {train?.coaches.map((coach, coachIndex) => (
-                    <div key={coachIndex} className="sl-card">
-                      <div>
-                        <p>{coach.coachType}</p>
-                        <p>₹ {coach.numberOfSeats * 10}</p>
-                        {/* You can replace this calculation with your actual logic */}
+
+              {authenticated ? (
+                <Link to={`/traincheckoutpage/${train._id}`}>
+                  <div className="showtrains-btmdiv">
+                    {train?.coaches.map((coach, coachIndex) => (
+                      <div key={coachIndex} className="sl-card">
+                        <div>
+                          <p>{coach.coachType}</p>
+                          <p>₹ {coach.numberOfSeats * 10}</p>
+                          {/* You can replace this calculation with your actual logic */}
+                        </div>
+                        <p className="rac-nmbr">RAC {coachIndex + 1}</p>
+                        <p className="cancellation">Free Cancellation</p>
                       </div>
-                      <p className="rac-nmbr">RAC {coachIndex + 1}</p>
-                      <p className="cancellation">Free Cancellation</p>
-                    </div>
-                  ))}
-                </div>
-              </Link>
+                    ))}
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  onClick={(e) => {
+                    if (!authenticated) {
+                      e.preventDefault();
+                      setShowLogin(true);
+                    }
+                  }}
+                >
+                  <div className="showtrains-btmdiv">
+                    {train?.coaches.map((coach, coachIndex) => (
+                      <div key={coachIndex} className="sl-card">
+                        <div>
+                          <p>{coach.coachType}</p>
+                          <p>₹ {coach.numberOfSeats * 10}</p>
+                          {/* You can replace this calculation with your actual logic */}
+                        </div>
+                        <p className="rac-nmbr">RAC {coachIndex + 1}</p>
+                        <p className="cancellation">Free Cancellation</p>
+                      </div>
+                    ))}
+                  </div>
+                </Link>
+              )}
             </div>
           ))
         ) : (
@@ -65,6 +97,7 @@ const TrainCard = ({ data }) => {
           </p>
         )}
       </div>
+      {showLogin && <TabforLogin />}
     </>
   );
 };

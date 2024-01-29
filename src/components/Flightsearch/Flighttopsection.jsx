@@ -6,6 +6,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FlightTopAirportSearch from "./FlightTopAirportSearch";
+
 const Flighttopsection = ({ updateSearchParams }) => {
   const [searchData, setSearchData] = useState({
     source: "PNQ",

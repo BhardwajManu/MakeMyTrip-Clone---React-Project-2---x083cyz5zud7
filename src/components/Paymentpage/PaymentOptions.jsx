@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./paymentoptions.css";
-// import gpaylogo from "../../assets/images/Gpaylogo.png";
+import gpaylogo from "../../assets/images/Gpaylogo.png";
 import CardWidget from "./CardWidget";
 import GpayWidget from "./GpayWidget";
 import EmiWidget from "./EmiWidget";
@@ -14,27 +14,12 @@ const PaymentOptions = () => {
   const [showGpayWidget, setShowGpayWidget] = useState(false);
   const [activeWidget, SetActiveWidget] = useState("upi");
 
-  const handleShowCardWidget = () => {
-    setShowCardWidget(true);
-    setShowUpiWidget(false);
-    setShowNetBankingWidget(false);
-    setShowGpayWidget(false);
-    SetActiveWidget("cards");
-  };
   const handleShowUpiWidget = () => {
     setShowCardWidget(false);
     setShowUpiWidget(true);
     setShowNetBankingWidget(false);
     setShowGpayWidget(false);
     SetActiveWidget("upi");
-  };
-
-  const handleShowGpay = () => {
-    setShowCardWidget(false);
-    setShowUpiWidget(false);
-    setShowNetBankingWidget(false);
-    setShowGpayWidget(true);
-    SetActiveWidget("gpay");
   };
 
   return (
@@ -45,7 +30,9 @@ const PaymentOptions = () => {
           <ul>
             <li
               onClick={handleShowUpiWidget}
-              className={activeWidget === "upi" ? "activewidget" : ""}
+              className={`cursor-pointer ${
+                activeWidget === "upi" ? "activewidget" : ""
+              }`}
             >
               <div className="upioptions-img"></div>
               <div className="options-text">
@@ -54,10 +41,7 @@ const PaymentOptions = () => {
               </div>
             </li>
 
-            <li
-              onClick={handleShowCardWidget}
-              className={activeWidget === "cards" ? "activewidget" : ""}
-            >
+            <li className="cursor-not-allowed">
               <div className="cardoptions-img"></div>
               <div className="options-text">
                 <p>Credit/Debit/ATM Card</p>
@@ -65,35 +49,32 @@ const PaymentOptions = () => {
               </div>
             </li>
 
-            <li>
-              <div className="paylater-img cursor-not-allowed"></div>
-              <div className="options-text cursor-not-allowed">
+            <li className="cursor-not-allowed">
+              <div className="paylater-img "></div>
+              <div className="options-text ">
                 <p>Book Now Pay Later</p>
                 <p>Tripmoney, Lazypay, Simpl, ZestMoney, ICICI, HDFC</p>
               </div>
             </li>
 
-            <li className={activeWidget === "netbanking" ? "activewidget" : ""}>
-              <div className="netbanking-img cursor-not-allowed"></div>
-              <div className="options-text cursor-not-allowed">
+            <li className="cursor-not-allowed">
+              <div className="netbanking-img"></div>
+              <div className="options-text">
                 <p>Net Banking</p>
                 <p>All Major Banks Available</p>
               </div>
             </li>
 
-            <li>
-              <div className="giftcards-img cursor-not-allowed"></div>
-              <div className="options-text cursor-not-allowed">
+            <li className="cursor-not-allowed">
+              <div className="giftcards-img "></div>
+              <div className="options-text">
                 <p>Gift Cards, Wallets & More</p>
                 <p>Gift cards, AmazonPay</p>
               </div>
             </li>
 
-            <li
-              onClick={handleShowGpay}
-              className={activeWidget === "gpay" ? "activewidget" : ""}
-            >
-              {/* <img className="gpay-img" src={gpaylogo} alt="gpay" /> */}
+            <li className="cursor-not-allowed">
+              <img className="gpay-img" src={gpaylogo} alt="gpay" />
               <div className="options-text">
                 <p>GooglePay</p>
                 <p>Pay with Google Pay</p>

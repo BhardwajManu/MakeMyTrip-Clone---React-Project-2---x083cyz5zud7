@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./emiwidget.css";
 import { CiSearch } from "react-icons/ci";
-// import hdfc from "../../assets/images/Hdfc.png";
-// import icici from "../../assets/images/Icici.png";
-// import citibank from "../../assets/images/Citibank.png";
-// import axisbank from "../../assets/images/Axisbank.png";
-// import sbi from "../../assets/images/Sbi.png";
+import hdfc from "../../assets/images/Hdfc.png";
+import icici from "../../assets/images/Icici.png";
+import citibank from "../../assets/images/Citibank.png";
+import axisbank from "../../assets/images/Axisbank.png";
+import sbi from "../../assets/images/Sbi.png";
 import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 
 const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
@@ -35,7 +35,7 @@ const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 onChange={handlebankselect}
                 className="select-bank-radio"
               />
-              {/* <img src={hdfc} className="bank-icon" /> */}
+              <img src={hdfc} className="bank-icon" />
               <p className="bank-name">HDFC Bank</p>
             </div>
             <p className="bank-percent">15% p.a.</p>
@@ -49,7 +49,7 @@ const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 onChange={handlebankselect}
                 className="select-bank-radio"
               />
-              {/* <img src={icici} className="bank-icon" /> */}
+              <img src={icici} className="bank-icon" />
               <p className="bank-name">ICICI Bank</p>
             </div>
             <p className="bank-percent">15.0% p.a.</p>
@@ -63,7 +63,7 @@ const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 onChange={handlebankselect}
                 className="select-bank-radio"
               />
-              {/* <img src={citibank} className="bank-icon" /> */}
+              <img src={citibank} className="bank-icon" />
               <p className="bank-name">Citibank</p>
             </div>
             <p className="bank-percent">14-16% p.a.</p>
@@ -77,7 +77,7 @@ const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 onChange={handlebankselect}
                 className="select-bank-radio"
               />
-              {/* <img src={axisbank} className="bank-icon" /> */}
+              <img src={axisbank} className="bank-icon" />
               <p className="bank-name">Axis Bank</p>
             </div>
             <p className="bank-percent">14-16% p.a.</p>
@@ -91,7 +91,7 @@ const EmiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 onChange={handlebankselect}
                 className="select-bank-radio"
               />
-              {/* <img src={sbi} className="bank-icon" /> */}
+              <img src={sbi} className="bank-icon" />
               <p className="bank-name">State Bank of India</p>
             </div>
             <p className="bank-percent">14-16% p.a.</p>

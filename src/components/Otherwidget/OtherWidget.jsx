@@ -4,7 +4,7 @@ const OtherWidget = () => {
   return (
     <>
       <div className="otherwidget-maindiv">
-        <p>Coming Soon...</p>
+        <p>Upcoming...</p>
       </div>
     </>
   );

@@ -13,6 +13,35 @@ const Buscheckoutpage = () => {
     get(`/bookingportals/bus/${id}`);
   }, [id]);
 
+  const date = new Date();
+  const dateofmmonth = date.getDate();
+  const dateofmmonthNext = date.getDate() + 1;
+  const fullYear = date.getFullYear();
+  const lastTwoDigitsOfYear = fullYear % 100; // Extracting the last two digits
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const nextDay = new Date();
+  nextDay.setDate(date.getDate() + 1);
+
+  const nextDayOfWeek = days[nextDay.getDay()];
+  const day = days[date.getDay()];
+  const month = months[date.getMonth()];
+
+  console.log(lastTwoDigitsOfYear); // Output: Last two digits of the year
+
   return (
     <>
       <Stickyheader />
@@ -55,7 +84,7 @@ const Buscheckoutpage = () => {
                     {data?.data?.departureTime}
 
                     <span className="font16 latoRegular darkGreyText ml-2">
-                      10 Jan' 24, Wed
+                      {dateofmmonth} {month}' {lastTwoDigitsOfYear}, {day}
                     </span>
                   </span>
                   <div className="makeFlex column maxWidth200 maxHeight200 appendTop8">
@@ -73,7 +102,8 @@ const Buscheckoutpage = () => {
                     {data?.data?.arrivalTime}
 
                     <span className="font16 latoRegular darkGreyText ml-2">
-                      10 Jan' 24, Wed
+                      {dateofmmonthNext} {month}' {lastTwoDigitsOfYear},{" "}
+                      {nextDayOfWeek}
                     </span>
                   </span>
                   <div className="makeFlex column maxWidth200 maxHeight200 appendTop8">

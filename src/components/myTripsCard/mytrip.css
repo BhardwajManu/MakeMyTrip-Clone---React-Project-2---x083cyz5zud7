@@ -18,6 +18,7 @@
   cursor: default;
 }
 .T-A-D-text {
+  flex: 3;
   font-size: 18px;
   font-weight: 500;
   color: black;
@@ -81,6 +82,7 @@
 }
 .Start-date span:nth-child(2) {
   color: rgb(61, 61, 61);
+  padding-left: 5px;
 }
 .end-date {
   font-size: 18px;
@@ -95,6 +97,7 @@
 }
 .end-date span:nth-child(2) {
   color: rgb(61, 61, 61);
+  padding-left: 5px;
 }
 .myTrip-dates {
   font-size: 16px;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./upiwidget.css";
-// import upiqrcode from "../../assets/images/Upiqrcode.png";
+import upiqrcode from "../../assets/images/Upiqrcode.png";
 import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 import { toast } from "react-toastify";
 import useFetch from "../../Hooks/useFetch";
@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [upiID, setUpiID] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { post, data, get } = useFetch([]);
+  const { post, data, get, loading } = useFetch([]);
   const [upiIDError, setUpiIDError] = useState("");
   const { id } = useParams();
 
@@ -109,7 +109,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
             <div className="upi-qrcode-div">
               <p>Scan and pay</p>
               <div className="qrcode">
-                {/* <img src={upiqrcode} alt="upi qr code" /> */}
+                <img src={upiqrcode} alt="upi qr code" />
               </div>
               <p>Scan and pay using any banking app</p>
             </div>
@@ -131,10 +131,10 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
                 className={`upi-verifyandpay-btn ${
                   isValid ? "enabled" : "disabled"
                 }`}
-                disabled={!isValid}
+                disabled={!isValid || loading}
                 onClick={handlePayNowClick}
               >
-                VERIFY & PAY
+                {loading ? "Loading..." : " VERIFY & PAY"}
               </button>
               {showConfirmation && (
                 <ConfirmationPopup setShowConfirmation={setShowConfirmation} />

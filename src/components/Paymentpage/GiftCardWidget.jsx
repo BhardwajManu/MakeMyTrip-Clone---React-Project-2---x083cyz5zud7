@@ -1,9 +1,9 @@
 import React from "react";
 import "./giftcardwidget.css";
-// import airtelpaymentsbank from "../../assets/images/Airtelpaymentsbank.png";
-// import mobikwik from "../../assets/images/Mobikwik.png";
-// import payzapp from "../../assets/images/Payzapp.png";
-// import amazonpay from "../../assets/images/Amazonpay.png";
+import airtelpaymentsbank from "../../assets/images/Airtelpaymentsbank.png";
+import mobikwik from "../../assets/images/Mobikwik.png";
+import payzapp from "../../assets/images/Payzapp.png";
+import amazonpay from "../../assets/images/Amazonpay.png";
 
 const GiftCardWidget = () => {
   return (
@@ -12,7 +12,7 @@ const GiftCardWidget = () => {
         <p className="giftcard-head">Select wallet to pay</p>
         <div className="giftcard-options-div">
           <div className="giftcard-option">
-            {/* <img src={airtelpaymentsbank} alt="apb" className="apb-img" /> */}
+            <img src={airtelpaymentsbank} alt="apb" className="apb-img" />
             <p>Airtel Payments Bank</p>
           </div>
           <div className="giftcard-option">
@@ -20,15 +20,15 @@ const GiftCardWidget = () => {
             <p>Itz Cash Card</p>
           </div>
           <div className="giftcard-option">
-            {/* <img src={mobikwik} alt="mk" className="mw-img" /> */}
+            <img src={mobikwik} alt="mk" className="mw-img" />
             <p>MobiKwik</p>
           </div>
           <div className="giftcard-option">
-            {/* <img src={payzapp} alt="pz" className="pz-img" /> */}
+            <img src={payzapp} alt="pz" className="pz-img" />
             <p>PayZapp</p>
           </div>
           <div className="giftcard-option">
-            {/* <img src={amazonpay} alt="ap" className="ap-img" /> */}
+            <img src={amazonpay} alt="ap" className="ap-img" />
             <p>Amazon Pay</p>
           </div>
           <div className="giftcard-option">

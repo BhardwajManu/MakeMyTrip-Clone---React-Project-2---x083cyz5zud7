@@ -14,8 +14,7 @@ const Userdetails = ({ data, keyforTrips }) => {
   const [isValid, setIsValid] = useState(false);
 
   // Error state variables
-  const [firstNameError, setFirstNameError] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
   const [mobileNumberError, setMobileNumberError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [pincodeError, setPincodeError] = useState("");
@@ -25,6 +24,7 @@ const Userdetails = ({ data, keyforTrips }) => {
   useEffect(() => {
     localStorage.setItem("keyforpayment", keyforTrips);
   }, []);
+
   const handleChange = (fieldName, event) => {
     let errorMessage = "";
     switch (fieldName) {
@@ -102,6 +102,18 @@ const Userdetails = ({ data, keyforTrips }) => {
         !stateError &&
         !addressError
     );
+
+    const allFieldsFilled = [
+      firstName,
+      lastName,
+      gender,
+      mobileNumber,
+      email,
+      pincode,
+      state,
+      address,
+    ].every((field) => field !== "");
+    setAllFieldsFilled(allFieldsFilled);
   };
 
   return (
@@ -241,7 +253,9 @@ const Userdetails = ({ data, keyforTrips }) => {
 
         <Link to={`/payment/${data?.data?._id}`}>
           <button
-            className={`ud-continue-btn ${isValid ? "enabled" : "disabled"}`}
+            className={`ud-continue-btn ${
+              isValid && allFieldsFilled ? "enabled" : "disabled"
+            }`}
             disabled={!isValid}
           >
             Continue

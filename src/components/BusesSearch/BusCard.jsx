@@ -59,7 +59,7 @@ const BusCard = ({ data }) => {
                 <div>
                   <span
                     className={`bus-amenty ${
-                      isClicked ? "blue-text" : "grey-text"
+                      isClicked[index] ? "grey-text" : "blue-text"
                     }`}
                     onClick={() => toggleVisible(index)}
                   >

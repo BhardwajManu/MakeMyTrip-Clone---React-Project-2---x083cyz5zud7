@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import "./hotelsearch.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
-// import hotelspagemap from "../../assets/images/Hotelspagemap.png";
-
 import { Link, useSearchParams } from "react-router-dom";
 import HotelTopSection from "./HotelTopSection";
 import HotelCard from "./HotelCard";
@@ -64,13 +62,6 @@ const HotelSearchPage = () => {
         {/* <Container> */}
         <div className="hotelsearchbottomdiv">
           <div className="applyfilters-sidebar">
-            <div className="exploremapdiv">
-              <button className="exploremap-btn">
-                EXPLORE ON MAP
-                <span className="map-icon"></span>
-              </button>
-              {/* <img className="map-image" src={hotelspagemap} alt="map" /> */}
-            </div>
             <div className="selectfiltersdiv">
               <p className="selectfilters-heading">Select Filters</p>
               <div className="filtercategorydiv">
