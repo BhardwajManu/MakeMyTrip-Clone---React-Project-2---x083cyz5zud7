@@ -20,18 +20,18 @@ const FlightDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
   };
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      console.log(data?.data?.airports);
-      const filteredData = !data?.data?.airports
-        ? []
-        : data?.data?.airports?.filter((airport) =>
-            airport.city.toLowerCase().includes(searchValue.toLowerCase())
-          );
-      setFilterData(filteredData);
-    }, 200);
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    // const timeoutId = setTimeout(() => {
+    console.log(data?.data?.airports);
+    const filteredData = !data?.data?.airports
+      ? []
+      : data?.data?.airports?.filter((airport) =>
+          airport.city.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    setFilterData(filteredData);
+    // }, 200);
+    // return () => {
+    //   clearTimeout(timeoutId);
+    // };
   }, [searchValue, data]);
 
   return (

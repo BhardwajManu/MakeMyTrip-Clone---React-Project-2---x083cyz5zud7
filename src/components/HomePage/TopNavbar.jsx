@@ -12,7 +12,6 @@ import LoginContext from "../../Context/LoginContext";
 
 const TopNavbar = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
   const { authenticated, logoutUser } = useAuthContext();
   const { showLogin, setShowLogin } = useContext(LoginContext);
 
@@ -28,7 +27,6 @@ const TopNavbar = () => {
 
   const handleSignout = () => {
     logoutUser();
-    navigate("/");
     toast.success("user Loggedout successfully!", {
       position: "top-center",
       autoClose: 1000,

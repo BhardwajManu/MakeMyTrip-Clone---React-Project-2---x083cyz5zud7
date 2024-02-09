@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./flightsearch.css";
-import { Stickyheader } from "../stickeyheader/Stickyheader";
-import { useSearchParams } from "react-router-dom";
+import { Stickyheader } from "../../components/stickeyheader/Stickyheader";
+import { useParams, useSearchParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import Flightcard from "./Flightcard";
 import Flighttopsection from "./Flighttopsection";
@@ -12,6 +12,7 @@ const FlightSearchpage = () => {
     iata_code: "PNQ",
     name: "Pune Airport",
   });
+
   const [params, setParams] = useSearchParams();
   const source = params.get("source");
   const destination = params.get("destination");
@@ -71,35 +72,23 @@ const FlightSearchpage = () => {
                 <ul>
                   <li>
                     <div>
-                      <input
-                        className="filter-checkbox"
-                        type="checkbox"
-                        value="option1"
-                      />
                       <p>Non Stop</p>
                     </div>
                   </li>
                   <li>
                     <div>
-                      <input
-                        className="filter-checkbox"
-                        type="checkbox"
-                        value="option2"
-                      />
                       <div className="airline-image-indigo"></div>
                       <p>IndiGo</p>
                     </div>
                   </li>
                   <li>
                     <div>
-                      <input className="filter-checkbox" type="checkbox" />
                       <div className="airline-image-vistara"></div>
                       <p>Vistara</p>
                     </div>
                   </li>
                   <li>
                     <div>
-                      <input className="filter-checkbox" type="checkbox" />
                       <div className="airline-image-airindia"></div>
                       <p>Air India</p>
                     </div>

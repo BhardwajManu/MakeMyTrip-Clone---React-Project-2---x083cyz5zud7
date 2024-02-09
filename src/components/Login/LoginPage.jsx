@@ -20,9 +20,9 @@ const LoginPage = () => {
   const { showLogin, setShowLogin } = useContext(LoginContext);
   const [errors, setErrors] = useState(initialData);
   const [formData, setFormData] = useState(initialData);
-  const { data, post, loading } = useFetch(null);
+  const { error: apiError, data, post, loading } = useFetch(null);
   const { signUser, authenticated } = useAuthContext();
-  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState(null);
 
   const getErrors = (name, value) => {
     let errorMessage = "";
@@ -70,9 +70,30 @@ const LoginPage = () => {
       ...formData,
       appType: "bookingportals",
     });
+    // console.log("login", data)
   };
 
   useEffect(() => {
+    if (apiError) {
+      if (
+        apiError.status === 401 &&
+        apiError.data?.message === "Incorrect EmailId or Password"
+      ) {
+        setLoginError(apiError.data.message);
+      } else {
+        toast.error("Incorrect EmailId or Password.", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    }
+
     if (data?.data) {
       signUser(data?.data);
       toast.success(data.data.status, {
@@ -86,13 +107,11 @@ const LoginPage = () => {
         theme: "light",
       });
     }
-    console.log("login", data);
-  }, [data]);
+  }, [apiError, data]);
 
   useEffect(() => {
     if (authenticated) {
       setShowLogin(false);
-      navigate("/");
     }
   }, [authenticated]);
 
@@ -101,7 +120,7 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit} className="mt-8">
         <label>Email or Mobile Number</label>
         <input
-          placeholder="Enter email or mobile number"
+          placeholder="Enter your valid email"
           type="email"
           name="email"
           value={formData.email}
@@ -110,9 +129,7 @@ const LoginPage = () => {
         />
         {errors.email && (
           <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2">
-            <span className="italic text-red-600 text-xs font-semibold ">
-              !
-            </span>
+            <span className="italic text-red-600 text-xs font-semibold">!</span>
             {errors.email}
           </p>
         )}

@@ -4,7 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import LoginContext from "../../Context/LoginContext";
 import { useAuthContext } from "../../Context/AuthContext";
-import TabforLogin from "../Login/TabforLogin";
+import TabforLogin from "../../components/Login/TabforLogin";
 
 const BusSeatPicker = ({ id }) => {
   const [params] = useSearchParams();

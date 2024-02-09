@@ -4,7 +4,7 @@ import { Stickyheader } from "../stickeyheader/Stickyheader";
 import Userdetails from "./Userdetails";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-import HotelpropertyRules from "../Hotelsearch/HotelpropertyRules";
+import HotelpropertyRules from "../../pages/Hotelsearch/HotelpropertyRules";
 
 const Hotelcheckoutpage = () => {
   const { data, get } = useFetch([]);

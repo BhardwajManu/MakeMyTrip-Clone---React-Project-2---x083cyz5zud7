@@ -18,7 +18,7 @@
 }
 .fromcity-div {
   /* border: 2px solid blue; */
-  width: 100%;
+  width: auto;
   padding: 4px 9px;
   background: hsla(0, 0%, 100%, 0.1);
   border-radius: 4px;
@@ -150,7 +150,7 @@
   cursor: pointer;
   outline: 0;
   border: 0;
-  margin-left: 5rem;
+  margin-left: 10rem;
   text-align: center;
   font-weight: 900;
   font-size: 14px;
@@ -428,4 +428,29 @@
   color: #545454;
   font-size: 12px;
   font-weight: 400;
+}
+.ts-train-search-maindiv {
+  /* border: 1px solid red; */
+  height: 400px;
+  width: 314px;
+  background-color: white;
+  overflow: hidden;
+  z-index: 999999;
+  position: absolute;
+  top: 8vh;
+  left: 9.2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-size: 16px;
+}
+.trainsearch-datepicker {
+  position: absolute;
+  top: 18vh;
+  left: 30vw;
+  z-index: 1000;
 }

@@ -3,23 +3,23 @@ import "./App.css";
 import Main from "./components/HomePage/Main";
 import { useEffect, useState } from "react";
 import { Stickyheader } from "./components/stickeyheader/Stickyheader";
-import HotelSearchPage from "./components/Hotelsearch/HotelSearchPage";
-import TrainsSearchPage from "./components/Trainsearch/TrainSearchPage";
+import TrainsSearchPage from "./pages/Trainsearch/TrainSearchPage";
 import PaymentPageMain from "./components/Paymentpage/PaymentPageMain";
-import SingleHotelPage from "./components/Hotelsearch/SingleHotelPage";
 import { useAuthContext } from "./Context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Traincheckoutpage from "./components/checkoutpages/Traincheckoutpage";
 import Flightcheckoutpage from "./components/checkoutpages/Flightcheckoutpage";
 import Hotelcheckoutpage from "./components/checkoutpages/Hotelcheckoutpage";
-import BusesSearch from "./components/BusesSearch/BusesSearch";
+import BusesSearch from "./pages/BuesSearch/BusesSearch";
 import Buscheckoutpage from "./components/checkoutpages/Buscheckoutpage";
 import ComingSoonPage from "./components/Comingsoonpage/ComingSoonPage";
 import TabforLogin from "./components/Login/TabforLogin";
 import { LoginStateProvider } from "./Context/LoginContext";
 import MytripsPage from "./components/profilePages/MytripsPage";
-import FlightSearchpage from "./components/Flightsearch/FlightSearchpage";
+import HotelSearchPage from "./pages/Hotelsearch/HotelSearchPage";
+import SingleHotelPage from "./pages/Hotelsearch/SingleHotelPage";
+import FlightSearchpage from "./pages/Flightsearch/FlightSearchpage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -56,7 +56,7 @@ function App() {
           <Route path="/hotels" element={<HotelSearchPage />} />
           <Route path="/trains" element={<TrainsSearchPage />} />
           <Route path="/buses" element={<BusesSearch />} />
-          <Route path="/flights" element={<FlightSearchpage />} />
+          <Route path="/Flights" element={<FlightSearchpage />} />
           <Route path="/payment/:id" element={<PaymentPageMain />} />
           <Route path="/comingsoon" element={<ComingSoonPage />} />
           <Route path="/singlehotel/:id" element={<SingleHotelPage />} />

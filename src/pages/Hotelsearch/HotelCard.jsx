@@ -42,7 +42,7 @@ const HotelCard = ({ data }) => {
                   </div>
                   {/* <p className="numberofratings">266 Ratings</p> */}
                   <div className="hotelbookingprice">
-                    <h2>₹ {hotel?.rooms[0].costDetails.baseCost}</h2>
+                    <h2>₹ {hotel?.avgCostPerNight}</h2>
                     <p>+ ₹ {hotel?.rooms[0].costDetails.taxesAndFees}</p>
                     <p>Per Night</p>
                   </div>

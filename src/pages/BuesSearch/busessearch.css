@@ -12,11 +12,10 @@
   padding: 11px 30px 11px 30px;
   position: sticky;
   top: 0;
-  z-index: 50;
   /* overflow: hidden; */
 }
-.busessearch-headerdiv div {
-  /* border: 1px solid red; */
+/* .busessearch-headerdiv div {
+  border: 1px solid red;
   padding: 4px 9px;
   background: hsla(0, 0%, 100%, 0.1);
   margin-right: 20px;
@@ -25,7 +24,7 @@
   width: auto;
   height: auto;
   border-radius: 8px;
-}
+} */
 .busessearch-headerdiv div p:first-child {
   font-size: 12px;
   line-height: 12px;
@@ -47,6 +46,7 @@
   display: flex;
 }
 .bussearch-searchbtn {
+  margin-left: 13%;
   font-size: 18px;
   font-weight: 900;
   background: #008cff;
@@ -89,7 +89,6 @@
 
 .AC-filter-div {
   /* border: 1px solid red; */
-  border-bottom: 1px solid #d8d8d8;
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
@@ -104,7 +103,9 @@
 }
 .ac-category-div {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-left: 30px;
+  gap: 20px;
 }
 .ac-category {
   display: flex;
@@ -117,6 +118,12 @@
   border: 1px solid #d8d8d8;
   border-radius: 8px;
   margin-right: 12px;
+}
+.ac-category-subdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
 }
 .ac-img {
   background-image: url("../../assets/Images/busListingSprite.png");
@@ -163,10 +170,18 @@
   text-align: left;
 }
 .departuretime-limit-maindiv {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  gap: 20px;
 }
-.departuretime-limit-maindiv > div {
+.departtime-subdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+.depart-timerangediv {
   margin: 2px 8px 9px 2px;
   border: 1px solid #d8d8d8;
   border-radius: 16px;
@@ -230,10 +245,18 @@
   text-align: left;
 }
 .arrivaltime-limit-maindiv {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  gap: 20px;
 }
-.arrivaltime-limit-maindiv > div {
+.arrivaltime-subdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+.arrival-timerangediv {
   margin: 2px 8px 9px 2px;
   border: 1px solid #d8d8d8;
   border-radius: 16px;
@@ -494,4 +517,38 @@
 .grey-text {
   background-color: #f1ecec;
   color: #6d6b6b;
+}
+.bs-busdetails-div,
+.bs-departdate-div {
+  cursor: pointer;
+  margin-left: 20px;
+}
+.busdropdown-maindiv {
+  /* border: 1px solid red; */
+  overflow: hidden;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 400px;
+  width: 314px;
+  background-color: white;
+  overflow: hidden;
+  z-index: 999999;
+  position: absolute;
+  top: 8vh;
+  left: 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+  text-align: left;
+  font-size: 16px;
+}
+.bussearch-datepicker {
+  position: absolute;
+  top: 19vh;
+  left: 29vw;
+  z-index: 1000;
 }

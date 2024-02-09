@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./flightsearch.css";
 import "./flightdetails.css";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import indigoimg from "../../assets/Images/indigoimg.png";
 import vistaraimg from "../../assets/Images/vistaraimg.png";
 import airindiaimg from "../../assets/Images/airindiaimg.png";
@@ -11,7 +11,7 @@ import airindiaexpressimg from "../../assets/Images/airindiaexpressimg.png";
 import Flightdetails from "./Flightdetails";
 import { useAuthContext } from "../../Context/AuthContext";
 import LoginContext from "../../Context/LoginContext";
-import TabforLogin from "../Login/TabforLogin";
+import TabforLogin from "../../components/Login/TabforLogin";
 
 const images = [
   { airline: indigoimg, flightname: "IndiGo" },
@@ -26,6 +26,7 @@ const Flightcard = ({ data }) => {
   const [isElementVisible, setElementVisibility] = useState({});
   const { authenticated } = useAuthContext();
   const { showLogin, setShowLogin } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const toggleVisibility = (index) => {
     setElementVisibility((prevState) => ({

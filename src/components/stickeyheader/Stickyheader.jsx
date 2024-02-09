@@ -13,7 +13,6 @@ import LoginContext from "../../Context/LoginContext";
 export const Stickyheader = () => {
   const { showLogin, setShowLogin } = useContext(LoginContext);
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
   const { authenticated, logoutUser } = useAuthContext();
 
   const openMyStuffHover = () => {
@@ -28,7 +27,6 @@ export const Stickyheader = () => {
   };
   const handleSignout = () => {
     logoutUser();
-    navigate("/");
     toast.success("user Loggedout successfully!", {
       position: "top-center",
       autoClose: 1000,

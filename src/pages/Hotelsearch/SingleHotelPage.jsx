@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from "react";
 import "./singlehotel.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { Stickyheader } from "../stickeyheader/Stickyheader";
-import ImageCarousel from "./ImageCarousel";
+import ImageCarousel from "../../pages/Hotelsearch/ImageCarousel";
 import hotelroomsize from "../../assets/images/hotelroomsize.png";
 import hotelroombed from "../../assets/images/hotelroombed.png";
 import { TbMathGreater } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-import HotelpropertyRules from "./HotelpropertyRules";
-import TabforLogin from "../Login/TabforLogin";
+import HotelpropertyRules from "../../pages/Hotelsearch/HotelpropertyRules";
 import { useAuthContext } from "../../Context/AuthContext";
 import LoginContext from "../../Context/LoginContext";
+import { Stickyheader } from "../../components/stickeyheader/Stickyheader";
+import TabforLogin from "../../components/Login/TabforLogin";
 
 const SingleHotelPage = () => {
   const { data, get } = useFetch([]);
@@ -27,34 +27,6 @@ const SingleHotelPage = () => {
     <>
       <Stickyheader />
       <div className="singlehotelpage-maindiv">
-        <div className="singlehotel-headerdiv">
-          <div>
-            <p>
-              CITY, AREA OR PROPERTY <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="selecteditem">Bengaluru</p>
-          </div>
-          <div>
-            <p>
-              CHECK-IN <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="selecteditem">Wed,6 Dec 2023</p>
-          </div>
-          <div>
-            <p>
-              CHECK-OUT <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="selecteditem">Tuesday,12 Dec 2023</p>
-          </div>
-          <div>
-            <p>
-              ROOMS & GUESTS
-              <MdKeyboardArrowDown size={20} />
-            </p>
-            <p className="selecteditem">1 Room,2 Adults</p>
-          </div>
-          <button>SEARCH</button>
-        </div>
         <div className="hoteldetails-maindiv">
           <div className="topcontainer-crou">
             <div className="text-[#008cff] font-bold flex -mt-2">

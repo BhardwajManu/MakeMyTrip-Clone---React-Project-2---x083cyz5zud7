@@ -4,6 +4,7 @@ import { RiBookmarkFill } from "react-icons/ri";
 
 const TripCard = () => {
   const paymentCart = JSON.parse(localStorage.getItem("paymentStatus"));
+  // console.log(paymentCart);
 
   // Function to convert UTC time to Kolkata time
   const convertToKolkataTime = (utcTime) => {
@@ -45,7 +46,7 @@ const TripCard = () => {
           <div className="end-date">
             <span>
               {paymentCart?.bookingId?.booking_type === "hotel"
-                ? "Departure Time:"
+                ? "Checkin Time:"
                 : "Departure Date:"}
             </span>
             <span>
@@ -65,7 +66,7 @@ const TripCard = () => {
           <div className="Start-date">
             <span>
               {paymentCart?.bookingId?.booking_type === "hotel"
-                ? "Arrival Time:"
+                ? "Checkout Time:"
                 : "Arrival Date:"}
             </span>
             <span>

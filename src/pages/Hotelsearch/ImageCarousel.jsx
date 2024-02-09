@@ -5,7 +5,7 @@ import { IoIosCheckmark } from "react-icons/io";
 import { IoMdPricetag } from "react-icons/io";
 import "./flickity.css";
 import { Link } from "react-router-dom";
-import TabforLogin from "../Login/TabforLogin";
+import TabforLogin from "../../components/Login/TabforLogin";
 import { useContext } from "react";
 import LoginContext from "../../Context/LoginContext";
 import { useAuthContext } from "../../Context/AuthContext";

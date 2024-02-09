@@ -127,7 +127,7 @@ const Userdetails = ({ data, keyforTrips }) => {
         <div className="userdetails-maindiv">
           <div className="udmd-topdiv">
             <div className="email-maindiv">
-              <p className="udmd-label">First Name</p>
+              <p className="udmd-label">First Name*</p>
               <input
                 placeholder="First Name"
                 className="name-input "
@@ -137,7 +137,7 @@ const Userdetails = ({ data, keyforTrips }) => {
               />
             </div>
             <div className="email-maindiv">
-              <p className="udmd-label">Last Name</p>
+              <p className="udmd-label">Last Name*</p>
               <input
                 placeholder="Last Name"
                 className="name-input"

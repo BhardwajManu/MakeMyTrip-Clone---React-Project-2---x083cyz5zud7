@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Flightswidget/flightdropdown.css";
+import "../../components/Flightswidget/flightdropdown.css";
 import { IoSearch } from "react-icons/io5";
 import flightsearch from "../../assets/images/flightsearch.png";
 import useFetch from "../../Hooks/useFetch";

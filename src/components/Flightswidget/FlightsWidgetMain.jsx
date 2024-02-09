@@ -21,6 +21,7 @@ const FlightsWidgetMain = () => {
     date: new Date().toLocaleDateString(),
   });
   const [travellers, setTravellers] = useState(1);
+
   const [travellerclass, setTravellerClass] = useState("Economy");
   const [showFightPopup, setShowFlightPopup] = useState(false);
   const [showDepartureDate, setShowDepartureDate] = useState(false);
@@ -206,8 +207,8 @@ const FlightsWidgetMain = () => {
               </p>
             </div>
           </div>
-          <Link to={`/flights?${createSearchParams(searchData)}`}>
-            <Searchbutton />
+          <Link to={`/Flights?${createSearchParams(searchData)}`}>
+            <Searchbutton searchData={searchData} />
           </Link>
           <div className="fw-exploremore">
             <MdKeyboardDoubleArrowDown size={20} />
