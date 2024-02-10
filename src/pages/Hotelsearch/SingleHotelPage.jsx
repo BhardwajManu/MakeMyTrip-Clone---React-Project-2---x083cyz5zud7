@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./singlehotel.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import ImageCarousel from "../../pages/Hotelsearch/ImageCarousel";
-// import hotelroomsize from "../../assets/images/hotelroomsize.png";
+import hotelroomsize from "../../assets/images/hotelrooms.png";
 import hotelroombed from "../../assets/images/hotelroombed.png";
 import { TbMathGreater } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
@@ -94,11 +94,11 @@ const SingleHotelPage = () => {
                     <div className="suite-aboutroom">
                       <h2>{room.roomType} Room</h2>
                       <div className="roomsize-div">
-{/*                         <img
-{/*                           src={hotelroomsize} */}
+                        <img
+                          src={hotelroomsize}
                           alt="room"
                           className="roomsizeimg"
-                        /> */}
+                        />
                         <p>{room.roomSize} sq.ft</p>
                       </div>
                       <div className="roombed-div">
