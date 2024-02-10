@@ -95,7 +95,7 @@ const SingleHotelPage = () => {
                       <h2>{room.roomType} Room</h2>
                       <div className="roomsize-div">
                         <img
-                          src={hotelroomsize}
+{/*                           src={hotelroomsize} */}
                           alt="room"
                           className="roomsizeimg"
                         />
