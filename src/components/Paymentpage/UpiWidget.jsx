@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./upiwidget.css";
-import upiqrcode from "../../assets/Images/Upiqrcode.png";
+import upiqrcode from "../../assets/Images/upiqrcode.png";
 import ConfirmationPopup from "../confirmationpopup/ConfirmationPopup";
 import { toast } from "react-toastify";
 import useFetch from "../../Hooks/useFetch";
