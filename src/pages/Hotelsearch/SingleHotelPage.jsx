@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./singlehotel.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import ImageCarousel from "../../pages/Hotelsearch/ImageCarousel";
-import hotelroomsize from "../../assets/images/hotelroomsize.png";
+// import hotelroomsize from "../../assets/images/hotelroomsize.png";
 import hotelroombed from "../../assets/images/hotelroombed.png";
 import { TbMathGreater } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
