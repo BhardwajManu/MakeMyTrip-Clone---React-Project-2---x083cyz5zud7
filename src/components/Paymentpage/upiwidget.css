@@ -12,7 +12,7 @@
   margin-bottom: 10px;
 }
 .phone-icon {
-  background-image: url("../../assets/images/paymentsprite.png");
+  background-image: url("../../assets/Images/paymentsprite.png");
   background-position: -118px -224px;
   height: 21px;
   width: 18px;
@@ -189,7 +189,7 @@
   justify-content: center;
 }
 .upi-gpay-icon {
-  background-image: url("../../assets/images/paymentsprite.png");
+  background-image: url("../../assets/Images/paymentsprite.png");
   background-position: -190px -36px;
   height: 19px;
   width: 19px;
@@ -197,7 +197,7 @@
   margin-right: 5px;
 }
 .upi-phonepay-icon {
-  background-image: url("../../assets/images/BanklogoSprite.png");
+  background-image: url("../../assets/Images/BanklogoSprite.png");
   margin-right: 5px;
   background-position: -227px -563px;
   height: 33px;
@@ -205,7 +205,7 @@
   background-size: 390px 650px;
 }
 .upi-upipay-icon {
-  background-image: url("../../assets/images/paymentsprite.png");
+  background-image: url("../../assets/Images/paymentsprite.png");
   background-position: -48px -114px;
   height: 23px;
   width: 16px;
@@ -213,7 +213,7 @@
   margin-right: 5px;
 }
 .upi-hdfcpay-icon {
-  background-image: url("../../assets/images/BanklogoSprite.png");
+  background-image: url("../../assets/Images/BanklogoSprite.png");
   background-position: -272px -167px;
   height: 32px;
   width: 32px;
@@ -221,7 +221,7 @@
   margin-right: 5px;
 }
 .upi-sbipay-icon {
-  background-image: url("../../assets/images/BanklogoSprite.png");
+  background-image: url("../../assets/Images/BanklogoSprite.png");
   background-position: -271px -405px;
   height: 32px;
   width: 32px;
@@ -229,7 +229,7 @@
   margin-right: 5px;
 }
 .upi-axispay-icon {
-  background-image: url("../../assets/images/BanklogoSprite.png");
+  background-image: url("../../assets/Images/BanklogoSprite.png");
   background-position: -86px -47px;
   height: 32px;
   width: 32px;
@@ -237,7 +237,7 @@
   margin-right: 5px;
 }
 .upi-paytm-icon {
-  background-image: url("../../assets/images/BanklogoSprite.png");
+  background-image: url("../../assets/Images/BanklogoSprite.png");
   background-position: -309px -325px;
   height: 32px;
   width: 32px;
