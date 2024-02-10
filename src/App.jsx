@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Main from "./components/HomePage/Main";
 import { useEffect, useState } from "react";
-import { Stickyheader } from "./components/stickeyheader/Stickyheader";
 import TrainsSearchPage from "./pages/Trainsearch/TrainSearchPage";
 import PaymentPageMain from "./components/Paymentpage/PaymentPageMain";
 import { useAuthContext } from "./Context/AuthContext";
@@ -20,6 +19,7 @@ import MytripsPage from "./components/profilePages/MytripsPage";
 import HotelSearchPage from "./pages/Hotelsearch/HotelSearchPage";
 import SingleHotelPage from "./pages/Hotelsearch/SingleHotelPage";
 import FlightSearchpage from "./pages/Flightsearch/FlightSearchpage";
+import { Stickyheader } from "./components/stickeyheader/Stickyheader";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
