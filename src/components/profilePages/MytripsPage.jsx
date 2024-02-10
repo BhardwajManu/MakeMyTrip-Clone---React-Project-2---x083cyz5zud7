@@ -3,7 +3,7 @@ import "./mytripsPage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { Container } from "@mui/material";
 import { IoIosArrowForward } from "react-icons/io";
-import mytriplistimage from "../../assets/Images/Mytriplistimage.png";
+import mytriplistimage from "../../assets/images/Mytriplistimage.png";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 import TripCard from "../myTripsCard/TripCard";
