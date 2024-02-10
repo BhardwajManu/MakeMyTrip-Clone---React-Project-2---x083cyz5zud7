@@ -3,7 +3,7 @@ import "./mytripsPage.css";
 import { Stickyheader } from "../stickeyheader/Stickyheader";
 import { Container } from "@mui/material";
 import { IoIosArrowForward } from "react-icons/io";
-import mytriplistimage from "../../assets/images/Mytriplistimg.png";
+import mytriplistimg from "../../assets/images/Mytriplistimg.png";
 
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
@@ -20,7 +20,7 @@ const MytripsPage = () => {
     if (activeSection === "upcoming") {
       return (
         <div className="mytriplistcontainer-upcoming">
-          <img src={mytriplistimage} alt="mytrip" />
+          <img src={mytriplistimg} alt="mytrip" />
           <div>
             <h3>Looks empty, you've no upcoming bookings.</h3>
             <p>When you book a trip, you will see your itinerary here.</p>
