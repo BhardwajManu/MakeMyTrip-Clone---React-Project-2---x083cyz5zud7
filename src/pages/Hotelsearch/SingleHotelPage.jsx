@@ -94,11 +94,11 @@ const SingleHotelPage = () => {
                     <div className="suite-aboutroom">
                       <h2>{room.roomType} Room</h2>
                       <div className="roomsize-div">
-                        <img
+{/*                         <img
 {/*                           src={hotelroomsize} */}
                           alt="room"
                           className="roomsizeimg"
-                        />
+                        /> */}
                         <p>{room.roomSize} sq.ft</p>
                       </div>
                       <div className="roombed-div">
