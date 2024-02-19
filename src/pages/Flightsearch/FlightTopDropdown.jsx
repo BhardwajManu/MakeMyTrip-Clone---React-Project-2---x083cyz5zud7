@@ -12,7 +12,6 @@ const FlightTopDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
   useEffect(() => {
     get("/bookingportals/airport?limit=30");
   }, []);
-  console.log(data);
 
   const handleAirportSelect = (airport) => {
     updateSelectedAirport(airport);
@@ -20,18 +19,12 @@ const FlightTopDropdown = ({ setShowDropdown, updateSelectedAirport }) => {
   };
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      console.log(data?.data?.airports);
-      const filteredData = !data?.data?.airports
-        ? []
-        : data?.data?.airports?.filter((airport) =>
-            airport.city.toLowerCase().includes(searchValue.toLowerCase())
-          );
-      setFilterData(filteredData);
-    }, 200);
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    const filteredData = !data?.data?.airports
+      ? []
+      : data?.data?.airports?.filter((airport) =>
+          airport.city.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    setFilterData(filteredData);
   }, [searchValue, data]);
 
   return (

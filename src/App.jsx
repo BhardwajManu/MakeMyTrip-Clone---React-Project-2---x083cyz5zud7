@@ -48,7 +48,7 @@ function App() {
   return (
     <>
       <LoginStateProvider>
-        <ToastContainer />
+        <ToastContainer limit={1} />
         {showStickyHeader && <Stickyheader />}
         <Routes>
           <Route path="/" exact element={<Main />} />

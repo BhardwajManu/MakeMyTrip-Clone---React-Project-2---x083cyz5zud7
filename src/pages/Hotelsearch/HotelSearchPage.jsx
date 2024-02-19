@@ -12,7 +12,7 @@ const HotelSearchPage = () => {
   const rating = params.get("rating");
   const roomType = params.get("roomType");
   const avgCostPerNight = params.get("avgCostPerNight");
-  const { get, data } = useFetch([]);
+  const { get, data, loading } = useFetch([]);
 
   const handleCheckboxChange = (key, value) => {
     if (value === "") {
@@ -31,7 +31,7 @@ const HotelSearchPage = () => {
         rating ? `&filter={"rating":"${rating}"}` : ""
       }${roomType ? `&filter={"rooms.roomType":"${roomType}"}` : ""}${
         avgCostPerNight
-          ? `&filter={"avgCostPerNight":{"$lte":"7000", "$gte":"5000"}}`
+          ? `&filter={"avgCostPerNight":{ "$gte":"7000","$lte":"6000"}}`
           : ""
       }`
     );
@@ -65,18 +65,27 @@ const HotelSearchPage = () => {
                   <li>
                     <input
                       type="checkbox"
-                      checked={avgCostPerNight === "5000" ? true : false}
+                      checked={avgCostPerNight === "7000" ? true : false}
                       onChange={(e) =>
                         handleCheckboxChange(
                           "avgCostPerNight",
-                          e.target.checked ? 5000 : ""
+                          e.target.checked ? 7000 : ""
                         )
                       }
                     />
                     <p>₹ 0 - ₹ 1500</p>
                   </li>
                   <li>
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={avgCostPerNight === "6000" ? true : false}
+                      onChange={(e) =>
+                        handleCheckboxChange(
+                          "avgCostPerNight",
+                          e.target.checked ? 6000 : ""
+                        )
+                      }
+                    />
                     <p>₹ 1500 - ₹ 2500</p>
                   </li>
                   <li>
@@ -211,7 +220,7 @@ const HotelSearchPage = () => {
             </div>
           </div>
 
-          <HotelCard data={data} />
+          <HotelCard data={data} loading={loading} />
         </div>
         {/* </Container> */}
       </div>

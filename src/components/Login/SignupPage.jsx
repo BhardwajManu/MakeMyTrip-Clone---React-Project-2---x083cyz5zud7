@@ -22,7 +22,7 @@ const SignupPage = () => {
   const [formData, setFormData] = useState(initialData);
   const { error: apiError, data, post, loading } = useFetch({});
   const [loginError, setLoginError] = useState(null);
-  const { signUser, authenticated } = useAuthContext();
+  const { signUser } = useAuthContext();
 
   const getErrors = (name, value) => {
     let errorMessage = "";

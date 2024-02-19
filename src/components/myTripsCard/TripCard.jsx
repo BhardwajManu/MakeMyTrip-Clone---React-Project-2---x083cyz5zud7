@@ -4,7 +4,7 @@ import { RiBookmarkFill } from "react-icons/ri";
 
 const TripCard = () => {
   const paymentCart = JSON.parse(localStorage.getItem("paymentStatus"));
-  // console.log(paymentCart);
+  console.log(paymentCart);
 
   // Function to convert UTC time to Kolkata time
   const convertToKolkataTime = (utcTime) => {
@@ -36,27 +36,25 @@ const TripCard = () => {
         <RiBookmarkFill size={25} className="mt-flight-icon" />
 
         <div className="T-A-D-text">
-          <p>
-            {paymentCart?.bookingId?.booking_type ?? "Default Booking Type"}
-          </p>
-          <p>Booking Id: {paymentCart?.bookingId?.user ?? "Default User"}</p>
+          <p>{paymentCart?.booking?.booking_type}</p>
+          <p>Booking Id: {paymentCart?.booking?.user?._id}</p>
         </div>
 
         <div className="dates-1">
           <div className="end-date">
             <span>
-              {paymentCart?.bookingId?.booking_type === "hotel"
+              {paymentCart?.booking?.booking_type === "hotel"
                 ? "Checkin Time:"
                 : "Departure Date:"}
             </span>
             <span>
-              {paymentCart?.bookingId?.booking_type === "hotel"
+              {paymentCart?.booking?.booking_type === "hotel"
                 ? currentKolkataTime.toLocaleTimeString("en-IN", {
                     timeZone: "Asia/Kolkata",
                     hour: "numeric",
                     minute: "numeric",
                   })
-                : formatDate(currentKolkataTime)}{" "}
+                : formatDate(currentKolkataTime)}
               {/* Current departure date */}
             </span>
           </div>
@@ -65,12 +63,12 @@ const TripCard = () => {
         <div className="dates-2">
           <div className="Start-date">
             <span>
-              {paymentCart?.bookingId?.booking_type === "hotel"
+              {paymentCart?.booking?.booking_type === "hotel"
                 ? "Checkout Time:"
                 : "Arrival Date:"}
             </span>
             <span>
-              {paymentCart?.bookingId?.booking_type === "hotel"
+              {paymentCart?.booking?.booking_type === "hotel"
                 ? arrivalTime.toLocaleTimeString("en-IN", {
                     timeZone: "Asia/Kolkata",
                     hour: "numeric",

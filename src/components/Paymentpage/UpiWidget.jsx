@@ -11,6 +11,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
   const [isValid, setIsValid] = useState(false);
   const { post, data, get, loading } = useFetch([]);
   const [upiIDError, setUpiIDError] = useState("");
+
   const { id } = useParams();
 
   const handleChange = (field, event) => {
@@ -45,57 +46,75 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
   const endDateHotel = year + "-" + 0 + month + "-" + day;
 
   const handlePayNowClick = async () => {
-    let flightBookingDetails;
-    const value = localStorage.getItem("keyforpayment");
-    if (value === "flight") {
-      flightBookingDetails = {
-        bookingType: "flight",
-        bookingDetails: {
-          flightId: flightId,
-          startDate: startDate,
-          endDate: endDate,
-        },
-      };
-    }
-    if (value === "train") {
-      flightBookingDetails = {
-        bookingType: "train",
-        bookingDetails: {
-          trainId: flightId,
-          startDate: startDate,
-          endDate: endDate,
-        },
-      };
-    }
-    if (value === "hotel") {
-      flightBookingDetails = {
-        bookingType: "hotel",
-        bookingDetails: {
-          hotelId: flightId,
-          startDate: startDateHotel,
-          endDate: endDateHotel,
-        },
-      };
-    }
-    if (value === "bus") {
-      flightBookingDetails = {
-        bookingType: "bus",
-        bookingDetails: {
-          busId: flightId,
-          startDate: startDate,
-          endDate: endDate,
-        },
-      };
-    }
+    try {
+      let flightBookingDetails;
+      const value = localStorage.getItem("keyforpayment");
+      if (value === "flight") {
+        flightBookingDetails = {
+          bookingType: "flight",
+          bookingDetails: {
+            flightId: flightId,
+            startDate: startDate,
+            endDate: endDate,
+          },
+        };
+      }
+      if (value === "train") {
+        flightBookingDetails = {
+          bookingType: "train",
+          bookingDetails: {
+            trainId: flightId,
+            startDate: startDate,
+            endDate: endDate,
+          },
+        };
+      }
+      if (value === "hotel") {
+        flightBookingDetails = {
+          bookingType: "hotel",
+          bookingDetails: {
+            hotelId: flightId,
+            startDate: startDateHotel,
+            endDate: endDateHotel,
+          },
+        };
+      }
+      if (value === "bus") {
+        flightBookingDetails = {
+          bookingType: "bus",
+          bookingDetails: {
+            busId: flightId,
+            startDate: startDate,
+            endDate: endDate,
+          },
+        };
+      }
 
-    // console.log(flightBookingDetails);
-    await post("/bookingportals/booking", flightBookingDetails);
-    // console.log(response);
-    setShowConfirmation(true);
+      // console.log(flightBookingDetails);
+      await post("/bookingportals/booking", flightBookingDetails);
+
+      if (data?.data?.message === "Booking successful") {
+        localStorage.setItem("paymentStatus", JSON.stringify(data?.data));
+
+        const functionThatReturnPromise = () =>
+          new Promise((resolve) => setTimeout(resolve, 3000));
+
+        toast
+          .promise(functionThatReturnPromise, {
+            pending: "Payment in Process",
+            success: "Booking Successful",
+          })
+          .then(() => {
+            setShowConfirmation(true);
+          });
+      } else {
+        toast.error("Payment failed. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred during payment. Please try again later.");
+    }
   };
-  if (data?.data?.message == "Booking successful") {
-    localStorage.setItem("paymentStatus", JSON.stringify(data?.data));
-  }
+
   return (
     <>
       <div className="upiwidget-maindiv">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./trainsearchpage.css";
 import { Stickyheader } from "../../components/stickeyheader/Stickyheader";
 import { Link, useSearchParams } from "react-router-dom";
@@ -17,6 +17,7 @@ const TrainsSearchPage = () => {
   const arrivalTime = params.get("arrivalTime");
   const coachType = params.get("coachType");
   const { get, data } = useFetch([]);
+  const [selectedCoachType, setSelectedCoachType] = useState("");
 
   const handleCheckboxChange = (key, value) => {
     // setSelectedOption(value === selectedOption ? null : value);
@@ -28,6 +29,7 @@ const TrainsSearchPage = () => {
 
     const newSearchParams = { ...Object.fromEntries(params), [key]: value };
     setParams(newSearchParams);
+    setSelectedCoachType(value);
   };
   useEffect(() => {
     get(
@@ -267,7 +269,7 @@ const TrainsSearchPage = () => {
             </div>
           </div>
 
-          <TrainCard data={data} />
+          <TrainCard data={data} selectedCoachType={selectedCoachType} />
         </div>
       </div>
     </>

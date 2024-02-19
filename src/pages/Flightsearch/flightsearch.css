@@ -369,7 +369,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  cursor: not-allowed;
+  cursor: default;
 }
 .airlines-filter-maindiv ul li {
   width: 100%;
@@ -386,8 +386,7 @@
 }
 .airline-checkbox {
   /* border: 2px solid red; */
-  /* cursor: pointer; */
-  cursor: not-allowed;
+  cursor: pointer;
   height: 18px;
   width: 18px;
   margin: 0;
@@ -676,4 +675,14 @@
   top: 18vh;
   left: 33vw;
   z-index: 1000;
+}
+.loader {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingImg {
+  width: 200px;
 }

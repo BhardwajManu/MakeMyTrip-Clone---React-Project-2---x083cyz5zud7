@@ -28,6 +28,8 @@
 }
 .upiwidget-middlediv {
   border: 1px solid blue;
+  width: 33vw;
+
   display: flex;
   align-items: center;
   justify-content: center;

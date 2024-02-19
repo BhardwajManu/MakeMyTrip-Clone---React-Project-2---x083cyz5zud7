@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import "./singlehotel.css";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import ImageCarousel from "../../pages/Hotelsearch/ImageCarousel";
 import hotelroomsize from "../../assets/Images/image.png";
 import hotelroombed from "../../assets/Images/hotelroombed.png";
@@ -123,7 +122,7 @@ const SingleHotelPage = () => {
                     <div className="suite-pricediv">
                       <div>
                         <p>Per Night</p>
-                        <p>₹ {room.costPerNight}</p>
+                        {/* <p>₹ {parseFloat(hotel?.avgCostPerNight).toFixed(0)}</p> */}
                         <p>+₹ {room.costDetails.taxesAndFees} taxes & fees</p>
                       </div>
                       <div>
