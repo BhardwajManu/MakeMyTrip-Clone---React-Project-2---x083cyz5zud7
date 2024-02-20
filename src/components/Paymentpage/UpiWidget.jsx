@@ -16,14 +16,16 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
 
   const handleChange = (field, event) => {
     setUpiID(event.target.value);
-    const upiRegex = /^(\w{1,5})?\d{10}@\w+$/;
+    const upiRegex = /@/;
     if (!upiRegex.test(event.target.value)) {
       setUpiIDError("Enter Invalid UPI ID format*");
+      setIsValid(false); // Disable the button if the format is invalid
     } else {
-      setUpiIDError(""); // Clear the error if the format is valid
+      setUpiIDError("");
+      setIsValid(true); // Enable the button if the format is valid
     }
-    setIsValid(!upiIDError);
   };
+
   useEffect(() => {
     const value = localStorage.getItem("keyforpayment");
     if (value !== undefined && value !== null) {
@@ -93,7 +95,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
       // console.log(flightBookingDetails);
       await post("/bookingportals/booking", flightBookingDetails);
 
-      if (data?.data?.message === "Booking successful") {
+      if (localStorage.getItem("successMsg") === "Booking successful") {
         localStorage.setItem("paymentStatus", JSON.stringify(data?.data));
 
         const functionThatReturnPromise = () =>
@@ -140,7 +142,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
               <p className="enterupiid-msg">Enter UPI ID</p>
               <input
                 type="text"
-                placeholder="mobileNumber@upi"
+                placeholder="@upi"
                 className="upiid-inputfield"
                 onChange={(event) => handleChange("upiID", event)}
               />

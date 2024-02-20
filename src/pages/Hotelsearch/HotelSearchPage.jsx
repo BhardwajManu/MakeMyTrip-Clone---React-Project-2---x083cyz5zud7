@@ -219,7 +219,6 @@ const HotelSearchPage = () => {
               </div>
             </div>
           </div>
-
           <HotelCard data={data} loading={loading} />
         </div>
         {/* </Container> */}

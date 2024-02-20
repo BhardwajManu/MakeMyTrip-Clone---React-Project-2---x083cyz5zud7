@@ -6,115 +6,66 @@ const Userdetails = ({ data, keyforTrips }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
   const [email, setEmail] = useState("");
   const [pincode, setPincode] = useState("");
   const [state, setState] = useState("");
   const [address, setAddress] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [isButtonActive, setButtonActive] = useState(false);
+  const [isMobileNumberValid, setMobileNumberValid] = useState(true);
+  const [isPincodeValid, setPincodeValid] = useState(true);
+  const [isEmailValid, setEmailValid] = useState(true);
 
-  // Error state variables
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-  const [mobileNumberError, setMobileNumberError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [pincodeError, setPincodeError] = useState("");
-  const [stateError, setStateError] = useState("");
-  const [addressError, setAddressError] = useState("");
+  const validateMobileNumber = () => {
+    if (mobileNo.length !== 9) {
+      setMobileNumberValid(false);
+    } else {
+      setMobileNumberValid(true);
+    }
+  };
+
+  const validatePincode = () => {
+    if (pincode.length !== 5) {
+      setPincodeValid(false);
+    } else {
+      setPincodeValid(true);
+    }
+  };
+
+  const validateEmail = () => {
+    if (!email.includes("@")) {
+      setEmailValid(false);
+    } else {
+      setEmailValid(true);
+    }
+  };
+
+  const validateAndEnableButton = () => {
+    if (
+      firstName &&
+      lastName &&
+      gender &&
+      mobileNo.length === 10 &&
+      isMobileNumberValid &&
+      email &&
+      pincode.length === 6 &&
+      isPincodeValid &&
+      state &&
+      address
+    ) {
+      setButtonActive(true);
+    } else {
+      setButtonActive(false);
+    }
+  };
+
+  useEffect(() => {
+    validateAndEnableButton();
+  }, [firstName, lastName, gender, mobileNo, email, pincode, state, address]);
 
   useEffect(() => {
     localStorage.setItem("keyforpayment", keyforTrips);
   }, []);
-
-  const handleChange = (fieldName, event) => {
-    let errorMessage = "";
-    switch (fieldName) {
-      case "firstName":
-        setFirstName(event.target.value);
-        break;
-      case "lastName":
-        setLastName(event.target.value);
-        break;
-      case "gender":
-        setGender(event.target.value);
-        break;
-      case "mobileNumber":
-        setMobileNumber(event.target.value);
-        if (
-          event.target.value.length !== 10 ||
-          !["6", "7", "8", "9"].includes(event.target.value[0])
-        ) {
-          errorMessage = "Enter Valid Mobile Number(minimum 10 digits)";
-        }
-        break;
-      case "email":
-        setEmail(event.target.value);
-        if (!event.target.value.includes("@")) {
-          errorMessage = "Enter Invalid email format";
-        }
-        break;
-      case "pincode":
-        setPincode(event.target.value);
-        if (event.target.value.length !== 6) {
-          errorMessage = "Enter Valid Pincode(minimum 6 digits)";
-        }
-        break;
-      case "state":
-        setState(event.target.value);
-        if (!event.target.value) {
-          errorMessage = "State is required*";
-        }
-        break;
-      case "address":
-        setAddress(event.target.value);
-        if (!event.target.value) {
-          errorMessage = "Address is required*";
-        }
-        break;
-      default:
-        break;
-    }
-
-    // Set the error message for the changed field
-    switch (fieldName) {
-      case "mobileNumber":
-        setMobileNumberError(errorMessage);
-        break;
-      case "email":
-        setEmailError(errorMessage);
-        break;
-      case "pincode":
-        setPincodeError(errorMessage);
-        break;
-      case "state":
-        setStateError(errorMessage);
-        break;
-      case "address":
-        setAddressError(errorMessage);
-        break;
-      default:
-        break;
-    }
-
-    setIsValid(
-      !mobileNumberError &&
-        !emailError &&
-        !pincodeError &&
-        !stateError &&
-        !addressError
-    );
-
-    const allFieldsFilled = [
-      firstName,
-      lastName,
-      gender,
-      mobileNumber,
-      email,
-      pincode,
-      state,
-      address,
-    ].every((field) => field !== "");
-    setAllFieldsFilled(allFieldsFilled);
-  };
 
   return (
     <>
@@ -124,82 +75,100 @@ const Userdetails = ({ data, keyforTrips }) => {
           <span>Important</span>: Enter name as mentioned on your passport or
           Government approved IDs.
         </div>
+
         <div className="userdetails-maindiv">
           <div className="udmd-topdiv">
-            <div className="email-maindiv">
-              <p className="udmd-label">First Name*</p>
-              <input
-                placeholder="First Name"
-                className="name-input "
-                name="firstName"
-                value={firstName}
-                onChange={(event) => handleChange("firstName", event)}
-              />
-            </div>
-            <div className="email-maindiv">
-              <p className="udmd-label">Last Name*</p>
-              <input
-                placeholder="Last Name"
-                className="name-input"
-                name="lastName"
-                value={lastName}
-                onChange={(event) => handleChange("lastName", event)}
-              />
-            </div>
-            <div className="udmd-malefemale-divs mt-6 cursor-pointer">
-              <div
-                onClick={() => {
-                  setGender("MALE");
-                  document.getElementById("maleOption").style.backgroundColor =
-                    "#eaf5ff";
-                  document.getElementById(
-                    "femaleOption"
-                  ).style.backgroundColor = "";
-                }}
-                id="maleOption"
-              >
-                MALE
-              </div>
-              <div
-                onClick={() => {
-                  setGender("FEMALE");
-                  document.getElementById(
-                    "femaleOption"
-                  ).style.backgroundColor = "#eaf5ff";
+            <input
+              placeholder="First & Middle Name"
+              className="name-input"
+              required
+              onChange={(e) => {
+                setFirstName(e.target.value);
+                validateAndEnableButton();
+              }}
+            />
 
-                  document.getElementById("maleOption").style.backgroundColor =
-                    "";
+            <input
+              placeholder="Last Name"
+              className="name-input"
+              required
+              onChange={(e) => {
+                setLastName(e.target.value);
+                validateAndEnableButton();
+              }}
+            />
+
+            <div className="udmd-malefemale-divs">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
+                className={`gender-input ${
+                  gender === "male" ? "selected" : ""
+                }`}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                  validateAndEnableButton();
                 }}
-                id="femaleOption"
-              >
-                FEMALE
-              </div>
+              />
+              <label htmlFor="male">MALE</label>
+
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
+                className={`gender-input ${
+                  gender === "female" ? "selected" : ""
+                }`}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                  validateAndEnableButton();
+                }}
+              />
+              <label htmlFor="female">FEMALE</label>
             </div>
           </div>
           <div className="udmd-bottomdiv">
             <div className="mobnumber-maindiv">
               <p className="udmd-label">Mobile No</p>
               <input
-                placeholder="+91"
-                className={`name-input ${mobileNumberError ? "error" : ""}`}
-                name="mobileNumber"
-                value={mobileNumber}
-                onChange={(event) => handleChange("mobileNumber", event)}
+                type="tel"
+                placeholder="Mobile No"
+                className="name-input"
+                required
+                onChange={(e) => {
+                  setMobileNo(e.target.value);
+                  validateMobileNumber();
+                  validateAndEnableButton();
+                }}
               />
-              {mobileNumberError && (
-                <div className="error-message">{mobileNumberError}</div>
+              {!isMobileNumberValid && (
+                <p style={{ color: "red", fontSize: "12px" }}>
+                  Mobile number must have 10 digits
+                </p>
               )}
             </div>
+
             <div className="email-maindiv">
               <p className="udmd-label">Email</p>
               <input
                 placeholder="Email"
-                className={`name-input ${emailError ? "error" : ""}`}
-                name="email"
-                value={email}
-                onChange={(event) => handleChange("email", event)}
+                className="name-input"
+                type="email"
+                required
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  validateEmail();
+                  validateAndEnableButton();
+                }}
               />
-              {emailError && <div className="error-message">{emailError}</div>}
+              {!isEmailValid && (
+                <p style={{ color: "red", fontSize: "12px" }}>
+                  Email should contain "@"
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -208,8 +177,8 @@ const Userdetails = ({ data, keyforTrips }) => {
           <h2 className="psmd-header">
             Your pincode and state
             <span>
-              (Required for generating your invoice. You can edit this anytime
-              later in your profile section.)
+              (Required for generating your invoice.You can edit this anytime
+              later in your profile section. )
             </span>
           </h2>
 
@@ -217,48 +186,52 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>Pincode</p>
               <input
-                name="pincode"
-                value={pincode}
-                onChange={(event) => handleChange("pincode", event)}
-                className={`name-input ${pincodeError ? "error" : ""}`}
+                required
+                onChange={(e) => {
+                  setPincode(e.target.value);
+                  validatePincode();
+                  validateAndEnableButton();
+                }}
               />
-              {pincodeError && (
-                <div className="error-message">{pincodeError}</div>
+              {!isPincodeValid && (
+                <p style={{ color: "red", fontSize: "12px" }}>
+                  Pincode must have 6 digits
+                </p>
               )}
             </div>
+
             <div className="pincode-input-div">
               <p>State</p>
               <input
-                name="state"
-                value={state}
-                onChange={(event) => handleChange("state", event)}
-                className={`name-input ${stateError ? "error" : ""}`}
+                type="text"
+                required
+                onChange={(e) => {
+                  setState(e.target.value);
+                  validateAndEnableButton();
+                }}
               />
-              {stateError && <div className="error-message">{stateError}</div>}
             </div>
+
             <div className="pincode-input-div">
               <p>Address</p>
               <input
-                name="address"
-                value={address}
-                onChange={(event) => handleChange("address", event)}
-                className={`name-input ${addressError ? "error" : ""}`}
+                type="text"
+                required
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                  validateAndEnableButton();
+                }}
               />
-              {addressError && (
-                <div className="error-message">{addressError}</div>
-              )}
             </div>
           </div>
         </div>
-
         <Link to={`/payment/${data?.data?._id}`}>
           <button
-            className={`ud-continue-btn ${
-              isValid && allFieldsFilled ? "enabled" : "disabled"
-            }`}
-            disabled={!isValid}
+            className="ud-continue-btn"
+            disabled={!isButtonActive}
+            // style={{ opacity: !isButtonActive ? 0.5 : 1 }}
           >
-            Continue
+            CONTINUE
           </button>
         </Link>
       </div>

@@ -12,14 +12,14 @@ import "react-datepicker/dist/react-datepicker.css";
 const HotelTopSection = ({ updateSearchParams }) => {
   const [searchData, setSearchData] = useState({
     location: "Pune",
-    checkindate: new Date().toLocaleDateString(),
-    checkoutdate: new Date().toLocaleDateString(),
+    date: new Date().toLocaleDateString(),
+    nextDate: new Date().toLocaleDateString(),
   });
   const [selectedCity, setSelectedCity] = useState({
     location: "Pune",
   });
   const [showCheckinDate, setShowCheckinDate] = useState(false);
-  const [selectedCheckinDate, setSelectedCheckinDate] = useState(null);
+  const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
   const [showCheckoutDate, setShowCheckoutDate] = useState(false);
   const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(null);
   const [showCity, setShowCity] = useState(false);
@@ -37,6 +37,7 @@ const HotelTopSection = ({ updateSearchParams }) => {
   useEffect(() => {
     getDropdownData("/bookingportals/hotel");
   }, []);
+
   useEffect(() => {
     if (!dropDownData || !dropDownData.data || !dropDownData.data.hotels)
       return;
@@ -73,25 +74,11 @@ const HotelTopSection = ({ updateSearchParams }) => {
   const handleCheckinDate = (date) => {
     setSelectedCheckinDate(date);
     setShowCheckinDate(false);
-
-    document.getElementById("hs-checkindatepicker").innerText = new Date(date)
-      .toString()
-      .split(" ")
-      .slice(0, 4)
-      .join(" ");
   };
 
   const handleCheckoutDate = (nextDate) => {
     setSelectedCheckoutDate(nextDate);
     setShowCheckoutDate(false);
-
-    document.getElementById("hs-checkoutdatepicker").innerText = new Date(
-      nextDate
-    )
-      .toString()
-      .split(" ")
-      .slice(0, 4)
-      .join(" ");
   };
 
   return (
@@ -110,7 +97,8 @@ const HotelTopSection = ({ updateSearchParams }) => {
             CHECK-IN <MdKeyboardArrowDown size={20} />
           </p>
           <p className="selecteditem" id="hs-checkindatepicker">
-            {new Date(date).toString().split(" ").slice(0, 4).join(" ")}
+            {date}
+            {new Date().toString().split(" ").slice(0, 4).join(" ")}
           </p>
         </div>
         <div onClick={handleCheckoutDateClick}>
@@ -118,7 +106,8 @@ const HotelTopSection = ({ updateSearchParams }) => {
             CHECK-OUT <MdKeyboardArrowDown size={20} />
           </p>
           <p className="selecteditem" id="hs-checkoutdatepicker">
-            {new Date(nextDate).toString().split(" ").slice(0, 4).join(" ")}
+            {nextDate}
+            {new Date().toString().split(" ").slice(0, 4).join(" ")}
           </p>
         </div>
 
