@@ -158,6 +158,9 @@ Start the server
 ## Screenshots
 
 ![App Screenshot](./src/assets/Images/screenshotofmakemytripclone.jpg)
+![App Screenshot](./src/assets/Images/ssofloginmtrip.jpg)
+![App Screenshot](./src/assets/Images/ssofhotel.jpg)
+![App Screenshot](./src/assets/Images/ssofpayment.jpg)
 
 ## Lessons Learned
 
