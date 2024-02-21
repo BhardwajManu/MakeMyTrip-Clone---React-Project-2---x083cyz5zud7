@@ -1,15 +1,12 @@
-
 # MakeMyTrip Clone
 
 MakeMyTrip is a renowned travel and hotel booking platform, facilitating users to explore travel options, compare prices, and seamlessly make bookings. The objective of this project is to develop a MakeMyTrip clone application using HTML, CSS, JavaScript, and React. The application will mimic the core functionalities of MakeMyTrip, offering users a convenient platform to plan and book their travel arrangements.
-
 
 ## Demo
 
 Explore the live demo of the MakeMyTrip clone: https://make-my-trip-clone-react-project-2-x083cyz5zud7.vercel.app/
 
 This demo provides a hands-on experience of the features and functionalities implemented in the MakeMyTrip clone. Feel free to interact with the application and test its capabilities.
-
 
 ## Tech Stack
 
@@ -22,7 +19,6 @@ This demo provides a hands-on experience of the features and functionalities imp
 **Javascript:** High-level programming language for scripting in web development
 
 **Material UI:** React components for faster and easier web development
-
 
 ## Run Locally
 
@@ -50,7 +46,6 @@ Start the server
   npm run dev
 ```
 
-
 # Features
 
 ### General Project Hygiene
@@ -67,6 +62,7 @@ Start the server
         - Detailed README provides instructions on local setup and navigation.
 
 ### User Experience and Design
+
     Styling:
         - UI components are meticulously styled using CSS and Material-UI.
         - Subtle animations enhance the overall user experience.
@@ -74,7 +70,7 @@ Start the server
     Dynamic UI:
         - The website offers dynamic interactions with smooth updates.
 
- ### Technical Functionalities
+### Technical Functionalities
 
     No Dead-clicks:
        - Every tab or clickable item is responsive, eliminating dead clicks.
@@ -82,12 +78,10 @@ Start the server
     Proper Navigation:
         - Tabs and links navigate users to appropriate destinations, with "Coming Soon" messages for upcoming features.
 
-    
+
 
     Effective Use of Library:
        - Material-UI is seamlessly integrated to enhance UI components.
-
-   
 
 ### Authentication
 
@@ -152,11 +146,6 @@ Start the server
     Code Performance:
        - Consideration of performance implications and optimization where necessary.
 
-   
-
-
-
-
 ## Optimizations
 
 #### Performance Optimization:
@@ -168,12 +157,10 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+![App Screenshot](./src/assets/Images/screenshotofmakemytripclone.jpg=App+Screenshot+Here)
 
 ## Lessons Learned
 
- 
 #### The "Lessons Learned" section is an opportunity to reflect on the challenges, successes, and insights gained throughout the development process of your MakeMyTrip clone project. Here are some points you might consider including:
 
 #### 1. Technology Stack Choices:
@@ -204,10 +191,10 @@ Start the server
 
     Discuss lessons learned in implementing user authentication and security measures. Reflect on any challenges faced in ensuring user data privacy and the overall security of the application.
 
-
 #### 8. Conclusion and Acknowledgments:
 
     Summarize key takeaways and express gratitude to contributors, mentors, or anyone who supported the project. Acknowledge both successes and challenges as valuable learning experiences.
+
 ## FAQ
 
 ### 1. What is MakeMyTrip clone?
