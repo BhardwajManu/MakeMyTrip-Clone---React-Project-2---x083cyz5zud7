@@ -157,7 +157,7 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](./src/assets/Images/screenshotofmakemytripclone.jpg=App+Screenshot+Here)
+![App Screenshot](./src/assets/Images/screenshotofmakemytripclone.jpg)
 
 ## Lessons Learned
 
