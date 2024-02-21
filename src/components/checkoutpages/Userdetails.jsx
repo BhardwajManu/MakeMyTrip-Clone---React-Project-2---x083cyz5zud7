@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./userdetails.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Userdetails = ({ data, keyforTrips }) => {
   const [firstName, setFirstName] = useState("");
@@ -69,7 +70,7 @@ const Userdetails = ({ data, keyforTrips }) => {
 
   return (
     <>
-      <div className="userdetails-form-main-container">
+      <form className="userdetails-form-main-container">
         <h2 className="userdetails-header">User Details</h2>
         <div className="caution-text">
           <span>Important</span>: Enter name as mentioned on your passport or
@@ -78,25 +79,30 @@ const Userdetails = ({ data, keyforTrips }) => {
 
         <div className="userdetails-maindiv">
           <div className="udmd-topdiv">
-            <input
-              placeholder="First & Middle Name"
-              className="name-input"
-              required
-              onChange={(e) => {
-                setFirstName(e.target.value);
-                validateAndEnableButton();
-              }}
-            />
-
-            <input
-              placeholder="Last Name"
-              className="name-input"
-              required
-              onChange={(e) => {
-                setLastName(e.target.value);
-                validateAndEnableButton();
-              }}
-            />
+            <div className="flex flex-col">
+              <p className="">First Name</p>
+              <input
+                placeholder="Enter Name*"
+                className="name-input"
+                required
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                  validateAndEnableButton();
+                }}
+              />
+            </div>
+            <div className="flex flex-col">
+              <p className="">Last Name</p>
+              <input
+                placeholder="Enter Last Name*"
+                className="name-input"
+                required
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  validateAndEnableButton();
+                }}
+              />
+            </div>
 
             <div className="udmd-malefemale-divs">
               <input
@@ -134,8 +140,9 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="mobnumber-maindiv">
               <p className="udmd-label">Mobile No</p>
               <input
+                maxLength={10}
                 type="tel"
-                placeholder="Mobile No"
+                placeholder="Enter 10 digits*"
                 className="name-input"
                 required
                 onChange={(e) => {
@@ -144,17 +151,12 @@ const Userdetails = ({ data, keyforTrips }) => {
                   validateAndEnableButton();
                 }}
               />
-              {!isMobileNumberValid && (
-                <p style={{ color: "red", fontSize: "12px" }}>
-                  Mobile number must have 10 digits
-                </p>
-              )}
             </div>
 
             <div className="email-maindiv">
               <p className="udmd-label">Email</p>
               <input
-                placeholder="Email"
+                placeholder="Enter Email*"
                 className="name-input"
                 type="email"
                 required
@@ -186,6 +188,8 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>Pincode</p>
               <input
+                placeholder="Enter 6 Digits*"
+                maxLength={6}
                 required
                 onChange={(e) => {
                   setPincode(e.target.value);
@@ -193,17 +197,13 @@ const Userdetails = ({ data, keyforTrips }) => {
                   validateAndEnableButton();
                 }}
               />
-              {!isPincodeValid && (
-                <p style={{ color: "red", fontSize: "12px" }}>
-                  Pincode must have 6 digits
-                </p>
-              )}
             </div>
 
             <div className="pincode-input-div">
               <p>State</p>
               <input
                 type="text"
+                placeholder="Enter your State*"
                 required
                 onChange={(e) => {
                   setState(e.target.value);
@@ -215,6 +215,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>Address</p>
               <input
+                placeholder="Enter your Address*"
                 type="text"
                 required
                 onChange={(e) => {
@@ -229,12 +230,12 @@ const Userdetails = ({ data, keyforTrips }) => {
           <button
             className="ud-continue-btn"
             disabled={!isButtonActive}
-            // style={{ opacity: !isButtonActive ? 0.5 : 1 }}
+            style={{ opacity: !isButtonActive ? 0.2 : 1 }}
           >
             CONTINUE
           </button>
         </Link>
-      </div>
+      </form>
     </>
   );
 };

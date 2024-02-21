@@ -548,7 +548,7 @@
 }
 .bussearch-datepicker {
   position: absolute;
-  top: 19vh;
-  left: 29vw;
-  z-index: 1000;
+  top: 16vh;
+  left: 33vw;
+  z-index: 10;
 }

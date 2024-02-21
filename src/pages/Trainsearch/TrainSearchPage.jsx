@@ -14,10 +14,9 @@ const TrainsSearchPage = () => {
   const day = params.get("day");
   const trainType = params.get("trainType");
   const departureTime = params.get("departureTime");
-  const arrivalTime = params.get("arrivalTime");
+  // const arrivalTime = params.get("arrivalTime");
   const coachType = params.get("coachType");
   const { get, data } = useFetch([]);
-  const [selectedCoachType, setSelectedCoachType] = useState("");
 
   const handleCheckboxChange = (key, value) => {
     // setSelectedOption(value === selectedOption ? null : value);
@@ -29,7 +28,6 @@ const TrainsSearchPage = () => {
 
     const newSearchParams = { ...Object.fromEntries(params), [key]: value };
     setParams(newSearchParams);
-    setSelectedCoachType(value);
   };
   useEffect(() => {
     get(
@@ -37,7 +35,7 @@ const TrainsSearchPage = () => {
         trainType ? `&filter={"trainType":"${trainType}"}` : ""
       }${coachType ? `&filter={"coaches.coachType":"${coachType}"}` : ""}${
         departureTime ? `&filter={"departureTime":{"$gte":"18:00"}}` : ""
-      }${arrivalTime ? `&filter={"arrivalTime":{"$lte":"12:00"}}` : ""}`
+      }`
     );
   }, [params]);
 
@@ -72,7 +70,7 @@ const TrainsSearchPage = () => {
                   />
                   <p>Departure after 6 PM</p>
                 </li>
-                <li>
+                {/* <li>
                   <input
                     type="checkbox"
                     checked={arrivalTime === "12" ? true : false}
@@ -84,7 +82,7 @@ const TrainsSearchPage = () => {
                     }
                   />
                   <p>Arrival before 12 PM</p>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -269,7 +267,7 @@ const TrainsSearchPage = () => {
             </div>
           </div>
 
-          <TrainCard data={data} selectedCoachType={selectedCoachType} />
+          <TrainCard data={data} />
         </div>
       </div>
     </>

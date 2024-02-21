@@ -5,7 +5,7 @@ import TabforLogin from "../../components/Login/TabforLogin";
 import { useAuthContext } from "../../Context/AuthContext";
 import LoginContext from "../../Context/LoginContext";
 
-const TrainCard = ({ data, selectedCoachType }) => {
+const TrainCard = ({ data }) => {
   const { authenticated } = useAuthContext();
   const { showLogin, setShowLogin } = useContext(LoginContext);
 
@@ -52,23 +52,17 @@ const TrainCard = ({ data, selectedCoachType }) => {
               {authenticated ? (
                 <Link to={`/traincheckoutpage/${train._id}`}>
                   <div className="showtrains-btmdiv">
-                    {train?.coaches
-                      .filter((coach) =>
-                        selectedCoachType
-                          ? coach.coachType === selectedCoachType
-                          : true
-                      )
-                      .map((coach, coachIndex) => (
-                        <div key={coachIndex} className="sl-card">
-                          <div>
-                            <p>{coach.coachType}</p>
-                            <p>₹ {coach.numberOfSeats * 10}</p>
-                            {/* You can replace this calculation with your actual logic */}
-                          </div>
-                          <p className="rac-nmbr">RAC {coachIndex + 1}</p>
-                          <p className="cancellation">Free Cancellation</p>
+                    {train?.coaches.map((coach, coachIndex) => (
+                      <div key={coachIndex} className="sl-card">
+                        <div>
+                          <p>{coach.coachType}</p>
+                          <p>₹ {coach.numberOfSeats * 10}</p>
+                          {/* You can replace this calculation with your actual logic */}
                         </div>
-                      ))}
+                        <p className="rac-nmbr">RAC {coachIndex + 1}</p>
+                        <p className="cancellation">Free Cancellation</p>
+                      </div>
+                    ))}
                   </div>
                 </Link>
               ) : (

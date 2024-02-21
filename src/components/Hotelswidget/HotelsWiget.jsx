@@ -13,6 +13,8 @@ import HotelCityDropdown from "./HotelCityDropdown";
 const HotelsWiget = () => {
   const [searchData, setSearchData] = useState({
     location: "Delhi",
+    date: new Date().toLocaleDateString(),
+    nextDate: new Date().toLocaleDateString(),
   });
   const [rcount, setRCount] = useState(1);
   const [gcount, setGCount] = useState(2);
@@ -77,7 +79,7 @@ const HotelsWiget = () => {
   useEffect(() => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    setSelectedCheckoutDate(tomorrow);
+    handleCheckoutDate(tomorrow);
   }, []);
 
   return (
@@ -129,19 +131,21 @@ const HotelsWiget = () => {
                   weekday: "long",
                 })}
               </p>
-              {showCheckinDate && (
-                <OutsideClickHandler
-                  onOutsideClick={() => setShowCheckinDate(false)}
-                >
+            </div>
+            {showCheckinDate && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowCheckinDate(false)}
+              >
+                <div className="datepicker-hotelcheckin">
                   <DatePicker
                     selected={selectedCheckinDate}
                     onChange={handleCheckinDate}
                     inline
                     minDate={new Date()}
                   />
-                </OutsideClickHandler>
-              )}
-            </div>
+                </div>
+              </OutsideClickHandler>
+            )}
             <div className="hw-addcheckout" onClick={handleCheckoutIconClick}>
               <div className="checkoutheaddiv">
                 <p className="checkoutheading">Check-out</p>
@@ -163,19 +167,21 @@ const HotelsWiget = () => {
                   weekday: "long",
                 })}
               </p>
-              {showCheckoutDate && (
-                <OutsideClickHandler
-                  onOutsideClick={() => setShowCheckoutDate(false)}
-                >
+            </div>
+            {showCheckoutDate && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowCheckoutDate(false)}
+              >
+                <div className="datepicker-hotelcheckout">
                   <DatePicker
                     selected={selectedCheckoutDate}
                     onChange={handleCheckoutDate}
                     inline
                     minDate={new Date()}
                   />
-                </OutsideClickHandler>
-              )}
-            </div>
+                </div>
+              </OutsideClickHandler>
+            )}
             <div className="hw-roomsandguest" onClick={handlePopupClick}>
               <p>
                 Rooms & Guests

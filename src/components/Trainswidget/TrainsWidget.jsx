@@ -110,18 +110,6 @@ const TrainsWidget = () => {
                 <p>Travel Date</p>
                 <MdKeyboardArrowDown size={20} color="#008CFF" />
               </div>
-              {showTravelDate && (
-                <OutsideClickHandler
-                  onOutsideClick={() => setShowTravelDate(false)}
-                >
-                  <DatePicker
-                    selected={selectedTravelDate}
-                    onChange={handleTravelDate}
-                    inline
-                    minDate={new Date()}
-                  />
-                </OutsideClickHandler>
-              )}
               <p>
                 <span>{selectedTravelDate.getDate()}</span>
                 <span>
@@ -139,6 +127,20 @@ const TrainsWidget = () => {
                 })}
               </p>
             </div>
+            {showTravelDate && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowTravelDate(false)}
+              >
+                <div className="datepicker-train">
+                  <DatePicker
+                    selected={selectedTravelDate}
+                    onChange={handleTravelDate}
+                    inline
+                    minDate={new Date()}
+                  />
+                </div>
+              </OutsideClickHandler>
+            )}
             <div className="tw-class" onClick={handlePopupClick}>
               <p>
                 class

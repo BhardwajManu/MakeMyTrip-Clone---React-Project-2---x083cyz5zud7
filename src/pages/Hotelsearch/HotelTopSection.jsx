@@ -21,8 +21,9 @@ const HotelTopSection = ({ updateSearchParams }) => {
   const [showCheckinDate, setShowCheckinDate] = useState(false);
   const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
   const [showCheckoutDate, setShowCheckoutDate] = useState(false);
-  const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(null);
+  const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(new Date());
   const [showCity, setShowCity] = useState(false);
+
   const { data: dropDownData, get: getDropdownData } = useFetch([]);
   const [params] = useSearchParams();
   const date = decodeURI(params.get("date"));
@@ -97,8 +98,7 @@ const HotelTopSection = ({ updateSearchParams }) => {
             CHECK-IN <MdKeyboardArrowDown size={20} />
           </p>
           <p className="selecteditem" id="hs-checkindatepicker">
-            {date}
-            {new Date().toString().split(" ").slice(0, 4).join(" ")}
+            {new Date(date).toString().split(" ").slice(0, 4).join(" ")}
           </p>
         </div>
         <div onClick={handleCheckoutDateClick}>
@@ -106,8 +106,7 @@ const HotelTopSection = ({ updateSearchParams }) => {
             CHECK-OUT <MdKeyboardArrowDown size={20} />
           </p>
           <p className="selecteditem" id="hs-checkoutdatepicker">
-            {nextDate}
-            {new Date().toString().split(" ").slice(0, 4).join(" ")}
+            {new Date(nextDate).toString().split(" ").slice(0, 4).join(" ")}
           </p>
         </div>
 

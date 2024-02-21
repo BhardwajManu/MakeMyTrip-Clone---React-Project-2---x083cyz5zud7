@@ -122,17 +122,19 @@ const Buswidget = () => {
                   </p>
                 </>
               )}
-              {showDate && (
-                <OutsideClickHandler onOutsideClick={() => setShowDate(false)}>
+            </div>
+            {showDate && (
+              <OutsideClickHandler onOutsideClick={() => setShowDate(false)}>
+                <div className="datepicker-bus">
                   <DatePicker
                     selected={selectedDate}
                     onChange={handleTravelDate}
                     inline
                     minDate={new Date()}
                   />
-                </OutsideClickHandler>
-              )}
-            </div>
+                </div>
+              </OutsideClickHandler>
+            )}
           </div>
           <div className="bw-searchbtndiv">
             <Link to={`/buses?${createSearchParams(searchData)}`}>

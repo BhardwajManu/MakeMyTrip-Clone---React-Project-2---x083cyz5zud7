@@ -31,7 +31,7 @@ const HotelSearchPage = () => {
         rating ? `&filter={"rating":"${rating}"}` : ""
       }${roomType ? `&filter={"rooms.roomType":"${roomType}"}` : ""}${
         avgCostPerNight
-          ? `&filter={"avgCostPerNight":{ "$gte":"7000","$lte":"6000"}}`
+          ? `&filter={"avgCostPerNight":{ "$gte":"5000","$gte":"7000","$lte":"8000"}}`
           : ""
       }`
     );
@@ -65,6 +65,19 @@ const HotelSearchPage = () => {
                   <li>
                     <input
                       type="checkbox"
+                      checked={avgCostPerNight === "5000" ? true : false}
+                      onChange={(e) =>
+                        handleCheckboxChange(
+                          "avgCostPerNight",
+                          e.target.checked ? 5000 : ""
+                        )
+                      }
+                    />
+                    <p>₹ 5000+</p>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
                       checked={avgCostPerNight === "7000" ? true : false}
                       onChange={(e) =>
                         handleCheckboxChange(
@@ -73,26 +86,22 @@ const HotelSearchPage = () => {
                         )
                       }
                     />
-                    <p>₹ 0 - ₹ 1500</p>
+                    <p>₹ 7000+</p>
                   </li>
                   <li>
                     <input
                       type="checkbox"
-                      checked={avgCostPerNight === "6000" ? true : false}
+                      checked={avgCostPerNight === "9000" ? true : false}
                       onChange={(e) =>
                         handleCheckboxChange(
                           "avgCostPerNight",
-                          e.target.checked ? 6000 : ""
+                          e.target.checked ? 9000 : ""
                         )
                       }
                     />
-                    <p>₹ 1500 - ₹ 2500</p>
+                    <p>₹ 9000+</p>
                   </li>
-                  <li>
-                    <input type="checkbox" />
-                    <p>₹ 2500 - ₹ 6000</p>
-                  </li>
-                  <li>
+                  {/* <li>
                     <input type="checkbox" />
                     <p>₹ 6000 - ₹ 9500</p>
                   </li>
@@ -111,7 +120,7 @@ const HotelSearchPage = () => {
                   <li>
                     <input type="checkbox" />
                     <p>₹ 30000+</p>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 

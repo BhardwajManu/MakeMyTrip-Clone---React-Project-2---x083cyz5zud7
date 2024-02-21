@@ -141,19 +141,21 @@ const FlightsWidgetMain = () => {
                   weekday: "long",
                 })}
               </p>
-              {showDepartureDate && (
-                <OutsideClickHandler
-                  onOutsideClick={() => setShowDepartureDate(false)}
-                >
+            </div>
+            {showDepartureDate && (
+              <OutsideClickHandler
+                onOutsideClick={() => setShowDepartureDate(false)}
+              >
+                <div className="datepicker-flight">
                   <DatePicker
                     selected={selectedDepartureDate}
                     onChange={handleDepartureDate}
                     inline
                     minDate={new Date()}
                   />
-                </OutsideClickHandler>
-              )}
-            </div>
+                </div>
+              </OutsideClickHandler>
+            )}
 
             <div className="fw-travellersclassdiv" onClick={handlePopupClick}>
               <p className="flex">

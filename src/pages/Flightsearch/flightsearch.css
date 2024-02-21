@@ -671,10 +671,10 @@
 }
 
 .datepicker {
-  position: fixed;
-  top: 18vh;
-  left: 33vw;
-  z-index: 1000;
+  position: absolute;
+  top: 15vh;
+  left: 30vw;
+  z-index: 10;
 }
 .loader {
   margin-top: 10px;
