@@ -92,11 +92,14 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
         };
       }
 
-      // console.log(flightBookingDetails);
       await post("/bookingportals/booking", flightBookingDetails);
+      console.log(flightBookingDetails);
 
       if (localStorage.getItem("successMsg") === "Booking successful") {
-        localStorage.setItem("paymentStatus", JSON.stringify(data?.data));
+        localStorage.setItem(
+          "paymentStatus",
+          JSON.stringify(flightBookingDetails)
+        );
 
         const functionThatReturnPromise = () =>
           new Promise((resolve) => setTimeout(resolve, 3000));

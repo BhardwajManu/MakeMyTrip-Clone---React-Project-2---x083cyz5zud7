@@ -70,7 +70,7 @@ const Userdetails = ({ data, keyforTrips }) => {
 
   return (
     <>
-      <form className="userdetails-form-main-container">
+      <form className="userdetails-form-main-container" autoComplete="off">
         <h2 className="userdetails-header">User Details</h2>
         <div className="caution-text">
           <span>Important</span>: Enter name as mentioned on your passport or
@@ -82,6 +82,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="flex flex-col">
               <p className="">First Name</p>
               <input
+                autoComplete="off"
                 placeholder="Enter Name*"
                 className="name-input"
                 required
@@ -94,6 +95,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="flex flex-col">
               <p className="">Last Name</p>
               <input
+                autoComplete="off"
                 placeholder="Enter Last Name*"
                 className="name-input"
                 required
@@ -140,6 +142,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="mobnumber-maindiv">
               <p className="udmd-label">Mobile No</p>
               <input
+                autoComplete="off"
                 maxLength={10}
                 type="tel"
                 placeholder="Enter 10 digits*"
@@ -156,6 +159,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="email-maindiv">
               <p className="udmd-label">Email</p>
               <input
+                autoComplete="off"
                 placeholder="Enter Email*"
                 className="name-input"
                 type="email"
@@ -188,6 +192,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>Pincode</p>
               <input
+                autoComplete="off"
                 placeholder="Enter 6 Digits*"
                 maxLength={6}
                 required
@@ -202,6 +207,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>State</p>
               <input
+                autoComplete="off"
                 type="text"
                 placeholder="Enter your State*"
                 required
@@ -215,6 +221,7 @@ const Userdetails = ({ data, keyforTrips }) => {
             <div className="pincode-input-div">
               <p>Address</p>
               <input
+                autoComplete="off"
                 placeholder="Enter your Address*"
                 type="text"
                 required
