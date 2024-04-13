@@ -10,7 +10,7 @@ const BusSeatPicker = ({ id }) => {
   const [params] = useSearchParams();
   const date = decodeURI(params.get("date"));
   const { data, get } = useFetch([]);
-  const [selectedSeats, setSelectedSeats] = useState(0);
+  const [selectedSeats, setSelectedSeats] = useState(1);
   const { authenticated } = useAuthContext();
   const { showLogin, setShowLogin } = useContext(LoginContext);
 

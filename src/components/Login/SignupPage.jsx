@@ -147,7 +147,7 @@ const SignupPage = () => {
             {errors.name}
           </p>
         )}
-        <label>Email or Mobile Number</label>
+        <label>Email</label>
         <input
           placeholder="Enter your valid email"
           type="email"

@@ -464,10 +464,7 @@
   /* border: 1px solid red; */
   width: 880px;
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
-  /* width: 880px; */
-  height: 330vh;
-  /* height: auto; */
-  /* z-index: 20; */
+  height: 413vh;
   background-color: #ebf0f5;
   margin: 0 0 0 30px;
 }

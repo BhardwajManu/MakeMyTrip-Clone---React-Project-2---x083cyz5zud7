@@ -129,7 +129,7 @@ const LoginPage = () => {
   return (
     <>
       <form onSubmit={handleSubmit} className="mt-8">
-        <label>Email or Mobile Number</label>
+        <label>Email</label>
         <input
           placeholder="Enter your valid email"
           type="email"

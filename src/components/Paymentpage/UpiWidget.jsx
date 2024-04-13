@@ -16,7 +16,7 @@ const UpiWidget = ({ setShowConfirmation, showConfirmation }) => {
 
   const handleChange = (field, event) => {
     setUpiID(event.target.value);
-    const upiRegex = /@/;
+    const upiRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/;
     if (!upiRegex.test(event.target.value)) {
       setUpiIDError("Enter Invalid UPI ID format*");
       setIsValid(false); // Disable the button if the format is invalid
