@@ -275,6 +275,7 @@
 }
 .fw-exploremore {
   /* border: 2px solid red; */
+  margin: 10px;
   cursor: default;
   color: white;
   display: flex;
