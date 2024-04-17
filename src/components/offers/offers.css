@@ -1,9 +1,9 @@
 .offers-main {
   /* border: 2px solid red; */
   position: relative;
-  top: -20px;
   height: 485px;
   padding: 20px 40px 0px 40px;
+  margin-top: 20px;
   border-radius: 10px;
   box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
