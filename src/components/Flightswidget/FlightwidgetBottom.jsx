@@ -13,7 +13,7 @@ const FlightwidgetBottom = () => {
     <div>
       <div className="fw-mainbtmdiv">
         <Link to="/comingsoon">
-          <img className="fw-adv" src={fwad} alt="ad" />
+          {/* <img className="fw-adv" src={fwad} alt="ad" /> */}
         </Link>
       </div>
       <Offers />
