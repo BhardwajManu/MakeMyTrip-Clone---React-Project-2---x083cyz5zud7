@@ -39,6 +39,12 @@ export const Stickyheader = () => {
       theme: "light",
     });
   };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="stickyheaderpage">
@@ -50,7 +56,7 @@ export const Stickyheader = () => {
         </Link>
         <Link to="/" className="sticky-linktohome">
           <div className="stickynavlinks">
-            <ul className="navlinkslist">
+            <ul className="navlinkslist" onClick={scrollToTop}>
               <li>
                 <div className="sh-flightsimg"></div>
                 <div>Flights</div>
